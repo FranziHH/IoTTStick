@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - IoTT Stick Initial Setup (Video #42)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>IoTT Stick Initial Setup (Video#42) - 10.05.2020</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:11</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+
+            <h2><a id="einfuehrung" href="#einfuehrung" title="Permalink">#</a> Einführung & Hardware-Verbindung</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">[Musik] Die Präsentation des IoTT Sticks 1.5 in Video #41 hat sehr viel positives
+                    Feedback erhalten. Während wir auf die Auslieferung der Platinen warten, habe ich eine Reihe von
+                    Anleitungsvideos gestartet, um euch Einblicke in die Handhabung zu geben. Dieses Video wird heute
+                    eher konventionell sein: Ich möchte euch zeigen, wie man den IoTT Stick konfiguriert und für eure
+                    Anwendung bereit macht. Willkommen auf dem Kanal! Wenn ihr einen IoTT Stick erhaltet, ist die
+                    Software bereits installiert und einsatzbereit. Er muss nur noch für eure Anwendung konfiguriert
+                    werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=63s" target="_blank" class="ts-link">(01:03)</a>
+                <div class="text">Dies geschieht durch Auswahl der Kommunikationsschnittstelle und der Betriebsart. Die
+                    Konfiguration kann über ein Smartphone oder einen PC-Webbrowser vorgenommen werden. Es ist ein
+                    benutzerfreundliches Interface – wir hantieren nicht mit kryptischen Zahlen, sondern mit Klartext.
+                    Wenn ihr den Stick auspackt und an eine USB-Stromquelle anschließt (das mitgelieferte USB-Kabel
+                    dient nur der Stromversorgung, eine Verbindung zum Computer ist nicht zwingend erforderlich),
+                    startet der Stick automatisch. Das Display zeigt an, dass er bereit ist, sich mit eurem Netzwerk zu
+                    verbinden.</div>
+            </div>
+
+            <h2><a id="wlan-konfiguration" href="#wlan-konfiguration" title="Permalink">#</a> WLAN-Konfiguration & Captive Portal</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=117s" target="_blank" class="ts-link">(01:57)</a>
+                <div class="text">Standardmäßig ist der Stick so eingestellt, dass er nach einem bekannten Access Point
+                    sucht. Wenn er keinen findet (wie bei der ersten Inbetriebnahme), geht er in den WLAN-Connect-Modus.
+                    Ihr könnt dann euer Smartphone nehmen und euch mit dem Access Point des Sticks verbinden. Das
+                    Smartphone sollte euch automatisch auf einen Konfigurationsbildschirm leiten, auf dem ihr euer
+                    lokales WLAN auswählen könnt. Sobald ihr das Passwort eingebroadcastet habt, verbindet sich der
+                    Stick mit eurem Netzwerk. Das Display zeigt dann die Details an. Falls die automatische Verbindung
+                    fehlschlägt, keine Sorge.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=167s" target="_blank" class="ts-link">(02:47)</a>
+                <div class="text">Nach etwa zwei Minuten ohne erfolgreiche Verbindung wechselt der IoTT Stick selbst in
+                    den Modus "Access Point". Das Display zeigt euch dann die Zugangsdaten an. Ihr könnt euch dann mit
+                    eurem Computer oder Smartphone direkt mit dem Stick verbinden und über den Webbrowser auf die
+                    Konfigurationsseiten zugreifen. Dies funktioniert sowohl im "Station Mode" (Stick im Heimnetz) als
+                    auch im "Access Point Mode" (Stick ist das Netzwerk). Es gibt ein Timeout-System, aber solange der
+                    Webbrowser verbunden ist, schaltet sich der Access Point nicht ab.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=213s" target="_blank" class="ts-link">(03:33)</a>
+                <div class="text">Das Timeout dient nur dem normalen Betrieb, zum Beispiel wenn der Stick als Gateway
+                    arbeitet. Sobald die Verbindung steht, wird dies im Display angezeigt. Sobald ihr den Button am
+                    Stick drückt, wird er versuchen, die gespeicherten Access Points zu erreichen. Wenn das
+                    abgeschlossen ist, könnt ihr mit dem Button durch die Haupt-Displayseiten blättern. Seite 1 zeigt
+                    den Status der Netzwerkverbindung und die IP-Adresse. Seite 2 zeigt die ausgewählten
+                    Kommunikationsmodi und den Gerätestatus an.</div>
+            </div>
+
+            <h2><a id="geraetemanager" href="#geraetemanager" title="Permalink">#</a> Gerätemanager & Display-Informationen</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=265s" target="_blank" class="ts-link">(04:25)</a>
+                <div class="text">Hier seht ihr zum Beispiel die Spannung der USB-Stromversorgung und die
+                    Betriebstemperatur des ESP32-Chips. Abhängig vom gewählten Kommunikationsmodus liegt die Temperatur
+                    normalerweise um die 25 Grad über der Umgebungstemperatur. Seite 4 bietet eine Vorschau des
+                    Bildschirms, je nach gewählter Schnittstelle. Wenn ihr zum Beispiel das LocoNet-Interface nutzt,
+                    seht ihr dort die ein- und ausgehenden Befehle.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=319s" target="_blank" class="ts-link">(05:19)</a>
+                <div class="text">Da die Zeilen auf dem kleinen Display begrenzt sind, nutzen wir eine Art "Laufschrift"
+                    oder rotierende Anzeige. Bei LocoNet seht ihr codierte Sequenzen, die perfekt sind, um zu prüfen, ob
+                    Befehle wie Geschwindigkeitsänderungen oder Funktionsbefehle ankommen. Der Stick filtert dabei so,
+                    dass nur Änderungen angezeigt werden, um das Display nicht zu überfluten. Wenn sich zum Beispiel die
+                    Geschwindigkeit einer Lok ändert, wird dies sofort aktualisiert.</div>
+            </div>
+
+            <h2><a id="web-konfiguration" href="#web-konfiguration" title="Permalink">#</a> Web-Konfiguration im Detail</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=369s" target="_blank" class="ts-link">(06:09)</a>
+                <div class="text">Um die volle Konfiguration vorzunehmen, nutzt ihr den Webbrowser. Gebt einfach die
+                    IP-Adresse, die im Display steht, in euren Browser ein. Die erste Seite ist die "Node
+                    Configuration". Hier legt ihr den Basis-Arbeitsmodus fest und wählt die eingebetteten Logik-Module
+                    aus. Wenn ihr zum Beispiel den Stick als Handregler für eine Bluebox nutzen wollt, wählt ihr das
+                    entsprechende Protokoll. Wenn ihr LocoNet-Befehle direkt vom Gleis empfangen wollt, wählt ihr das
+                    LocoNet-Interface.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=463s" target="_blank" class="ts-link">(07:43)</a>
+                <div class="text">Es gibt auch Optionen für die "Embedded Logic Modules", wie zum Beispiel die
+                    Aktivierung von Weichenrückmeldungen oder Signalsteuerungen. Diese Logik-Optionen werden in
+                    zukünftigen Videos noch detaillierter behandelt. Auf der Konfigurationsseite könnt ihr auch
+                    festlegen, ob der Stick eine statische IP-Adresse haben soll oder diese dynamisch über DHCP bezieht.
+                    Auch NTP-Server (für die Uhrzeit) können hier hinterlegt werden.</div>
+            </div>
+
+            <h2><a id="speichern" href="#speichern" title="Permalink">#</a> Speichern, Backup & LocoNet Viewer</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=577s" target="_blank" class="ts-link">(09:37)</a>
+                <div class="text">Ganz wichtig: Am Ende der Seite müsst ihr auf "Save and Restart" klicken, damit die
+                    Änderungen übernommen werden. Ihr könnt eure Konfiguration auch auf euren Computer herunterladen
+                    (Backup). Das ist sehr nützlich, um Einstellungen schnell wiederherzustellen. Wenn der Stick neu
+                    startet, werdet ihr feststellen, dass neue Menüpunkte im Webinterface erscheinen, je nachdem, welche
+                    Module ihr aktiviert habt – zum Beispiel der "LocoNet Viewer".</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=692s" target="_blank" class="ts-link">(11:32)</a>
+                <div class="text">Der LocoNet Viewer ist ein mächtiges Tool. Er zeigt alle eingehenden Nachrichten im
+                    Klartext an. Das ist viel komfortabler als das kleine Display am Stick. Auf dem PC-Monitor seht ihr
+                    jede Nachricht pro Zeile: Lok-Adressen, Geschwindigkeitsänderungen, Richtungswechsel. Das System
+                    erkennt sogar, wenn Nachrichten mehrfach gesendet werden und fasst diese übersichtlich zusammen. Das
+                    ist extrem hilfreich für die Fehlersuche auf der Anlage.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs&t=798s" target="_blank" class="ts-link">(13:18)</a>
+                <div class="text">Zum Schluss noch ein Hinweis zur Stromversorgung: Ihr könnt den Stick über USB oder
+                    über die Pins mit Strom versorgen. Wenn ihr fertig seid, trennt einfach die Stromquelle. Ich hoffe,
+                    diese Informationen waren hilfreich für euch. Falls ja, drückt bitte den Like-Button – das hilft dem
+                    Kanal und dem Algorithmus. Vielen Dank fürs Zuschauen und bis zum nächsten Mal!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>LDO</dt>
+                    <dd>Spannungsregler auf dem Stick, dessen Temperatur man überwachen sollte.</dd>
+
+                    <dt>NTP Server</dt>
+                    <dd>Ein Zeitserver im Internet, damit der Stick die aktuelle Uhrzeit kennt.</dd>
+
+                    <dt>DHCP</dt>
+                    <dd>Automatische Zuweisung der IP-Adresse durch euren Router.</dd>
+
+                    <dt>Node Configuration</dt>
+                    <dd>Die Hauptseite, auf der die Identität des Sticks festgelegt wird.</dd>
+                </dl>
+            </div>
+
+            <script src="assets/js/main.js"></script>
+            <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+            <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

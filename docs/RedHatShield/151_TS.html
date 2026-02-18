@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - Build your own IoTT Boards (Video #151)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>Build your own IoTT Boards (Video#151) - 23.02.2025</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+
+            <h2><a id="einfuehrung" href="#einfuehrung" title="Permalink">#</a> Einführung & Motivation</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">Ich freue mich immer über Rückmeldungen von Zuschauern, die versuchen, ihre eigenen
+                    <span class="highlight">IoT-Boards</span> mit meinen veröffentlichten Designs zu bauen. In diesem
+                    Video erkläre ich, wie ihr eure eigenen Boards basierend auf den <span
+                        class="highlight">GitHub-Designdateien</span> erhalten und bei JLC PCB fertigen lassen könnt.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=55s" target="_blank" class="ts-link">(00:55)</a>
+                <div class="text">Warum sollte man Bauteile selbst bauen, wenn man sie im Tindy Store kaufen kann?
+                    Kaufen ist oft kostengünstiger und man erhält ein getestetes Board. Der Selbstbau bietet jedoch die
+                    Befriedigung, es geschafft zu haben, und man lernt viel über die Elektronik.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=108s" target="_blank" class="ts-link">(01:48)</a>
+                <div class="text">Das <span class="highlight">Loconet-Breakout-Board</span> war mein erstes
+                    dokumentiertes Board und ist ideal für den Einstieg. Es verbindet den IoT-Stick mit Loconet, kann
+                    aber auch für Arduino oder Raspberry Pi genutzt werden.</div>
+            </div>
+
+            <h2><a id="dateistruktur" href="#dateistruktur" title="Permalink">#</a> Dateistruktur & GitHub</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=171s" target="_blank" class="ts-link">(02:51)</a>
+                <div class="text">Der erste Schritt ist das Herunterladen der Dateien von GitHub. Im Repository gibt es
+                    Ordner für „Kommunikationsmodule“ und „Kopfgeräte“ (Farbcodes wie Blau, Gelb, Rot). Dort findet ihr
+                    Unterordner für Schaltpläne, Selbstbau und teilweise Gehäuse.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=228s" target="_blank" class="ts-link">(03:48)</a>
+                <div class="text">Der Ordner „Schaltpläne“ enthält PDFs und <span class="highlight">JSON-Dateien</span>
+                    für die EasyEDA-Software. Der DIY-Ordner enthält die <span class="highlight">GERBER-Datei</span>
+                    (universeller Standard für PCB-Hersteller) sowie Excel-Listen für die Stückliste (BOM) und die
+                    Bauteilplatzierung (CPL).</div>
+            </div>
+
+            <h2><a id="bestellvorgang" href="#bestellvorgang" title="Permalink">#</a> Bestellvorgang bei JLC PCB</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=335s" target="_blank" class="ts-link">(05:35)</a>
+                <div class="text">Bei <span class="highlight">jlcpcb.com</span> ladet ihr die Gerber-Datei hoch. Ihr
+                    könnt Farbe, Dicke und Menge wählen. Für professionelle Ergebnisse nutze ich oft die Option, die
+                    Bestellnummer an einer diskreten Stelle markieren zu lassen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=415s" target="_blank" class="ts-link">(06:55)</a>
+                <div class="text">Ihr könnt auch eine <span class="highlight">Schablone (Stencil)</span> für Lötpaste
+                    bestellen. Für Anfänger reicht aber oft das Auftragen mit der Spritze, da sich das Lot beim
+                    Schmelzen durch Kohäsionskraft selbst ausrichtet.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=484s" target="_blank" class="ts-link">(08:04)</a>
+                <div class="text">Bauteile bestelle ich oft bei <span class="highlight">Mouser</span>. Achtet beim
+                    Bestücken auf die Polarität von Dioden und Elkos. Eine Heizplatte oder ein Heißluftgebläse hilft
+                    beim Löten.</div>
+            </div>
+
+            <h2><a id="bestueckungsservice" href="#bestueckungsservice" title="Permalink">#</a> PCB-Bestückungsservice
+                (PCBA)</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=623s" target="_blank" class="ts-link">(10:23)</a>
+                <div class="text">Alternativ könnt ihr fertig bestückte Platinen bestellen. Wählt „Wirtschaftlich“
+                    (Economic) für kleine Mengen bis 30 Stück. Eine clevere Option: 5 Platinen bestellen, aber nur 2
+                    bestücken lassen. So habt ihr Reserve.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=716s" target="_blank" class="ts-link">(11:56)</a>
+                <div class="text">Prüft die Stückliste genau. Deaktiviert Komponenten, die nicht bestückt werden sollen
+                    (z.B. Stiftleisten). Wenn Bauteile nicht vorrätig sind, gibt es drei Lösungen: Ersatz suchen,
+                    Bauteile vorbestellen oder die fehlenden Teile später selbst einlöten.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=826s" target="_blank" class="ts-link">(13:46)</a>
+                <div class="text">Spart Geld, indem ihr <span class="highlight">Basisbauteile</span> nutzt. Diese sind
+                    bei JLC immer geladen. „Erweiterte Bauteile“ kosten 3 $ extra Gebühr pro Typ für das Laden des
+                    Roboters.</div>
+            </div>
+
+            <h2><a id="abschluss" href="#abschluss" title="Permalink">#</a> Abschluss & Qualitätskontrolle</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=1050s" target="_blank"
+                    class="ts-link">(17:30)</a>
+                <div class="text">Die Webseite zeigt vor Abschluss eine Vorschau der bestückten Platine. Prüft hier die
+                    Ausrichtung der ICs und Dioden. Nach der Bestellung prüfen Ingenieure das Design nochmals manuell.
+                    Nach ca. zwei Wochen kommen die gut verpackten Platinen an.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=VIxmVS4_LOU&t=1176s" target="_blank"
+                    class="ts-link">(19:36)</a>
+                <div class="text">Ich hoffe, das hilft euch beim Bau eurer eigenen Boards! Bitte vergesst nicht, den
+                    „Gefällt mir“-Button zu drücken, um den Kanal zu unterstützen. Vielen Dank fürs Zuschauen!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>Gerber-Datei</dt>
+                    <dd>Der universelle Standarddatensatz für die industrielle Fertigung von Leiterplatten
+                        (Leiterbahnen, Bohrlöcher, Siebdruck).</dd>
+
+                    <dt>BOM (Stückliste)</dt>
+                    <dd>„Bill of Materials“ – Eine Liste aller elektronischen Bauteile, die für das Board benötigt
+                        werden.</dd>
+
+                    <dt>CPL (Bestückungsdatei)</dt>
+                    <dd>„Component Placement List“ – Koordinaten für den Bestückungsroboter, damit er weiß, wo welches
+                        Teil hingehört.</dd>
+
+                    <dt>Stencil (Schablone)</dt>
+                    <dd>Eine Laser-geschnittene Edelstahlplatte zum präzisen Auftragen von Lötpaste auf die SMD-Pads.
+                    </dd>
+
+                    <dt>EasyEDA</dt>
+                    <dd>Ein kostenloses, webbasiertes Design-Tool für Schaltpläne und Platinenlayouts.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

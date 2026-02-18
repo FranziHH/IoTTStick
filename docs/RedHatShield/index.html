@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RedHat++ Shield - Übersicht</title>
+  <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+  <header class="main-header">
+    <button id="menu-toggle">☰</button>
+    <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+  </header>
+
+  <div class="wrapper">
+    <nav id="sidebar" class="sidebar"></nav>
+
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <main class="content">
+      <h1>Übersicht</h1>
+      <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:13</span></p>
+      <h2><a id="willkommen" href="#willkommen" title="Permalink">#</a> Willkommen</h2>
+      <p>
+        <b>
+          Diese Doku wird fortlaufend aktualisiert, sobald ich während des Baus, der Einrichtung usw. neue Erkenntnisse
+          erlange.<br>
+          Dies passiert nicht in vorhersehbaren Zeiträumen, sondern je nach Bedarf.
+        </b>
+      </p>
+      <p>Original Content von <a href="https://www.youtube.com/@IoTT" target="_blank">IoTT - Channel YouTube (Hans
+          Tanner)</a>
+      </p>
+      <div class="gallery_big">
+        <a href="images/IMG_20260210_124705.jpg" data-lightbox="galerie">
+          <img src="images/IMG_20260210_124705.jpg" class="thumb_big">
+        </a></img>
+      </div>
+      <p>Inzwischen gibt es die <a
+          href="https://github.com/tanner87661/IoTTStick/tree/master/Hat%20Devices/RedHat%2B%2B%20Shield"
+          target="_blank">Revision 4 des Shields</a>, es haben sich einige Dinge geändert
+      </p>
+      <ul>
+        <li>Buchse Stromversorgung ist entfallen</li>
+        <li>Buck Converter ist entfallen</li>
+      </ul>
+
+      <h2><a id="zur-beachtung" href="#zur-beachtung" title="Permalink">#</a> Zur Beachtung</h2>
+      <p>
+        Das RedHat++ Shield kommuniziert mit DCC-Ex über einen Serial-Port.<br>
+        Es muss also ein Serial-Port frei sein!
+      </p>
+      <p>
+        Meinen Test habe ich mit einem Arduino MEGA durchgeführt.<br>
+        Bei diesem habe ich die Ports 2 und 3 schon belegt:<br>
+        - Port 2: Bluetooth Stick<br>
+        - Port 3: integriertes WiFi Modul (8266)
+      </p>
+      <p>
+        Das RedHat++ Shield kann ohne Änderungen so genutzt werden.<br>
+        Die Jumper müssen auf die Voreinstellung gesetzt werden.<br>
+        Dies ist Serial Port 1 des Mega<br><br>
+        Da aber auch der USB auf diesem Port liegt, müssen zum Flashen die beiden Jumper entfernt werden!
+      </p>
+      <p>
+        Zum EX-CSB1 kann ich nichts sagen, da ich dieses nicht nutze!
+      </p>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

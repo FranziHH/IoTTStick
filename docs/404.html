@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Weiterleitung...</title>
+    <script>
+        // 1. Die fehlerhafte URL auslesen
+        const brokenUrl = window.location.href;
+
+        // 2. Zielseite definieren (z.B. deine Hauptseite oder eine Suchseite)
+        const targetPage = "https://deine-domain.de/unterordner/hilfe.html";
+
+        // 3. Weiterleiten und die fehlerhafte URL als "query parameter" anhängen
+        // Wir nutzen encodeURIComponent, damit Sonderzeichen in der URL keine Probleme machen
+        window.location.replace(targetPage + "?error_url=" + encodeURIComponent(brokenUrl));
+    </script>
+</head>
+<body>
+    <p>Seite nicht gefunden. Sie werden weitergeleitet...</p>
+</body>
+</html>

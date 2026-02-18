@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - The IoTT Stick (Video #41)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>The IoTT Stick (Video#41) - 26.04.2020</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:11</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+
+            <h2><a id="einfuehrung" href="#einfuehrung" title="Permalink">#</a> Einführung & Paradigmenwechsel</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">[Musik] Der Fokus des IoT-Tee-Kanals lag seit seinen Anfängen vor fast zwei Jahren
+                    stets darauf, neue Ideen und innovative Ansätze rund um Sensoren und Mikrocontroller zur Steuerung
+                    einer Modelleisenbahnanlage auszuprobieren. Da es sich bei allem, was ich in meinen Videos gezeigt
+                    habe, um Prototypen handelte, habe ich lange gezögert, fertige Versionen für die Zuschauer dieses
+                    Kanals bereitzustellen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=35s" target="_blank" class="ts-link">(00:35)</a>
+                <div class="text">Nun ist es an der Zeit, diesen Ansatz zu ändern. Willkommen im Internet der
+                    Modelleisenbahnen! Ich bin Hans Tanner. Es gibt viele Gründe, warum ich Prototypen nicht öffentlich
+                    zugänglich gemacht habe: Die Wahrscheinlichkeit, dass Benutzer aufgrund der noch relativ jungen
+                    Hardware und Software auf Probleme stoßen, ist hoch.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=61s" target="_blank" class="ts-link">(01:01)</a>
+                <div class="text">Selbst wenn diese Probleme gelöst sind, erfordert eine erfolgreiche Anwendung immer
+                    noch einiges an Fachwissen vom Benutzer und die Verfügbarkeit des Entwicklers, um Fragen zu
+                    beantworten und bei Bedarf Hilfe zu leisten. Der Benutzer muss die Platine an sein eigenes
+                    Audiosystem anschließen können, da kein Bildschirm vorhanden ist, und sollte dem Entwickler genaue
+                    Informationen über den aktuellen Stand des Systems liefern können.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=97s" target="_blank" class="ts-link">(01:37)</a>
+                <div class="text">Ich hatte Glück, und mehrere Zuschauer weltweit haben erfolgreich eigene Prototypen
+                    basierend auf den Informationen in den Videos gebaut oder die von mir entwickelten Platinen
+                    erfolgreich installiert. Die ihnen zur Verfügung stehenden Informationen sowie ihre Fragen und ihr
+                    Feedback haben maßgeblich dazu beigetragen, Fehler in der Software zu finden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=106s" target="_blank" class="ts-link">(01:46)</a>
+                <div class="text">Daher möchte ich mich bei allen meinen Zuschauern bedanken, die zu diesem Prozess
+                    beigetragen haben. Vor etwa einem halben Jahr stieß ich auf ein Gerät, von dem ich glaubte, dass es
+                    das Potenzial hat, viele dieser Probleme zu lösen.</div>
+            </div>
+
+            <h2><a id="hardware" href="#hardware" title="Permalink">#</a> Die Hardware: M5StickC</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=129s" target="_blank" class="ts-link">(02:09)</a>
+                <div class="text">Hier ist es: der <span class="highlight">M5- Stick</span> von der Firma FiveStack. Er
+                    besteht aus einem ESP32, einem Display, einer Batterie, einem Echtzeituhrmodul und einem IMU-Sensor
+                    und ist in einem leisen, kleinen Gehäuse untergebracht. Er verfügt über drei Tasten zur
+                    Benutzereingabe. Auf der linken Seite befindet sich ein USB-Typ-C-Anschluss für die Stromversorgung
+                    und Programmierung über die Arduino IDE.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=158s" target="_blank" class="ts-link">(02:38)</a>
+                <div class="text">Außerdem gibt es einen I/O-Anschluss mit 5 Volt, Masse und zwei I/O-Leitungen, die als
+                    digitale oder analoge Ein- oder Ausgänge verwendet werden können. Auf der rechten Seite befindet
+                    sich ein achtpoliger Anschluss, von denen drei als I/O-Pins dienen. Die anderen drei sind ebenfalls
+                    nützlich: 5-Volt-Anschluss, drei ausklappbare I/O-Pins, Masse und Batteriespannung.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=178s" target="_blank" class="ts-link">(02:58)</a>
+                <div class="text">Ebenfalls auf der rechten Seite, aber im Gehäuse, befinden sich zwei LEDs: eine LED
+                    und eine Infrarot-LED. FiveStack bietet außerdem eine Reihe sogenannter Heads mit Sensoren und
+                    Ausgabegeräten wie Relais an. Der Dienst, der über den 8-poligen Anschluss auf der rechten Seite
+                    verbunden wird, macht insgesamt einen eleganten und flexilben Eindruck und hat mich sofort
+                    angesprochen.</div>
+            </div>
+
+            <h2><a id="iott-konzept" href="#iott-konzept" title="Permalink">#</a> Das IoTT-Konzept & Module</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=201s" target="_blank" class="ts-link">(03:21)</a>
+                <div class="text">Was wäre, wenn ich dieses Modul als I/O-TT-Stick verwenden und dann eigene Köpfe und
+                    Module für den Erweiterungsport hinzufügen würde? Erinnern Sie sich an das Blue-
+                    Box-Signalisierungssystem aus Video Nummer 16? Es war eine ziemlich klobige Platine mit mehreren
+                    Tochterplatinen. So sieht es beim IoT-Test aus: Der Erweiterungsport dient zum Anschluss der
+                    Kommunikationsschnittstelle, in diesem Fall eines Lock-On-It-Knotens.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=234s" target="_blank" class="ts-link">(03:54)</a>
+                <div class="text">Auf der rechten Seite ist der Blue-Box-Kopf mit einem Anschluss an die WS2812- Kette
+                    verbunden. Das Ganze kann über USB-C mit Strom versorgt werden, solange nur wenige LEDs verwendet
+                    werden. Bei längeren LED-Ketten verfügt die Blue Box über einen 3D-DC/DC-Wandler, der auch das
+                    IoT-System selbst mit Strom versorgt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=260s" target="_blank" class="ts-link">(04:20)</a>
+                <div class="text">Wenn Sie DCC anstelle von Lock-On-It verwenden möchten, müssen Sie lediglich den
+                    lokalen Flughafen durch einen DCC- Anschluss ersetzen, die Befehlsquelle im Konfigurationsbildschirm
+                    ändern und schon kann es losgehen. Natürlich können Sie auch beide Portmodule weglassen und einfach
+                    das integrierte WLAN nutzen und sich verbinden zu Ihrem MQTT- Server und es gibt noch viele weitere
+                    Möglichkeiten.</div>
+            </div>
+
+            <h2><a id="software" href="#software" title="Permalink">#</a> Software & Bedienung</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=279s" target="_blank" class="ts-link">(04:39)</a>
+                <div class="text">Lassen Sie mich Ihnen das vollständige Produktkonzept in seiner aktuellen Form zeigen,
+                    damit Sie eine Vorstellung davon bekommen, was kommt. Das Herzstück ist der <span
+                        class="highlight">IoT- T-Stick</span>, auf dem eine Version der Blue- Box-Software läuft, die
+                    für eine bestimmte Anwendung konfiguriert werden kann. Ja, genau, nur eine Software für alles.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=301s" target="_blank" class="ts-link">(05:01)</a>
+                <div class="text">Er verwendet jetzt die Eingabetasten und das TFT- Display, auf dem Sie den
+                    WLAN-Status, den Gerätestatus und Konfigurationsinformationen sehen können. Die obere Taste dient
+                    zum Ein- und Ausschalten des Geräts und die mittlere Taste zum Durchblättern der verschiedenen
+                    Bildschirme.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=328s" target="_blank" class="ts-link">(05:28)</a>
+                <div class="text">Der IoT-T-Stick ist außerdem so programmiert, dass er sich beim Einschalten
+                    automatisch einschaltet und 30 Sekunden nach dem Trennen der Stromversorgung automatisch wieder
+                    ausschaltet. Dies macht ihn praktisch für die Installation in einem Layout, da er ein- und
+                    ausgeschaltet werden kann. Die linke Seite des Laird-Power-Moduls dient der Kommunikation.</div>
+            </div>
+
+            <h2><a id="iott-hats" href="#iott-hats" title="Permalink">#</a> IoTT-Hats Kategorien</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=350s" target="_blank" class="ts-link">(05:50)</a>
+                <div class="text">Bisher habe ich Schnittstellenmodule für das lokale Netzwerk und TCC und arbeite an
+                    einem Modul für Open LCB. Auf der rechten Seite können Funktionsmodule, auch <span
+                        class="highlight">IoT- T-Hats</span> genannt, angeschlossen werden. Es gibt drei Kategorien von
+                    IoT-T-Hats: Funktions-T-Hats, Kommunikations-T- Hats und Leistungs-T-Hats.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=374s" target="_blank" class="ts-link">(06:14)</a>
+                <div class="text">Folgende Funktions-T-Hats sind geplant: Der blaue Funktions-T-Hats steuert LEDs zur
+                    Anzeige des Status von Weichen, Blockdetektoren, Tasten und analogen Sensoren. Er gibt nur Daten aus
+                    und kann zukünftig Informationen von DCC-Schlössern und Open SCP empfangen. Der gelbe
+                    Funktions-T-Hats kombiniert eine LED-Kette mit Eingabetasten, mit denen sich ein City- See-Panel
+                    aufbauen lässt (siehe Video 9).</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=405s" target="_blank" class="ts-link">(06:45)</a>
+                <div class="text">Der Servo-T-Hats ermöglicht den Anschluss von bis zu 16 Weichenantrieben mit
+                    Positionsrückmeldung. Der Weichenantriebs-T-Hats ermöglicht den Anschluss von bis zu 16 Magnet- oder
+                    anderen Stellantrieben mit Positionsrückmeldung. Der Sensor-T-Hats ermöglicht den Anschluss einer
+                    Kette von Punkt- und Flächensensoren wie Stromsensoren, Achszählern, RFID- oder Barcode-Lesegeräten
+                    usw.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=439s" target="_blank" class="ts-link">(07:19)</a>
+                <div class="text">Er überwacht die Sensoren im lokalen Netzwerk und meldet Statusänderungen. Entweder
+                    zum Sperren der Einheit oder zum Öffnen des LCB, abhängig vom angeschlossenen
+                    Erweiterungsanschlussmodul. Es gibt möglicherweise noch weitere Möglichkeiten, aber daran arbeite
+                    ich gerade. Folgendes ist für die Kommunikationsköpfe geplant:</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=461s" target="_blank" class="ts-link">(07:41)</a>
+                <div class="text">Der USB-Injektorkopf bietet eine USB- Kommunikationsverbindung, sodass die IoT-
+                    Schnittstelle in Kombination mit einem lokalen Netzwerkanschluss auf der linken Seite als
+                    Computerschnittstelle verwendet werden kann. Er fungiert als lokaler Anschluss für USB oder ähnliche
+                    Produkte und ermöglicht die Kommunikation von Computerprogrammen wie GMR i mit der Anlage.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=485s" target="_blank" class="ts-link">(08:05)</a>
+                <div class="text">Natürlich kann er auch mit dem offenen LCP- Anschluss kombiniert werden, um eine
+                    Schnittstelle zur Canvas-Oberfläche dieses Systems zu erstellen. Und Folgendes ist für die
+                    Leistungsköpfe geplant: Der Boosterkopf bietet einen DCC-Booster mit vollständig isoliertem Eingang
+                    und bis zu 10 Ampere Gleisstrom, äußerer Umkehrfunktion und Unterstützung für die Signalabschaltung
+                    für rote Kommunikation.</div>
+            </div>
+
+            <h2><a id="zukunftsausblick" href="#zukunftsausblick" title="Permalink">#</a> Zukunftsausblick & Verfügbarkeit</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=508s" target="_blank" class="ts-link">(08:28)</a>
+                <div class="text">In Kombination mit einer Schnittstelle auf der Erweiterungsanschlussseite kann er auch
+                    als Zentrale fungieren, aber das ist zum jetzigen Zeitpunkt noch nicht sicher. Wie angekündigt,
+                    beabsichtige ich, diese Module verfügbar zu machen. Sie werden sie bald bei Amazon für Heimwerker
+                    finden. Die Software und Designelemente wie Schaltpläne behalte ich für mich.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=537s" target="_blank" class="ts-link">(08:57)</a>
+                <div class="text">Falls ihr lieber eure eigenen Hüte nach diesen Designs bauen möchtet, findet ihr die
+                    3D-Modelle weiterhin auf meiner GitHub-Seite. Es wird in Zukunft auch Videos geben, in denen ich
+                    technische Aspekte und Anwendungsmöglichkeiten dieser Module erkläre. Abonniert am besten den I
+                    OTT-Kanal und aktiviert die Glocke, um kein Video zu verpassen. Das war's für heute.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=00uinHvzn08&t=566s" target="_blank" class="ts-link">(09:26)</a>
+                <div class="text">Schreibt mir in den Kommentaren, was ihr vom Gesamtkonzept haltet und welche Hüte ich
+                    als Nächstes vorstellen soll. Danke fürs Zuschauen und bis zum nächsten Video!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>M5StickC</dt>
+                    <dd>Ein kompakter Mikrocontroller auf Basis des ESP32 mit integriertem Display und Akku von
+                        FiveStack.</dd>
+
+                    <dt>IoT-T-Hats</dt>
+                    <dd>Spezifische Erweiterungsmodule (Köpfe), die auf den Stick aufgesteckt werden, um Funktionen wie
+                        Servo-Steuerung oder Sensor-Auswertung zu ergänzen.</dd>
+
+                    <dt>Blue-Box-Software</dt>
+                    <dd>Die zugrundeliegende Steuerungssoftware, die nun universell für verschiedene Anwendungen auf dem
+                        Stick konfiguriert werden kann.</dd>
+
+                    <dt>LocoNet / DCC / OpenLCB</dt>
+                    <dd>Verschiedene Kommunikationsprotokolle und Standards zur Steuerung von digitalen
+                        Modelleisenbahnen.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

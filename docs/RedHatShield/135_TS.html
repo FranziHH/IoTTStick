@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - IoTT Stick Reset (Video #135)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>IoTT Stick Reset (Video#135) - 07.01.2024</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+
+            <h2><a id="einleitung" href="#einleitung" title="Permalink">#</a> Einleitung & Kanalankündigung</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">[Musik] Ihr werdet es nicht glauben, aber eine der häufigsten Fragen, die ich zum
+                    IoT-Stick erhalte, ist, wie man die WLAN- Verbindung zurücksetzt, um sich mit einem anderen
+                    Zugangspunkt zu verbinden. Es ist ganz einfach, und in diesem kurzen Video zeige ich euch, wie es
+                    geht. Hallo zusammen und herzlich willkommen auf dem IoT- Kanal! Ich bin Hans Tenner.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=30s" target="_blank" class="ts-link">(00:30)</a>
+                <div class="text">Ein besonderes Willkommen an alle neuen Abonnenten und ein herzliches Willkommen
+                    zurück an alle anderen. Ich freue mich, dass ihr hier seid und wünsche euch und eurer Familie ein
+                    frohes neues Jahr! Bevor ich anfange, hier eine kurze Kanalankündigung: Wir haben vor ein paar Tagen
+                    ein neues Haus gekauft, daher bin ich in den nächsten Wochen mit dem Umzug und dem Verkauf unseres
+                    jetzigen Hauses beschäftigt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=57s" target="_blank" class="ts-link">(00:57)</a>
+                <div class="text">Im Zuge des Umzugs verkleinern wir uns auch von vier Etagen auf eine Etage, was
+                    bedeutet, dass ich mich von vielen Dingen trennen muss, die sich über die Jahre angesammelt haben.
+                    Das erfordert etwas Aufwand, und um das zu ermöglichen, muss ich meinen Videoplan reduzieren und in
+                    den nächsten Wochen weniger Videos veröffentlichen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=80s" target="_blank" class="ts-link">(01:20)</a>
+                <div class="text">Wenn ihr Abonnent seid und auf das Glockensymbol geklickt habt, erhaltet ihr immer
+                    eine Benachrichtigung, wenn ein neues Video erscheint. Ansonsten ist dies vielleicht die perfekte
+                    Gelegenheit, den Kanal zu abonnieren. Damit Sie in dieser Zeit kein neues Video verpassen. Okay, nun
+                    zum Thema Zurücksetzen des IoT-Tic.</div>
+            </div>
+
+            <h2><a id="wlan" href="#wlan" title="Permalink">#</a> WLAN-Verbindungsmodi</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=103s" target="_blank" class="ts-link">(01:43)</a>
+                <div class="text">Die unterstützten Verbindungsmodi des IoT- Tic sind auf der Webseite zur
+                    WLAN-Konfiguration auf <span class="highlight">myiot t.org</span> dokumentiert. Dieses Diagramm
+                    befindet sich unten auf der Seite und zeigt den logischen Ablauf des Verbindungsprozesses. Befindet
+                    sich der Stick im <span class="highlight">AP-Modus (Access Point)</span>, stellt er also einen
+                    eigenen Zugangspunkt bereit, ist der Vorgang unkompliziert: Der Stick startet, initialisiert den
+                    Zugangspunkt und ist betriebsbereit.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=137s" target="_blank" class="ts-link">(02:17)</a>
+                <div class="text">Sie können nun jedes WLAN-fähige Gerät verwenden, um sich damit zu verbinden und
+                    Webseiten zu laden. Um Änderungen vorzunehmen, können Sie die Konfigurationsseite des Sticks
+                    aufrufen, die IP-Adresse des Zugangspunkts ändern oder ihn zurück in den <span
+                        class="highlight">Stationsmodus</span> schalten. Der Access-Point-Modus ist praktisch, wenn kein
+                    WLAN verfügbar ist. Die Hauptbeschränkung besteht jedoch darin, dass nur eine begrenzte Anzahl von
+                    Geräten gleichzeitig mit dem Stick verbunden werden kann.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=162s" target="_blank" class="ts-link">(02:42)</a>
+                <div class="text">Der gängigste und standardmäßige Auslieferungsmodus des Sticks ist der Stationsmodus.
+                    In diesem Modus versucht der Stick, sich mit den gespeicherten Einstellungen mit einem verfügbaren
+                    WLAN-Zugangspunkt zu verbinden. Sind keine Einstellungen vorhanden oder kann der Stick keine
+                    Verbindung herstellen, … Beim Zugriff auf den Access Point öffnet sich automatisch das <span
+                        class="highlight">Captive Portal</span>.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=191s" target="_blank" class="ts-link">(03:11)</a>
+                <div class="text">Das bedeutet, dass Sie Ihr Smartphone verwenden können, um sich mit dem Stick zu
+                    verbinden und die WLAN-Einstellungen aufzurufen oder ihn in den Access-Point-Modus zu schalten. Wenn
+                    Sie Ihren IoT-Stick also an einen Ort mitnehmen, an dem das konfigurierte WLAN nicht verfügbar ist,
+                    beispielsweise bei Freunden oder im Modellbahnclub, startet automatisch das Captive Portal.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=216s" target="_blank" class="ts-link">(03:36)</a>
+                <div class="text">Dort können Sie die WLAN- Zugangsdaten für den Access Point am neuen Standort
+                    festlegen, in den Access-Point- Modus wechseln oder das Captive Portal einfach zwei Minuten lang
+                    geöffnet lassen. Dann wechselt der Stick für diese Sitzung in den Access-Point-Modus. Soweit so gut.
+                    Wo liegt also das Problem?</div>
+            </div>
+
+            <h2><a id="problemstellung" href="#problemstellung" title="Permalink">#</a> Problemstellung: Wechsel bei
+                verfügbarem altem WLAN</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=238s" target="_blank" class="ts-link">(03:58)</a>
+                <div class="text">Eine häufig gestellte Frage ist, wie man den Stick mit einem anderen Access Point
+                    verbindet, wenn der im Stick gespeicherte Access Point noch verfügbar ist. Angenommen, Sie
+                    installieren einen zweiten Router oder Access Point, den Sie nur für die Modellbahn nutzen und von
+                    Ihrem Heim-WLAN trennen möchten. Da der Stick den neuen Access Point nicht kennt und gültige
+                    Zugangsdaten im Speicher abgelegt hat, verbindet er sich immer automatisch mit dem konfigurierten
+                    Access Point.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=273s" target="_blank" class="ts-link">(04:33)</a>
+                <div class="text">Die Frage ist also: Wie kann man ihn dazu bringen, sich mit dem anderen Access Point
+                    zu verbinden? Um fortzufahren, haben wir bereits eine Möglichkeit besprochen: Wenn Sie den aktuellen
+                    Zugangspunkt deaktivieren, öffnet sich das Captive Portal, da keine Verbindung mit den gespeicherten
+                    Anmeldedaten hergestellt werden kann. Dort können Sie die Informationen für Ihren zweiten
+                    Zugangspunkt auswählen und eingeben.</div>
+            </div>
+
+            <h2><a id="wlan-reset" href="#wlan-reset" title="Permalink">#</a> Anleitung: WLAN-Reset durchführen</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=300s" target="_blank" class="ts-link">(05:00)</a>
+                <div class="text">Wenn Sie den aktuellen Zugangspunkt nicht deaktivieren möchten, können Sie die
+                    gespeicherten WLAN-Anmeldedaten auch im Stick zurücksetzen. So geht's: Starten Sie den Stick und
+                    lassen Sie ihn sich mit dem gespeicherten Zugangspunkt verbinden. Stellen Sie sicher, dass die
+                    WLAN-Seite auf dem Stick angezeigt wird und die aktuelle IP-Adresse sowie der Name des Zugangspunkts
+                    sichtbar sind.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=324s" target="_blank" class="ts-link">(05:24)</a>
+                <div class="text">Drücken Sie die <span class="highlight">Ein-/Aus-Taste viermal</span> im Abstand von
+                    jeweils einer halben Sekunde. Dadurch werden die gespeicherten Informationen gelöscht. Starten Sie
+                    den Stick neu und öffnen Sie das Captive Portal. Verbinden Sie sich mit Ihrem Smartphone mit dem
+                    Captive Portal und wählen Sie den neuen Zugangspunkt aus, mit dem Sie sich verbinden möchten.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=352s" target="_blank" class="ts-link">(05:52)</a>
+                <div class="text">Entscheidend für den Erfolg sind die Anzahl der Klicks und die Zeit dazwischen. Wenn
+                    Sie zu schnell klicken, interpretiert der Stick dies als langes Drücken und schaltet sich einfach
+                    aus. Wenn Sie zu langsam klicken, werden die Klicks als einzelne Klicks interpretiert und es
+                    passiert nichts. Verwenden Sie die in diesem Video gezeigte Klickfrequenz, dann ist das Zurücksetzen
+                    erfolgreich.</div>
+            </div>
+
+            <h2><a id="abschluss" href="#abschluss" title="Permalink">#</a> Abschluss</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=dKtOCkTUkMU&t=371s" target="_blank" class="ts-link">(06:11)</a>
+                <div class="text">Das war's für dieses Video. Ich hoffe, diese Informationen waren hilfreich oder
+                    zumindest interessant für Sie und Sie können nun die WLAN-Einstellungen Ihres IoT-Sticks bei Bedarf
+                    neu konfigurieren. Vielen Dank fürs Zuschauen und bis zum nächsten Video!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>AP-Modus (Access Point)</dt>
+                    <dd>Der Stick erstellt sein eigenes WLAN-Netzwerk, mit dem sich andere Geräte direkt verbinden
+                        können.</dd>
+
+                    <dt>Stationsmodus</dt>
+                    <dd>Der Stick verbindet sich als Client mit einem bereits existierenden WLAN-Router oder Access
+                        Point.</dd>
+
+                    <dt>Captive Portal</dt>
+                    <dd>Eine Weboberfläche, die automatisch erscheint, wenn der Stick keine Verbindung zum
+                        konfigurierten WLAN herstellen kann. Sie dient der Eingabe neuer Zugangsdaten.</dd>
+
+                    <dt>WLAN-Reset</dt>
+                    <dd>Durch 4-maliges Drücken der Power-Taste im 0,5-Sekunden-Takt werden die gespeicherten
+                        WLAN-Anmeldedaten im Gerät gelöscht.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

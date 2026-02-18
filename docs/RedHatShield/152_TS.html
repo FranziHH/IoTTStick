@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - Loconet EX-CSB1 Express (Video #152)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>Loconet EX-CSB1 Express (Video#152) - 30.03.2025</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+
+            <h2><a id="einfuehrung" href="#einfuehrung" title="Permalink">#</a> Einführung & Hardware-Basis</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">In den letzten Wochen fragten mich mehrere Zuschauer, wie man mit dem <span
+                        class="highlight">DCC-EX CSB1 Express Board</span> eine Loconet-Zentrale baut. Da ich selbst
+                    eine haben wollte, baute ich eine, um es herauszufinden. In diesem Video zeige ich euch Schritt für
+                    Schritt, wie ihr das auch machen könnt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=29s" target="_blank" class="ts-link">(00:29)</a>
+                <div class="text">Die Grundidee ist, das <span class="highlight">CSB1 Express Command Station
+                        Board</span> zu verwenden und ein <span class="highlight">Red Hat Board</span> darauf zu setzen.
+                    Dieses übernimmt die Loconet-Konnektivität und das Datenmanagement. Da das CSB1 Board eine
+                    vollständig integrierte Zentrale mit zwei Onboard-Leistungsverstärkern und Netzteil ist, ist dies
+                    einfacher als früher.</div>
+            </div>
+
+            <h2><a id="bestellung" href="#bestellung" title="Permalink">#</a> Bestellung & Fertigung (JLC PCB)</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=85s" target="_blank" class="ts-link">(01:25)</a>
+                <div class="text">Zuerst benötigen wir ein CSB1 Board. Alle CSB1-Designdateien sind <span
+                        class="highlight">Open Source</span>. Das Design wurde mit <span class="highlight">KiCad</span>
+                    erstellt. Auf der JLC PCB-Website können die notwendigen Datendateien (BOM, CPL) für die Bestellung
+                    hochgeladen werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=160s" target="_blank" class="ts-link">(02:40)</a>
+                <div class="text">Ich habe mich für schwarze Leiterplatten mit Bestückungsoption entschieden. Beachtet,
+                    dass die CSB1 eine <span class="highlight">vierlagige Leiterplatte</span> ist. Ich musste einige
+                    Bauteile wie das ESP32-Modul in der Vorschau drehen, aber Ingenieure prüfen dies vor der Produktion.
+                    Der Preis für fünf bestückte Platinen betrug ca. 150 $, was etwa 25 % kommerzieller Platinen
+                    entspricht.</div>
+            </div>
+
+            <h2><a id="anpassungen" href="#anpassungen" title="Permalink">#</a> Anpassungen am CSB1 Board</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=265s" target="_blank" class="ts-link">(04:25)</a>
+                <div class="text">Geometrisch passen die stapelbaren Red Hat Boards perfekt, aber elektrisch sind
+                    Modifikationen nötig. Der Red Hat braucht 5V für den IoT-Stick und mindestens 12V am <span
+                        class="highlight">Vin-Pin</span> für Loconet. Das CSB1 liefert 5V, aber der Vin-Pin ist nicht
+                    angeschlossen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=322s" target="_blank" class="ts-link">(05:22)</a>
+                <div class="text">Ich habe eine <span class="highlight">Diode</span> (min. 1A) auf der Unterseite
+                    eingelötet, um den Vin-Pin mit der DC-Quelle des Boards zu verbinden. Am Red Hat muss außerdem <span
+                        class="highlight">Pin 7 des Stromanschlusses</span> entfernt werden, da dieser beim CSB1 3,3V
+                    führt, was zu Konflikten mit dem 5V-Ausgang des Red Hats führen würde.</div>
+            </div>
+
+            <h2><a id="serielle-kommunikation" href="#serielle-kommunikation" title="Permalink">#</a> Serielle
+                Kommunikation & RX/TX-Problem</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=402s" target="_blank" class="ts-link">(06:42)</a>
+                <div class="text">Ein weiterer Unterschied: Das CSB1 arbeitet mit <span class="highlight">3,3V
+                        Logikspannung</span> am seriellen Port, der Red Hat standardmäßig mit 5V. Daher müssen die
+                    3,3V-Stiftleisten am Red Hat mit einem Jumper gebrückt werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=457s" target="_blank" class="ts-link">(07:37)</a>
+                <div class="text">Zudem sind beim CSB1 <span class="highlight">RX und TX vertauscht</span> im Vergleich
+                    zu Standard-Arduino-Boards. Die Lösung: Die Port-Jumper entfernen und die Pins diagonal mit
+                    Drahtwickeltechnik oder Jumperkabeln verbinden.</div>
+            </div>
+
+            <h2><a id="software-update" href="#software-update" title="Permalink">#</a> Software-Update & Inbetriebnahme
+            </h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=527s" target="_blank" class="ts-link">(08:47)</a>
+                <div class="text">In der IoT-Software gab es eine kleine Korrektur für widersprüchliche
+                    Gleisstrom-Befehle bei der neuesten DCC-EX Version. Installiert die neueste Version, bevor ihr
+                    startet.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=544s" target="_blank" class="ts-link">(09:04)</a>
+                <div class="text">Nach dem Zusammenbau (CSB1 + Red Hat + IoT-Stick) verbinden wir den Gleisausgang der
+                    CSB1 mit dem Gleiseingang des Red Hats. Schließt das Netzteil (12-16V) und einen Loconet-Fahrregler
+                    an. Nun könnt ihr Züge fahren lassen – auch via Smartphone über den <span
+                        class="highlight">WiThrottle-Server</span>.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=pXFIO5QRU7A&t=629s" target="_blank" class="ts-link">(10:29)</a>
+                <div class="text">Die CSB1 liefert 2x 5A Leistung. Bald zeige ich, wie man dies mit Boostern auf 8A pro
+                    Kanal erhöht und präsentiere ein neues Gehäuse. Vielen Dank fürs Zuschauen und vergesst nicht, auf
+                    „Gefällt mir“ zu klicken!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>CSB1 Express</dt>
+                    <dd>Ein integriertes Command Station Board für DCC-EX, das Motortreiber und Mikrocontroller auf
+                        einer Platine vereint.</dd>
+
+                    <dt>Vin (Voltage In)</dt>
+                    <dd>Der Pin für die Eingangsspannung. Für Loconet-Anwendungen auf dem Red Hat sind hier mindestens
+                        12V erforderlich.</dd>
+
+                    <dt>RX/TX Vertauschung</dt>
+                    <dd>Empfangs- (RX) und Sendeleitung (TX). Beim CSB1 müssen diese aufgrund eines abweichenden
+                        Pin-Layouts manuell gekreuzt werden.</dd>
+
+                    <dt>4-lagige Leiterplatte</dt>
+                    <dd>Eine komplexe Platine mit vier Kupferschichten, die für das CSB1-Design notwendig ist, um die
+                        hohen Ströme und Signale zu managen.</dd>
+
+                    <dt>WiThrottle Server</dt>
+                    <dd>Ein Netzwerkprotokoll, das es erlaubt, die Modellbahn über WLAN-Apps (wie Engine Driver oder
+                        WiThrottle) zu steuern.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

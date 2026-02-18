@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - RedHat++ Shield Configuration (Video #101)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>RedHat++ Shield Configuration (Video#101) - 04.09.2022</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+            
+            <h2><a id="stromversorgung" href="#stromversorgung" title="Permalink">#</a> Stromversorgung und Inbetriebnahme</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">[Musik] Das <span class="highlight">Red Hat Plus Plus Shield</span> ist in den
+                    nächsten Tagen wieder im Tindy Store erhältlich. Daher ist es an der Zeit, mehr über die
+                    Konfiguration und einige Details der Funktionsweise zu sprechen. Willkommen auf dem <span
+                        class="highlight">IoT-Kanal</span>! Ich bin Hans Tenner. Nachdem Sie das Red Hat Plus Plus
+                    Shield wie in Video Nr. 99 beschrieben auf Ihrem Arduino-Stack installiert haben, schließen Sie
+                    einfach die Stromversorgung an, und das System startet.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=31s" target="_blank" class="ts-link">(00:31)</a>
+                <div class="text">99 beschrieben auf Ihrem Arduino-Stack installiert haben, schließen Sie einfach die
+                    Stromversorgung an, und das System startet. Ich habe die Stromversorgungsoptionen in Video Nr. 99
+                    nur kurz angesprochen, daher möchte ich sie etwas detaillierter erläutern. Gemäß den Anweisungen auf
+                    der <span class="highlight">DCCX</span>-Webseite wird empfohlen, zwei separate Netzteile für das
+                    Arduino-Board und das Power Shield zu verwenden und die V-In-Leiterbahn auf dem Power Shield zu
+                    durchtrennen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=57s" target="_blank" class="ts-link">(00:57)</a>
+                <div class="text">Der Grund dafür ist, dass die Stromanschlüsse des Arduino und des Power Shield über
+                    Vin verbunden sind und die beiden Boards mit unterschiedlichen Spannungen versorgt werden sollten.
+                    Das Arduino-Board funktioniert am besten mit einer Versorgungsspannung von etwa 8 Volt. Die
+                    Leiterbahnspannung sollte hingegen etwa 12 Volt für N und 15 Volt für H0 und H18 betragen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=83s" target="_blank" class="ts-link">(01:23)</a>
+                <div class="text">Bei einer Spannung von 5 Volt für die Spur G neigt der Spannungsregler des
+                    Arduino-Boards zur Überhitzung oder zum Durchbrennen. Üblicherweise werden daher zwei separate
+                    Netzteile verwendet, was umständlich ist und die Kabelmasse erhöht. Das <span class="highlight">Red
+                        Hat Plus Shield</span> löst dieses Problem, da es über einen integrierten <span
+                        class="highlight">DC/DC-Wandler</span> verfügt, der die 5-Volt-Spannung für das Arduino-Board
+                    erzeugt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=109s" target="_blank" class="ts-link">(01:49)</a>
+                <div class="text">Dadurch wird der interne Spannungsregler umgangen, und der gesamte Stack kann mit
+                    einem einzigen Netzteil versorgt werden, das die Gleisspannung liefert. Dieses Netzteil kann an
+                    jeden der Stromeingänge angeschlossen werden, da alle über den V-In-Pin verbunden sind. Bei einem
+                    Stromverbrauch der Modelleisenbahn von mehr als beispielsweise einem Ampere empfiehlt es sich
+                    jedoch, das Netzteil direkt an das Power Shield anzuschließen, um hohe Ströme über den V-In-Pin zu
+                    vermeiden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=143s" target="_blank" class="ts-link">(02:23)</a>
+                <div class="text">Die Stromversorgung ist nun angeschlossen. Das <span
+                        class="highlight">DCCX</span>-Board und der Regler schalten sich ein. Nach etwa fünf Sekunden
+                    leuchtet die LED zwischen den Loconet-T-Buchsen auf und zeigt damit an, dass die Regler mit Strom
+                    versorgt werden. Die blaue LED neben der Loconet-B-Buchse kann je nach Einstellungen leuchten oder
+                    ausbleiben. Beim ersten Einschalten des Sticks wird der WLAN-Einrichtungsbildschirm angezeigt.</div>
+            </div>
+
+            <h2><a id="netzwerk" href="#netzwerk" title="Permalink">#</a> Netzwerk- und Serverkonfiguration</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=174s" target="_blank" class="ts-link">(02:54)</a>
+                <div class="text">Folgen Sie dem Beispiel in Video 42, um den <span class="highlight">IoT-Stick</span>
+                    mit Ihrem WLAN zu verbinden oder ihn als Access Point zu konfigurieren. Überprüfen Sie außerdem, ob
+                    auf Ihrem IoT-Stick die neueste Softwareversion (derzeit 1514) installiert ist. Die neueste Version
+                    finden Sie wie immer auf meiner GitHub-Seite. Sobald der Stick verbunden ist, können Sie die
+                    Node-Konfigurationsseite über einen PC-Browser oder Ihr Smartphone aufrufen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=210s" target="_blank" class="ts-link">(03:30)</a>
+                <div class="text">Dort habe ich auch die Optionen für den Kommunikationsserver erwähnt, aber nicht
+                    erklärt, wann diese aktiviert werden müssen. Überprüfen Sie nun das <span
+                        class="highlight">MQTT-Broker-Gateway</span>. Wenn Sie einen MQTT-Broker zur Kommunikation mit
+                    anderen Locant-Geräten verwenden möchten, können Sie Ihren privaten MQTT-Broker auf einem PC oder
+                    Raspberry Pi betreiben oder sich mit einem öffentlichen Broker in der Cloud verbinden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=240s" target="_blank" class="ts-link">(04:00)</a>
+                <div class="text">So können Sie beispielsweise eine Eisenbahn auf Ihrer Anlage aus 7200 Kilometern
+                    Entfernung steuern, wie ich es in einem kurzen Video demonstriert habe. Vor einigen Wochen wurde
+                    dies als Vorgehensweise beschrieben: Aktivieren Sie das Kontrollkästchen „LocNet LV Server“, um dem
+                    Stick mitzuteilen, dass er einen Loconet- oder TCP-Server ausführen soll.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=262s" target="_blank" class="ts-link">(04:22)</a>
+                <div class="text">Dieses Protokoll wird von mehreren Drain-Control-Paketen unterstützt. Ich habe es
+                    bisher mit JMRI und Vin Digipit getestet, und es sollte auch mit anderen funktionieren. Auf der Red
+                    Hat-Seite müssen Sie lediglich das Kontrollkästchen im Tab „LcNet LV Server“ aktivieren.
+                    Anschließend können Sie die gewünschte Portnummer angeben.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=283s" target="_blank" class="ts-link">(04:43)</a>
+                <div class="text">Standardmäßig ist diese auf 1234 eingestellt, und normalerweise besteht kein Grund,
+                    dies zu ändern. Auf der Softwareseite müssen Sie dem Programm mitteilen, dass es Loconet über TCP
+                    verwenden soll, um eine Verbindung zum Layout herzustellen. In <span class="highlight">JMRI</span>
+                    wählen Sie Digitrax und Loconet über TCP aus und geben dann die IP-Adresse und Portnummer des Red
+                    Hat Plus+ Shield ein.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=308s" target="_blank" class="ts-link">(05:08)</a>
+                <div class="text">Wählen Sie LocalBuffer als digitales System und aktivieren Sie die LAN-Option, um die
+                    IP-Adresse des Red Hat Plus+ Shield und die Porteinstellungen einzugeben. Nach der Einrichtung
+                    können Sie Ihr Softwarepaket genauso verwenden wie eine USB-Verbindung, nur eben über WLAN. Anstelle
+                    des USB-Kabels kann bei Verwendung eines Standard-Arduino-Boards der USB-Anschluss selbst nicht mehr
+                    genutzt werden, da das Red Hat Plus Plus Shield denselben seriellen Port verwendet.</div>
+            </div>
+
+            <h2><a id="spezielle-optionen" href="#spezielle-optionen" title="Permalink">#</a> Spezielle Optionen für Arduino Mega und WiThrottle</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=339s" target="_blank" class="ts-link">(05:39)</a>
+                <div class="text">Bei Verwendung eines <span class="highlight">Megaboards</span> kann die Kommunikation
+                    des Red Hat Plus Plus Shields auf einen der zusätzlichen seriellen Ports umgeleitet werden, indem
+                    zwei Drähte vom Red Hat Plus Plus Shield zu den Port-Pins geführt und die Chopper konfiguriert
+                    werden. Aktivieren Sie das Kontrollkästchen „Viceroyal Server“, wenn Sie Ihre Anlage mit einer <span
+                        class="highlight">WiThrottle</span>-App steuern möchten.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=364s" target="_blank" class="ts-link">(06:04)</a>
+                <div class="text">Nach der Aktivierung wird der Server in der App angezeigt, sobald diese gestartet ist.
+                    Klicken Sie einfach auf den Servereintrag, und die Verbindung wird hergestellt. Auf dem Bildschirm
+                    „Device Throttle Server“ können Sie die zu verwendende Portnummer festlegen, die Funktion des
+                    Ein-/Ausschalters in der App definieren und die DCC-Adressen der Weichen angeben.</div>
+            </div>
+
+            <h2><a id="konfiguration" href="#konfiguration" title="Permalink">#</a> Die Red Hat Plus Plus Konfigurations-Tabs</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=392s" target="_blank" class="ts-link">(06:32)</a>
+                <div class="text">Die Hauptkonfiguration des Red Hat Plus Plus Shields erfolgt im <span
+                        class="highlight">Red Hat Plus Plus-Tab</span>, der drei Unterseiten für allgemeine Optionen,
+                    Eingänge und Weichen enthält. Die Optionsseite kombiniert die typische Betriebsschaltereinstellungen
+                    der Loconet-Zentrale mit den zusätzlichen Einstellungen der DCCX-Software.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=415s" target="_blank" class="ts-link">(06:55)</a>
+                <div class="text">Schauen wir uns die einzelnen Optionen an: „Bereinigen“ (Purging) ist der Prozess, bei
+                    dem Lokomotiven automatisch aus dem Aktualisierungspuffer entfernt werden, wenn sie keinem
+                    Fahrregler mehr zugewiesen sind. Aktivieren Sie die Funktion durch Anklicken des Kontrollkästchens
+                    und wählen Sie anschließend die Löschzeit und die Geschwindigkeit.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=439s" target="_blank" class="ts-link">(07:19)</a>
+                <div class="text">Mit dem Gleis-Einschaltstatus können Sie den Gleisstatus beim Einschalten des Red Hat
+                    Plus Shield festlegen. Wie bei den meisten Loconet-Systemen kann dieser auf „Ein“, „Aus“, „Leerlauf“
+                    oder „Vorherigen Status wiederherstellen“ eingestellt werden. Das Hauptsignal auf <span
+                        class="highlight">Proctrac</span> nutzt eine praktische Funktion: Wenn aktiviert, überträgt der
+                    Programmiergleisausgang dasselbe Signal wie das Hauptgleis.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=473s" target="_blank" class="ts-link">(07:53)</a>
+                <div class="text">Sie können daher einen isolierten Gleisabschnitt direkt an diesen Ausgang anschließen,
+                    und er kann wie ein normales Gleis verwendet werden. „Kein Slot zulassen“ ist derzeit nur ein
+                    Platzhalter für eine zukünftige Funktion zur Erweiterung der verfügbaren Aktualisierungs-Slots. Das
+                    Red Hat Plus Shield unterstützt aktuell die 120 Standard-Slots von Loconet.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=500s" target="_blank" class="ts-link">(08:20)</a>
+                <div class="text">Zukünftig sollen auch die erweiterten Slots unterstützt werden, wodurch sich die
+                    Gesamtzahl auf etwa 400 erhöht. <span class="highlight">DCC-EX</span> hingegen unterstützt in der
+                    Standardkonfiguration auf einem Arduino Uno nur 20 Slots. Diese Anzahl ist durch den verfügbaren
+                    Speicher begrenzt und kann durch Neukompilieren auf etwa 60 erhöht werden. Die Funktion „Keine
+                    Slots“ umgeht diese Einschränkung.</div>
+            </div>
+
+            <h2><a id="zusatzfunktionen" href="#zusatzfunktionen" title="Permalink">#</a> Zusatzfunktionen & Loconet-Meldungen</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=556s" target="_blank" class="ts-link">(09:16)</a>
+                <div class="text">Die Deaktivierung von Standard-Weichenbefehlen (Push Pit) bewirkt, dass die Zentrale
+                    Weichenbefehle von Handreglern ignoriert. Dies kann in einer Mehrbedienersitzung verwendet werden.
+                    Die Option „Abfrage beim Einschalten deaktivieren“ verhindert, dass die Zentrale beim Starten eine
+                    Folge von Schaltbefehlen sendet. Mit der Zeile „Schnelltakteinstellungen“ können Sie Zeit und
+                    Taktrate einstellen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=608s" target="_blank" class="ts-link">(10:08)</a>
+                <div class="text">Beachten Sie, dass alle Änderungen der Schnelltakteinstellungen sofort übermittelt
+                    werden. Mit der Schaltfläche „Lokale Steckplätze zurücksetzen“ können Sie alle Lokomotivsteckplätze
+                    zurücksetzen, falls ein Fehler im Steckplatzsystem auftritt. Im zweiten Teil, den Loconet-Optionen,
+                    konfigurieren Sie, wie Ereignisse von DCCX an Localnet übermittelt werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=628s" target="_blank" class="ts-link">(10:28)</a>
+                <div class="text">„Weichenstellungsmeldung prüfen“ ermöglicht es DCCX, Meldungen an Loconet zu senden.
+                    „Eingangsmeldung prüfen“ sendet DCCX-Eingangsinformationen (z. B. von ungenutzten Pins). „Lokale
+                    Meldung klicken“ ist ein Platzhalter für zukünftige Lokomotivinformationen. „Leistungsstatusmeldung
+                    klicken“ sendet Infos über Stromstatusänderungen an LocalNet.</div>
+            </div>
+
+            <h2><a id="gleissignal" href="#gleissignal" title="Permalink">#</a> Gleissignal- und Pin-Konfiguration</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=682s" target="_blank" class="ts-link">(11:22)</a>
+                <div class="text">Im Abschnitt „TCC-Generator“ wählen Sie das Gleissignalformat. DCCX bietet hier meist
+                    das 128-Speed-Step-Format an (dringend empfohlen) oder das 28-Speed-Step-Format für sehr alte
+                    Decoder. Die Optionen für das Programmiergleis bieten Felder für DCCX-Konfigurationseinstellungen.
+                    Falls Sie nicht weiterwissen, nutzen Sie die Schaltfläche „Standardwerte wiederherstellen“.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=735s" target="_blank" class="ts-link">(12:16)</a>
+                <div class="text">Die zweite Seite des Red Hat Plus Plus-Tabs dient der Konfiguration zusätzlicher
+                    Eingänge des Arduino-Boards. DCCX kann diese Einstellungen dauerhaft im EEPROM speichern. Wenn Sie
+                    diese Funktion nutzen möchten, aktivieren Sie das entsprechende Kontrollkästchen. Beim Laden der
+                    Seite fragt das Red Hat Plus Plus Shield das Board ab und zeigt den Status an (z. B. „OK“ für
+                    vollständige Konfiguration).</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=783s" target="_blank" class="ts-link">(13:03)</a>
+                <div class="text">Ist ein Eingang nur auf dem Red Hat Plus Plus Shield konfiguriert, wird „nicht
+                    gesetzt“ angezeigt. Die Tabelle zeigt IDs, Pin-Nummern und Logik (aktiv hoch/niedrig). Im
+                    Nachrichtenfeld legen Sie fest, ob der Eingang einen Blockdetektor, eine Weiche oder einen
+                    Tastendruck melden soll. Die Weichenkonfiguration auf der letzten Seite funktioniert analog für
+                    Ausgangspins.</div>
+            </div>
+
+            <h2><a id="weichentypen" href="#weichentypen" title="Permalink">#</a> Weichentypen und Servo-Steuerung</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=832s" target="_blank" class="ts-link">(13:52)</a>
+                <div class="text">Über das Menü „Weichentyp“ können Sie Kategorien wie DCC (Befehl ans Gleis) oder V-Pin
+                    (digitaler Ausgang 0/5V) wählen. Jede DCC-Weiche muss mit einer DCCX-ID versehen werden. V-Pins
+                    können zum Schalten von Relais oder Motoren genutzt werden (ggf. mit Pegel-Impuls-Wandler). Bei
+                    Verwendung von <span class="highlight">Servos</span> können Winkel und Geschwindigkeit direkt
+                    definiert werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=879s" target="_blank" class="ts-link">(14:39)</a>
+                <div class="text">Die Option C-Pin ist veraltet und sollte nicht mehr verwendet werden. Der letzte
+                    wichtige Punkt ist der LED-Ketten-Tab. LED0 auf dem Shield zeigt standardmäßig den Betriebsstatus
+                    an: Rot für Gleisstrom aus, Grün für Ein. Durch Drücken der Taste am IoT-Stick kann auch in den
+                    „Leerlauf“-Modus (Notstopp) gewechselt werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=zCtgcBsNiOE&t=970s" target="_blank" class="ts-link">(16:10)</a>
+                <div class="text">Das war's für dieses Video. Ich hoffe, die Informationen waren nützlich. Sie können
+                    nun Ihr Red Hat Plus Shield konfigurieren, sobald Sie es erhalten haben. Die Softwareversion 1.514
+                    ist bereits auf GitHub verfügbar. Bitte klicken Sie auf den „Gefällt mir“-Button, um den Kanal zu
+                    unterstützen. Danke fürs Zuschauen!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>DC/DC-Wandler</dt>
+                    <dd>Integriertes Modul auf dem Shield, das eine einzige Stromquelle für den gesamten Stack (Arduino
+                        + Shield) ermöglicht und Überhitzung verhindert.</dd>
+
+                    <dt>Purging (Bereinigen)</dt>
+                    <dd>Automatisches Löschen von inaktiven Lokomotiven aus dem Datenstrom zur Optimierung der
+                        Performance.</dd>
+
+                    <dt>WiThrottle</dt>
+                    <dd>Protokoll zur Steuerung der Modellbahn via Smartphone-Apps über den integrierten Server des
+                        IoT-Sticks.</dd>
+
+                    <dt>MQTT-Broker</dt>
+                    <dd>Vermittlungsinstanz für Nachrichten, die eine Fernsteuerung der Anlage über das Internet
+                        ermöglicht.</dd>
+
+                    <dt>V-Pin & C-Pin</dt>
+                    <dd>DCC-EX Bezeichnungen für virtuelle Pins (V-Pin = moderner Standard; C-Pin = veraltete
+                        Kategorie).</dd>
+
+                    <dt>EEPROM</dt>
+                    <dd>Nichtflüchtiger Speicher auf dem Arduino, in dem Konfigurationen auch ohne Strom erhalten
+                        bleiben.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

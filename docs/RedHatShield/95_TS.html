@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - Done with the RedHat++! (Video #95)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>Done with the RedHat++! (Video#95) - 22.05.2022</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:11</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+            
+            <h2><a id="rueckblick" href="#rueckblick" title="Permalink">#</a> Rückblick und die Entscheidung gegen das Red Hat Plus Plus Projekt</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">[Musik] Vor ein paar Monaten berichtete ich, dass das Red Hat Plus Plus Projekt – also
+                    die Arduino- und <span class="highlight">DCC Plus Plus X</span>-basierte Zentrale – fast fertig war.
+                    Trotz aller anderen Projekte konnte ich sie zum Laufen bringen, entschied mich dann aber, das
+                    Projekt aufzugeben. In diesem Video erkläre ich euch, warum und, noch wichtiger, welches spannende
+                    neue Gerät es ersetzen wird.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=37s" target="_blank" class="ts-link">(00:37)</a>
+                <div class="text">Willkommen auf dem <span class="highlight">IoT-Kanal</span>! Ich bin Hans Tenner. Um
+                    meine Entscheidung, das Red Hat Projekt aufzugeben, zu erläutern, werfen wir einen kurzen Blick auf
+                    die Geschichte: Es begann mit Video Nummer 79, in dem ich erklärte, wie man eine <span
+                        class="highlight">Loconet</span>-Zentrale modular und mit vorhandenen Komponenten baut. Die
+                    Kernfunktionen, die in diesem Video beschrieben wurden, sind die Eingabe von Benutzerdaten, die
+                    Verwaltung von Lokomotiven, Weichen und Signalen, die Erzeugung des DCC-Signals und dessen
+                    Verstärkung, damit es genügend Energie für die Lokomotiven</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=79s" target="_blank" class="ts-link">(01:19)</a>
+                <div class="text">auf der Strecke hat. Die meisten dieser Module waren bereits erhältlich, ich habe sie
+                    lediglich kombiniert. Das einzige neue Element war ein <span
+                        class="highlight">Loconet-Slot-Manager</span>, eine Software, die ich auf dem <span
+                        class="highlight">IoT-Stick</span> implementiert habe. Diese Software verwaltet die Lokomotiven,
+                    die einem Fahrregler zugewiesen sind, und sorgt dafür, dass die Lokomotiven auf der Strecke optimal
+                    gesteuert werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=102s" target="_blank" class="ts-link">(01:42)</a>
+                <div class="text">Ich stellte sicher, dass die Signale vom DCC-SECT-Signalgenerator korrekt angesteuert
+                    und aktualisiert wurden. Ich erhielt recht positives Feedback zu dem Video, und mehrere Zuschauer
+                    bauten den Aufbau nach. Ein Problem, das man dabei sieht, ist die Menge an Verkabelung zwischen den
+                    einzelnen Komponenten, was nicht sehr benutzerfreundlich ist. Deshalb dachte ich mir, ich entwickle
+                    eine Leiterplatte, um diese Module auf einer einzigen Platine zu vereinen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=134s" target="_blank" class="ts-link">(02:14)</a>
+                <div class="text">Genau das habe ich in Video Nummer 85 vorgestellt, und es funktionierte. Die Platine
+                    hatte einen eigenen Arduino-Mikrocontroller, auf dem eine leicht modifizierte Version der <span
+                        class="highlight">DCC Plus Plus X</span>-Software lief. Außerdem verfügte sie über die <span
+                        class="highlight">Loconet</span>-Schnittstelle, eine Schnittstelle zum <span
+                        class="highlight">IoT-Stick</span> und ein <span class="highlight">IBT2</span>-Booster-Modul –
+                    also alle zuvor genannten Module, aber in einer viel übersichtlicheren Anordnung.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=162s" target="_blank" class="ts-link">(02:42)</a>
+                <div class="text">Zusätzlich fügte ich einige weitere Peripherieelemente hinzu, wie z. B. 32
+                    Eingabetasten und Unterstützung für eine LED-Kette wie die auf dem <span class="highlight">Blue
+                        Hat</span>. Anschließend arbeitete ich weiter an der Software und erstellte eine zweite Version
+                    der Platine. Ich war recht zufrieden damit, wie in Video Nummer 89 dokumentiert.</div>
+            </div>
+
+            <h2><a id="herausforderungen" href="#herausforderungen" title="Permalink">#</a> Herausforderungen bei Software-Wartung und Hardware-Konzept</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=183s" target="_blank" class="ts-link">(03:03)</a>
+                <div class="text">Zu diesem Zeitpunkt funktionierten alle wichtigen Funktionen. Ich hatte die <span
+                        class="highlight">DCC Plus Plus X</span>-Software modifiziert, um die zusätzlichen
+                    Peripheriefunktionen zu unterstützen. Dies wurde durch die Entwicklung einer speziellen Platine
+                    ermöglicht und ist mit der originalen Arduino-Hardware nicht auf dieselbe Weise realisierbar.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=203s" target="_blank" class="ts-link">(03:23)</a>
+                <div class="text">Ich habe auch die Programmierung der Gleisfunktionen und <span
+                        class="highlight">Slot-Manager</span>-Funktionen wie das Zusammenstellen von Lokomotivzügen und
+                    andere Funktionen abgeschlossen, die alle gut funktionierten. Allerdings habe ich letztendlich mehr
+                    Zeit als erwartet damit verbracht, die ohnehin schon sehr gute <span class="highlight">DCC
+                        Plus+X</span>-Software anzupassen, nur um die zusätzlichen Funktionen meiner Platine zu
+                    realisieren.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=228s" target="_blank" class="ts-link">(03:48)</a>
+                <div class="text">Das hat mich zum Nachdenken gebracht: Ist das wirklich das, was ich will? Die Wartung
+                    der <span class="highlight">IoT-Stick</span>-Software beansprucht bereits einen erheblichen Teil
+                    meiner verfügbaren Zeit. Will ich wirklich ein zweites großes Softwarepaket installieren, das ich
+                    zusätzlich warten muss – ein Paket, das ich nur modifizieren würde und dessen Aktualisierung von den
+                    Release-Zyklen der <span class="highlight">DCC Plus+X</span>-Entwickler abhängt? Ich meine, die
+                    Entwicklung hat mir anfangs viel Spaß gemacht, aber insgesamt ist dieses Konzept nicht wirklich
+                    nachhaltig.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=266s" target="_blank" class="ts-link">(04:26)</a>
+                <div class="text">Außerdem kamen mir Zweifel am Hardware-Konzept. Um eine Einplatinenlösung zu
+                    entwickeln, habe ich einige Entscheidungen getroffen, die nicht jedem Benutzer gefallen werden, zum
+                    Beispiel die Verwendung des <span class="highlight">IBT2</span>-Treibers. Er ist ein großartiges
+                    Gerät und bietet viel Leistung, was besonders für größere Maßstäbe nützlich ist, aber in der
+                    Realität ist der größte Teil der <span class="highlight">DCC Plus Plus X</span>-Nutzer verwenden
+                    wahrscheinlich einfach ein Motor-Shield mit etwa zwei Ampere Ausgangsstrom und sind damit zufrieden.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=300s" target="_blank" class="ts-link">(05:00)</a>
+                <div class="text">Warum sollte ich sie also zu etwas zwingen, das sie gar nicht wollen? Mir wurde klar,
+                    dass ich meinen eigenen Rat, Modularität zu nutzen (wie im Originalvideo propagiert), vernachlässigt
+                    hatte, nur um stolz der Entwickler einer voll funktionsfähigen Kommandozentrale zu sein. Deshalb
+                    beschloss ich, das Projekt aufzugeben und diesmal mit dem Nutzer im Mittelpunkt neu zu beginnen.
+                </div>
+            </div>
+
+            <h2><a id="die-neue-loesung" href="#die-neue-loesung" title="Permalink">#</a> Die neue Lösung: Das Red Hat Plus Plus Shield</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=329s" target="_blank" class="ts-link">(05:29)</a>
+                <div class="text">Das bedeutete, die Anzahl der Module auf meiner Platine zu reduzieren. Da ich wusste,
+                    dass es viele <span class="highlight">DCC Plus Plus X</span>-Nutzer gibt, die alle erfolgreich ihre
+                    eigene Konfiguration mit einem Arduino und einem Leistungsverstärker ihrer Wahl realisiert haben,
+                    habe ich diese beiden Module weggelassen und die anderen beibehalten: eine Verbindung zum <span
+                        class="highlight">Loconet</span>-Netzwerk zur Steuerung der Fahrregler und die <span
+                        class="highlight">Loconet-Slot-Manager</span>-Funktionalität, die auf dem <span
+                        class="highlight">IoT-Stick</span> läuft.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=360s" target="_blank" class="ts-link">(06:00)</a>
+                <div class="text">Dadurch erhielt ich eine sehr einfache Zwei-Draht-Schnittstelle zum Arduino und konnte
+                    das Ganze in die Form eines typischen Arduino-Shields bringen – daher der neue Name <span
+                        class="highlight">Red Hat Plus Plus Shield</span>. Ich zeige Ihnen jetzt, wie das komplette
+                    System funktioniert. Die Basis bildet ein Arduino-Controller mit vorinstallierter <span
+                        class="highlight">DCC Plus+X</span>-Software.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=385s" target="_blank" class="ts-link">(06:25)</a>
+                <div class="text"><span class="highlight">DCC Plus+ X</span> entwickelt sich zum De-facto-Standard für
+                    selbstgebaute DCC-Zentralen, da es auf kostengünstiger Hardware läuft und hervorragend dokumentiert
+                    und unterstützt wird. Die Installation, die oft eine Hürde für Mikrocontroller-Neulinge darstellt,
+                    ist denkbar einfach: Man lädt die Software herunter, führt das Installationsprogramm vom PC aus –
+                    fertig.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=416s" target="_blank" class="ts-link">(06:56)</a>
+                <div class="text">Das zweite Element ist der Power-Treiber. Um die kompakte Bauform beizubehalten, kann
+                    man aus verschiedenen sogenannten Motor-Shields wählen, die die gleiche Pinbelegung wie der Arduino
+                    haben und einfach aufgesteckt werden können. Alternativ kann man auch leistungsstärkere Komponenten
+                    wie den <span class="highlight">IBT2</span> verwenden, muss dann aber die zusätzliche Verkabelung
+                    berücksichtigen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=442s" target="_blank" class="ts-link">(07:22)</a>
+                <div class="text">Drittens wird das <span class="highlight">Red Hat Plus+Shield</span> oben aufgesetzt
+                    und ein <span class="highlight">IoT-Stick</span> an den Head-Anschluss angeschlossen. Ein kurzes
+                    Kabel verbindet den <span class="highlight">IoT-Stick</span> mit dem <span
+                        class="highlight">Growth-Port</span>-Anschluss an der Unterseite des <span class="highlight">Red
+                        Hat Plus+Shields</span>. Für die <span class="highlight">Loconet</span>-Kommunikation werden
+                    zwei kurze Drähte an den DCC-Ausgang des Motor-Shields angeschlossen, damit die Platine erkennt,
+                    wann DCC aktiviert ist.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=471s" target="_blank" class="ts-link">(07:51)</a>
+                <div class="text">Und schon ist Ihre <span class="highlight">Loconet</span>-kompatible DCC-Zentrale
+                    einsatzbereit. Sie können sie einschalten, eine Lokomotive auswählen und loslegen. Die Vorteile
+                    dieses neuen Konzepts für den Benutzer liegen auf der Hand, es gibt aber auch einige Nachteile.
+                    Daher hier ein kurzer Vergleich der beiden Lösungen: Wie Sie sehen, musste ich auf die 32 digitalen
+                    Eingabetasten des <span class="highlight">Red Hat Plus Plus Boards</span> verzichten.</div>
+            </div>
+
+            <h2><a id="vergleich" href="#vergleich" title="Permalink">#</a> Vergleich & Konnektivität</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=502s" target="_blank" class="ts-link">(08:22)</a>
+                <div class="text">Einige von Ihnen haben auf diese Funktion gewartet, und ihr Wegfall könnte eine
+                    Enttäuschung sein. Andererseits bietet die <span class="highlight">DCC Plus Plus X</span> Software
+                    ein solides Konzept zum Hinzufügen verschiedener Arten von Eingabe- und Ausgabehardware, und das
+                    <span class="highlight">Red Hat Plus Plus Shield</span> stellt diese für <span
+                        class="highlight">Loconet</span> zur Verfügung.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=522s" target="_blank" class="ts-link">(08:42)</a>
+                <div class="text">Daher ist der Verlust der Tasten meiner Meinung nach kein K.O.-Kriterium und wird
+                    durch die Vorteile des neuen Konzepts mehr als wettgemacht. Die andere wichtige Funktion, die das
+                    Shield-Konzept nicht unterstützt, ist die Verwendung als Booster. Das Shield unterstützt nur den
+                    Zentralstationsmodus, da die Verwendung als Booster zusätzliche Hardware erfordern würde.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=548s" target="_blank" class="ts-link">(09:08)</a>
+                <div class="text">Modifikationen an der <span class="highlight">DCC Plus Plus</span>-Seite und
+                    möglicherweise an der Arduino- und Treiberhardware sind daher nicht realisierbar. Ich fand den
+                    Booster immer eine praktische Funktion, aber es gibt ja bereits viele kommerziell erhältliche
+                    Booster. Die RGB-LED-Kette hingegen ist weiterhin Teil des <span class="highlight">Red Hat Plus Plus
+                        Shields</span> und kann für Signale, CTC-Panels, Status-LEDs usw. verwendet werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=582s" target="_blank" class="ts-link">(09:42)</a>
+                <div class="text">Was die Konnektivität angeht, sind Red Hat Plus Plus und <span class="highlight">Red
+                        Hat Plus Plus Shield</span> identisch, da dieser Port vom <span
+                        class="highlight">IoT-Stick</span> verwaltet wird. Es gibt also zwei <span
+                        class="highlight">Loconet</span>-Anschlüsse, beide mit dem Low-Power-DCC-Signal an den Pins 1
+                    und 6. Diese können zur Stromversorgung von Fahrreglern und zum Ansteuern zusätzlicher Booster
+                    verwendet werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=605s" target="_blank" class="ts-link">(10:05)</a>
+                <div class="text">Wenn Sie also ein funktionierendes <span class="highlight">DCC Plus Plus</span>-System
+                    und einige <span class="highlight">Loconet</span>-Komponenten wie Fahrregler oder Feedback-Module
+                    haben, können Sie diese nun wie jedes andere <span class="highlight">Loconet</span>-Netzwerk
+                    anschließen. Natürlich können Sie auch einen Computer über Geräte wie den lokalen Puffer oder andere
+                    Computerschnittstellen verbinden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=628s" target="_blank" class="ts-link">(10:28)</a>
+                <div class="text">Außerdem kann der <span class="highlight">IoT-Stick</span> mit einem bestehenden WLAN
+                    oder ACT verbunden werden. Als eigenständiger WLAN-Zugangspunkt stellt er einen lokalen TCP-Server
+                    bereit und wird zukünftig auch einen <span class="highlight">WiThrottle</span>-Server bieten. So
+                    lassen sich Smartphone-Gashebel oder JMRI-Software ohne zusätzliches WLAN-Shield am Arduino
+                    problemlos anschließen.</div>
+            </div>
+
+            <h2><a id="zeitplan" href="#zeitplan" title="Permalink">#</a> Zeitplan und Zusammenarbeit mit DCC Plus+X</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=653s" target="_blank" class="ts-link">(10:53)</a>
+                <div class="text">Wie sieht der Zeitplan für dieses neue Projekt aus? Wann ist mit einer
+                    Veröffentlichung zu rechnen? Die Hardware funktioniert und ist fast fertig. Ich möchte noch eine
+                    Status-LED und einen Strombegrenzer für das DCC-Signal mit geringer Leistung hinzufügen. Außerdem
+                    denke ich über Änderungen am Netzteil des Moduls nach, damit es auch das Arduino-Board mit Strom
+                    versorgt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=682s" target="_blank" class="ts-link">(11:22)</a>
+                <div class="text">Das vereinfacht die Verkabelung für den Benutzer. Ich schätze, es dauert etwa zwei
+                    Monate, bis das Board fertiggestellt und im <span class="highlight">Tindy Store</span> erhältlich
+                    ist. Wie immer werde ich auch das finale Design veröffentlichen, damit Sie Ihr eigenes Board bauen
+                    können, wenn Sie möchten. Auch softwareseitig gibt es noch einiges zu tun, insbesondere für den
+                    <span class="highlight">Purple Head</span>.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=707s" target="_blank" class="ts-link">(11:47)</a>
+                <div class="text">Wie Sie vielleicht wissen, habe ich einen <span
+                        class="highlight">WiThrottle</span>-Client implementiert, auf dem ich aufbauen kann, um den
+                    Server-Port zu programmieren. Es bleibt also noch einiges zu tun. Zur Kommunikation von Änderungen
+                    auf der <span class="highlight">DCC Plus+X</span>-Seite, beispielsweise der Aktivierung eines
+                    Eingangspins oder der Geschwindigkeitsänderung einer Lokomotive zum Einrasten, sind der <span
+                        class="highlight">Loconet Slot Manager</span> und andere Komponenten identisch mit der
+                    vorherigen Red Hat-Version.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=736s" target="_blank" class="ts-link">(12:16)</a>
+                <div class="text">Interessanterweise hatte ich auch einige Gespräche mit den netten Leuten vom <span
+                        class="highlight">DCC Plus+X</span>-Projekt. Es begann vor einigen Monaten, aber da ich nun mit
+                    der Arbeit am Shield-Konzept begann, wurde es für mich und vermutlich auch für sie interessanter. Im
+                    Anschluss an unser letztes Gespräch haben wir uns zusammengeschlossen, um die Nutzung von <span
+                        class="highlight">DCC Plus+X</span> mithilfe von <span class="highlight">Loconet</span> als
+                    Kommunikationsnetzwerk zu erweitern.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=767s" target="_blank" class="ts-link">(12:47)</a>
+                <div class="text">So kann der Benutzer eine Vielzahl von <span class="highlight">Loconet</span>-Geräten
+                    verschiedener Hersteller in <span class="highlight">DCC Plus+X</span> integrieren. Infolgedessen
+                    gibt es nun eine <span class="highlight">Loconet</span>-Diskussionsgruppe für Entwickler auf dem
+                    <span class="highlight">DCC Plus+X</span>-Discord-Server. Die Diskussionen waren in den letzten
+                    Tagen seit ihrer Gründung sehr intensiv, daher geht es in vielerlei Hinsicht voran.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=792s" target="_blank" class="ts-link">(13:12)</a>
+                <div class="text">Ich bin zuversichtlich, dass die erste Version der <span class="highlight">Red Hat
+                        Plus+X-Shield</span>-Software zeitgleich mit der finalen Hardware verfügbar sein wird.
+                    Selbstverständlich wird es danach regelmäßige Updates geben. Zur Software wie immer gibt es auch
+                    hier Videos zur Konfiguration und Nutzung. Um nichts zu verpassen, abonniert den <span
+                        class="highlight">IoT-Kanal</span> und aktiviert die Glocke, damit ihr sofort benachrichtigt
+                    werdet, wenn neue Videos erscheinen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=821s" target="_blank" class="ts-link">(13:41)</a>
+                <div class="text">Das war's für heute. Ich hoffe, die Informationen waren hilfreich oder zumindest
+                    interessant für euch und ihr habt nun eine erste Vorstellung davon, wie das neue <span
+                        class="highlight">Red Hat Plus+Shield</span> eure <span class="highlight">DCC
+                        Plus+X</span>-Installation zu einer <span class="highlight">Loconet</span>-basierten Zentrale
+                    erweitern kann. Wenn ja, klickt bitte unten auf „Gefällt mir“, um mir das mitzuteilen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YjONAbBnf10&t=845s" target="_blank" class="ts-link">(14:05)</a>
+                <div class="text">Das motiviert mich sehr und hilft außerdem dabei, dieses und andere Videos auf dem
+                    <span class="highlight">IoT-Kanal</span> noch mehr Modellbahnfans zu erreichen. Vielen Dank fürs
+                    Zuschauen und bis zum nächsten Video!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>DCC Plus Plus X (DCC-EX)</dt>
+                    <dd>Open-Source-System für Modellbahnzentralen auf Arduino-Basis.</dd>
+
+                    <dt>Loconet-Slot-Manager</dt>
+                    <dd>Softwaremodul zur Verwaltung von Lokomotiven und deren Zuweisung zu Fahrreglern im
+                        Loconet-Netzwerk.</dd>
+
+                    <dt>Red Hat Plus Plus Shield</dt>
+                    <dd>Die neue, kompakte Hardware-Erweiterung (Shield) für Arduino, die DCC Plus Plus X um
+                        Loconet-Funktionen ergänzt.</dd>
+
+                    <dt>IBT2</dt>
+                    <dd>Ein leistungsstarker Motortreiber (H-Brücke), der als DCC-Booster verwendet werden kann.</dd>
+
+                    <dt>WiThrottle</dt>
+                    <dd>Ein Protokoll zur Steuerung von Modellbahnen über WLAN (z. B. via Smartphone-Apps).</dd>
+
+                    <dt>IoT-Stick</dt>
+                    <dd>Der ESP32-basierte Mikrocontroller, der als "Gehirn" für die Kommunikation dient.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

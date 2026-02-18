@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IoTTStick Flash Tool</title>
+    <link rel="icon" href="iott-logo.jpg" type="image/x-icon" />
+    <!-- https://esphome.github.io/esp-web-tools/ -->
+    <!-- <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script> -->
+    <!--//
+        Offline Version 
+        https://app.unpkg.com/esp-web-tools@10.2.1/files/dist/web
+        Download mit Trick
+        npm install esp-web-tools@10.2.1
+        in einem ordner zB c:\temp
+        danach sind die Files hier zu finden
+        node_modules/esp-web-tools/dist/web/
+    //-->
+    <script type="module" src="js/install-button.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background: #fff;
+            font-size: 1rem;
+        }
+
+        .info {
+            font-size: 0.9rem;
+            color: #444;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fffde7;
+            border-left: 5px solid #ffd600;
+            border-radius: 4px;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        esp-web-install-button {
+            display: none;
+            margin-top: 35px;
+        }
+
+        #projectlogo {
+            height: 2em;
+            /* passt sich der H2-Schriftgröße an */
+            width: auto;
+            vertical-align: middle;
+        }
+
+        #projectlogo {
+            border: 0px none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2 id="ui-title">IoTTStick Flash Tool</h2>
+
+        <div class="input-group">
+            <label id="ui-label-hw" for="hw-select">Hardware Modell:</label>
+            <select id="hw-select" disabled>
+                <option value="" disabled selected id="ui-opt-choose">-- Bitte wählen --</option>
+                <option value="plus">M5StickC Plus</option>
+                <option value="plus2">M5StickC Plus2</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label id="ui-label-action" for="action-select">Aktion:</label>
+            <select id="action-select" disabled>
+                <option value="full" id="ui-opt-full">Full Flash</option>
+                <option value="update" id="ui-opt-update">Update</option>
+                <option value="restore" id="ui-opt-restore">Original Restore</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label id="ui-label-version" for="version-select">Version:</label>
+            <select id="version-select" disabled>
+                <option value="" disabled selected id="ui-opt-version">-- Version wählen --</option>
+            </select>
+        </div>
+
+        <div id="status-text" class="info" style="display:none">...</div>
+
+        <div id="my-button" style="display:none">
+            <esp-web-install-button id="install-button"></esp-web-install-button>
+        </div>
+        <div id="my-error">
+            <span id="error-msg"></span>
+        </div>
+
+    </div>
+
+    <script>
+        // HIER IST DER BROWSERCHECK: Prüft ob 'serial' überhaupt existiert
+        const isSerialSupported = "serial" in navigator;
+
+        // Check für Mobilgeräte
+        const isMobile = (navigator.maxTouchPoints > 0 || /Android|iP(hone|ad|od)/i.test(navigator.userAgent));
+
+        (function () {
+            const userLang = navigator.language.startsWith('de') ? 'de' : 'en';
+            const msg = {
+                de: {
+                    m: "⚠️ <strong>Mobilgerät erkannt:</strong> Das Flashen über USB funktioniert leider nur an einem Computer (PC/Mac/Laptop).",
+                    b: "⚠️ <strong>Browser nicht kompatibel:</strong> Bitte nutze Google Chrome oder Microsoft Edge, um dieses Gerät zu programmieren."
+                },
+                en: {
+                    m: "⚠️ <strong>Mobile device detected:</strong> Flashing via USB only works on a computer (PC, Mac, or Laptop).",
+                    b: "⚠️ <strong>Browser not compatible:</strong> Please use Google Chrome or Microsoft Edge to program this device."
+                }
+            };
+
+            const lang = msg[userLang];
+            const el = document.getElementById("error-msg");
+
+            if (el) {
+                // LOGIK: 
+                // 1. Wenn Mobilgerät -> Mobil-Text
+                // 2. Wenn PC aber KEIN Serial (Firefox/Safari) -> Browser-Text
+                if (isMobile) {
+                    el.innerHTML = lang.m;
+                    el.style.display = "block";
+                } else if (!isSerialSupported) {
+                    el.innerHTML = lang.b;
+                    el.style.display = "block";
+                } else {
+                    document.getElementById("my-error").style.display = "none";
+                    // document.getElementById("my-button").style.display = "block";
+                    document.getElementById("hw-select").disabled = false;
+                    document.getElementById("status-text").style.display = "block";
+                }
+                el.style.color = "red";
+            }
+        })();
+
+        (async () => {
+
+            const hwSelect = document.getElementById("hw-select");
+            const actionSelect = document.getElementById("action-select");
+            const versionSelect = document.getElementById("version-select");
+            const button = document.getElementById("install-button");
+            const statusText = document.getElementById("status-text");
+            const installButton = document.querySelector("esp-web-install-button");
+
+            /*
+            // wird in dem Fall in loadVersions aufgerufen
+            document.addEventListener("DOMContentLoaded", () => {
+                const supportsWebSerial = "serial" in navigator;
+                if (!supportsWebSerial) {
+                    installButton.style.color = "red";
+                    installButton.style.display = "block";
+                }
+            });
+            */
+
+            let currentManifestUrl = null;
+
+            let versions = null;
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || (navigator.language.startsWith('de') ? 'de' : 'en');
+
+            const i18n = {
+                de: {
+                    title: "<img alt='Logo' id='projectlogo' src='iott-logo.jpg'> Flash Tool",
+                    labelHw: "Hardware Modell:",
+                    labelAction: "Aktion:",
+                    labelVersion: "Version:",
+                    optChoose: "-- Bitte wählen --",
+                    optFull: "Full Flash (Neuinstallation)",
+                    optUpdate: "Update (Aktualisierung)",
+                    optRestore: "Original Restore",
+                    optVersion: "-- Version wählen --",
+                    statusStart: "Bitte wähle zuerst deine Hardware aus.",
+                    statusReady: "Bereit: {hw} - {action}. Verbinde den Stick per USB.",
+                    statusUnavailable: "⚠️ Für diese Auswahl ist keine Version verfügbar."
+                },
+                en: {
+                    title: "<img alt='Logo' id='projectlogo' src='iott-logo.jpg'> Flash Tool",
+                    labelHw: "Hardware Model:",
+                    labelAction: "Action:",
+                    labelVersion: "Version:",
+                    optChoose: "-- Please select --",
+                    optFull: "Full Flash (New Install)",
+                    optUpdate: "Update (Firmware update)",
+                    optRestore: "Original Restore",
+                    optVersion: "-- Select version --",
+                    statusStart: "Please select your hardware first.",
+                    statusReady: "Ready: {hw} - {action}. Connect the stick via USB.",
+                    statusUnavailable: "⚠️ No version available for this selection."
+                }
+            };
+
+            const t = i18n[lang];
+
+            function initUI() {
+                document.getElementById("ui-title").innerHTML = t.title;
+                document.getElementById("ui-label-hw").textContent = t.labelHw;
+                document.getElementById("ui-label-action").textContent = t.labelAction;
+                document.getElementById("ui-label-version").textContent = t.labelVersion;
+                document.getElementById("ui-opt-choose").textContent = t.optChoose;
+                document.getElementById("ui-opt-full").textContent = t.optFull;
+                document.getElementById("ui-opt-update").textContent = t.optUpdate;
+                document.getElementById("ui-opt-restore").textContent = t.optRestore;
+                document.getElementById("ui-opt-version").textContent = t.optVersion;
+                statusText.textContent = t.statusStart;
+            }
+
+            async function loadVersions() {
+                const cfgResponse = await fetch('config.json');
+                if (!cfgResponse.ok) throw new Error('config.json not found');
+                const config = await cfgResponse.json();
+                window.CONFIG = config; // global speichern
+
+                const res = await fetch("versions.json");
+                versions = await res.json();
+                console.log("versions.json geladen:", versions);
+            }
+
+            function updateActionAvailability() {
+                const hw = hwSelect.value;
+
+                if (!hw || !versions || isMobile || !isSerialSupported) return;
+
+                const available = versions[hw];
+
+                /*
+                ["full", "update", "restore"].forEach(action => {
+                    installButton.disabled = !(available[action] && available[action].length > 0);
+                });
+                */
+
+                versionSelect.disabled = false;
+            }
+
+            function updateVersionList() {
+                const hw = hwSelect.value;
+                const action = actionSelect.value;
+
+                versionSelect.innerHTML = "";
+
+                if (!hw || !versions || isMobile || !isSerialSupported) return;
+
+                const list = versions[hw][action];
+
+                if (!list || list.length === 0) {
+                    versionSelect.disabled = true;
+                    return;
+                }
+
+                const def = document.createElement("option");
+                def.textContent = t.optVersion;
+                def.disabled = true;
+                def.selected = true;
+                versionSelect.appendChild(def);
+
+                list.forEach(entry => {
+                    const opt = document.createElement("option");
+                    opt.value = entry.id;
+                    opt.textContent = entry.name;
+                    // NEU: Offset im Datensatz der Option speichern
+                    opt.dataset.offset = entry.offset || "0x0";
+                    versionSelect.appendChild(opt);
+                });
+
+                actionSelect.disabled = false;
+            }
+
+            function updateManifest() {
+                const hw = hwSelect.value;
+                const action = actionSelect.value;
+                const version = versionSelect.value;
+                const selectedOption = versionSelect.options[versionSelect.selectedIndex];
+
+                if (!hw || !versions || !version) {
+                    button.style.display = "none";
+                    statusText.textContent = t.statusStart;
+                    return;
+                }
+
+                let offset = versionSelect.options[versionSelect.selectedIndex].dataset.offset;
+                offset = parseInt(offset, 16);
+
+                let eraseConfig = {};
+
+                if (action === "update") {
+                    // UPDATE: Offset setzen UND Löschen strikt verbieten
+                    // offset = 0x10000;
+
+                    // Verhindert das Löschen vollständig; dem Benutzer wird keine Löschoption angezeigt. -> FALSCH! fkt. nicht
+                    eraseConfig = {
+                        new_install_prompt_erase: true,
+                        new_install_prevent_erase: true
+                    };
+                } else {
+                    // NEUINSTALLATION:
+                    // Dialog erscheint, Benutzer wird gefragt (kann aber noch löschen wählen)
+                    /*
+                    eraseConfig = {
+                        new_install_prompt_erase: true
+                    };
+                    */
+                }
+
+                const url = new URL(window.location.href);
+                const pathBase = `${window.location.origin}${url.pathname.replace(/[^/]+$/, "")}${CONFIG.basePath}`;
+
+                // 1. Nur den Dateinamen für die Anzeige extrahieren
+                const fileName = version.split('/').pop();
+
+                const manifest = {
+                    name: "M5Stick Firmware",
+                    version: fileName,
+                    ...eraseConfig,
+                    builds: [
+                        {
+                            chipFamily: "ESP32",
+                            parts: [
+                                { path: `${pathBase}/${version}`, offset: offset }
+                            ]
+                        }
+                    ]
+                };
+
+                if (currentManifestUrl) {
+                    URL.revokeObjectURL(currentManifestUrl);
+                }
+
+                const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+                currentManifestUrl = URL.createObjectURL(blob);
+
+                // Zuweisung an den Button
+                button.manifest = currentManifestUrl;
+                button.style.display = "block";
+
+                let msg = t.statusReady.replace("{hw}", hw === 'plus' ? 'M5StickC Plus' : 'M5StickC Plus2');
+                msg = msg.replace("{action}", action.toUpperCase());
+                statusText.textContent = msg;
+
+                if (versionSelect.selectedIndex === 0) {
+                    document.getElementById("my-button").style.display = "none";
+                } else {
+                    document.getElementById("my-button").style.display = "block";
+                }
+            }
+
+            hwSelect.addEventListener("change", () => {
+                if (!isSerialSupported || isMobile) return;
+                updateActionAvailability();
+                updateVersionList();
+                updateManifest();
+            });
+
+            actionSelect.addEventListener("change", () => {
+                updateVersionList();
+                updateManifest();
+            });
+
+            versionSelect.addEventListener("change", updateManifest);
+
+            await loadVersions();
+            initUI();
+
+        })();
+    </script>
+
+</body>
+
+</html>

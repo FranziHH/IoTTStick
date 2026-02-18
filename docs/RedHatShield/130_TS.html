@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - IoTT Stick Reset (Video #135)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>Using IoTT Shields with EX 8874 (Video #130) - 29.10.2023</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+
+            <h2><a id="einleitung" href="#einleitung" title="Permalink">#</a> Einleitung & Problematik des x88-74</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">[Musik] Kürzlich erreichten mich einige Fragen von Zuschauern zur Kombination von IoT-
+                    oder UINO- Shields wie dem DCC Ox Shield oder dem Redhead Shield mit dem neuen x88-74 Motor Shield.
+                    Hintergrund ist, dass das x88-74 einen eher unkonventionellen Ansatz für die VIN- Stromversorgung
+                    verwendet, was beim Hinzufügen weiterer Shields zum Stack tatsächlich Probleme verursachen kann.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=36s" target="_blank" class="ts-link">(00:36)</a>
+                <div class="text">In diesem Video gehe ich auf die verfügbaren UINO-Stromversorgungsoptionen ein und
+                    zeige, wie man sie optimal für typische Anwendungsfälle eines DCCX-UINO- Stacks nutzt. Willkommen
+                    auf dem IoT-Kanal! Ich bin H Tenner. Herzlich willkommen allen Erstbesuchern und neuen Zuschauern
+                    sowie allen anderen, die wieder hier sind.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=58s" target="_blank" class="ts-link">(00:58)</a>
+                <div class="text">Ich freue mich, dass ihr es hierher geschafft habt, und danke euch für eure
+                    Unterstützung meines Kanals. Wenn ihr noch nicht abonniert habt, klickt bitte unten auf den
+                    Abonnieren-Button und aktiviert die Glocke, um keine neuen Videos zu verpassen. Das erste Thema sind
+                    die verfügbaren Stromversorgungsoptionen für ein UINO. Im UINO-Repository gibt es eine hervorragende
+                    Abhandlung, die dies detailliert beschreibt.</div>
+            </div>
+
+            <h2><a id="stromversorgung" href="#stromversorgung" title="Permalink">#</a> Arduino
+                Stromversorgungs-Optionen</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=85s" target="_blank" class="ts-link">(01:25)</a>
+                <div class="text">Den Link zum Dokument findet ihr in der Videobeschreibung. Es gibt fünf verschiedene
+                    Optionen. Es gibt verschiedene Möglichkeiten, einen Arduino mit Strom zu versorgen, aber nur wenige
+                    Boards bieten tatsächlich eine Batterieoption. Daher betrachte ich hier die Optionen, die auf den
+                    meisten Boards verfügbar sind: <span class="highlight">USB-Anschluss, Hohlstecker, Vin- und
+                        5V-Pin.</span></div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=111s" target="_blank" class="ts-link">(01:51)</a>
+                <div class="text">Sehen wir uns die Eigenschaften und Unterschiede der einzelnen Methoden genauer an.
+                    Hier ist ein vereinfachtes Blockdiagramm eines Uino- Boards, das sich auf die Stromversorgung
+                    konzentriert. Mikrocontroller und andere Chips werden nur als 5V- Nutzer dargestellt, da sie für
+                    unsere Betrachtung nicht relevant sind. Die erste Option ist die Stromversorgung des Arduino über
+                    den USB-Anschluss.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=134s" target="_blank" class="ts-link">(02:14)</a>
+                <div class="text">In diesem Fall werden 5 Volt vom USB-Anschluss an den Ausgang des Onboard-LDO und an
+                    die 5V-Schiene des Arduino-Boards geliefert. Der Strom ist auf die maximale Stromstärke des USB-
+                    Anschlusses begrenzt, und wir sollten darauf achten, ihn nicht zu überlasten. USB 2 definiert den
+                    maximalen Strom mit 500 Milliampere, USB 3-Geräte sollten 900 Milliampere liefern können.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=158s" target="_blank" class="ts-link">(02:38)</a>
+                <div class="text">Was vielen nicht bewusst ist: Über eine interne Klemmdiode kann Strom zum Eingang des
+                    LDO fließen. Bei Anschluss an USB können wir daher etwa 4,3 V messen. An der Eingangsseite des LDO
+                    und damit an <span class="highlight">V<sub>in</sub></span> liegen Spannungen an, und er kann auch
+                    Strom liefern. Ist der Strom jedoch zu hoch, wird die Diode und somit der LDO zerstört.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=189s" target="_blank" class="ts-link">(03:09)</a>
+                <div class="text">Daher ist Vorsicht geboten, was an Vin angeschlossen ist, wenn der UINO über den
+                    USB-Anschluss mit Strom versorgt wird. Bei einem eigenständigen UINO-Board ist dies kein Problem, da
+                    außer dem 14,7-µF- Kondensator keine weiteren Verbraucher an Vin angeschlossen sind. Die zweite
+                    Möglichkeit ist die Stromversorgung über den <span class="highlight">Hohlstecker</span>. Wichtig
+                    ist, dass sich der Pluspol am mittleren Pin des Steckers befindet.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=215s" target="_blank" class="ts-link">(03:35)</a>
+                <div class="text">Von dort führt der Strom durch eine Diode zum Verpolungsschutz zum LDO und zur
+                    V<sub>in</sub>-Schiene. Der LDO erzeugt die 5-V- Spannung und versorgt damit die internen 5-V-
+                    Verbraucher, also den Mikrocontroller und andere Logikgatter. Wichtig ist auch, dass eine Spannung
+                    an V<sub>in</sub> über etwa 4 Volt die USB-Stromversorgung unterbricht, um den angeschlossenen PC zu
+                    schützen.</div>
+            </div>
+
+            <h2><a id="gefahren" href="#gefahren" title="Permalink">#</a> Gefahren für den LDO</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=250s" target="_blank" class="ts-link">(04:10)</a>
+                <div class="text">Sollte es also jemals zu einer Überspannung an der 5-V-Schiene kommen, ist das
+                    USB-Gerät geschützt, solange V<sub>in</sub> liegt über etwa 4 Volt. Wenn das Board über den
+                    Barrel-Check- oder V- In-Pin mit Strom versorgt wird, ist die Hauptschwäche dieses Modus der <span
+                        class="highlight">LDO</span> selbst. Er ist nominell für 1 Ampere ausgelegt, was für die ca. 50
+                    Milliampere, die das Uino-Board verbraucht, mehr als ausreichend ist.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=274s" target="_blank" class="ts-link">(04:34)</a>
+                <div class="text">Er kann jedoch zum Limit werden, wenn andere Verbraucher Strom von der 5V-Schiene
+                    beziehen. Das Hauptproblem ist jedoch die Versorgungsspannung. Der LDO reduziert die Spannung durch
+                    Stromverbrauch, und die entstehende Wärme ist proportional zur Spannungsreduzierung. Je niedriger
+                    die Versorgungsspannung, desto besser. Laut Spezifikation sollten 7 bis 12 Volt in Ordnung sein.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=299s" target="_blank" class="ts-link">(04:59)</a>
+                <div class="text">Darüber hinaus oder wenn zusätzliche 5V-Verbraucher angeschlossen sind, ist der LDO
+                    gefährdet. Der LDO ist definitiv eine Schwachstelle der Arduino-Boards, und das Durchbrennen des LDO
+                    ist wahrscheinlich die häufigste Methode, ein Uino zu zerstören. Abgesehen vom LDO ist die
+                    Eingangsspannung (V Vin) auf 20 Volt begrenzt, was die Eingangsgrenze des LDO darstellt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=324s" target="_blank" class="ts-link">(05:24)</a>
+                <div class="text">20 Volt waren bis vor einiger Zeit die offizielle Spezifikation, und bei einer
+                    Internetrecherche findet man immer noch zahlreiche Hinweise auf diesen Wert. Der Wert wurde später
+                    reduziert auf 12 Volt, und ich vermute, das lag hauptsächlich an den vielen durchgebrannten LDOs.
+                    Die dritte Methode ist die Stromversorgung des Arduino über <span class="highlight">Vin</span>.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=344s" target="_blank" class="ts-link">(05:44)</a>
+                <div class="text">Dies ist identisch mit der Verwendung des Hohlsteckers, nur dass kein Verpolungsschutz
+                    vorhanden ist. Daher muss sichergestellt werden, dass V<sub>in</sub> eine positive Spannung über 5
+                    Volt aufweist. Die letzte Methode ist die direkte Stromversorgung des 5V<sub>t</sub> -Pins. Laut
+                    Dokumentation wird dies nicht empfohlen, aber es heißt auch, dass es sicher ist, solange
+                    V<sub>in</sub> höher ist als die Spannung an der 5V<sub>t</sub>-Schiene.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=371s" target="_blank" class="ts-link">(06:11)</a>
+                <div class="text">Der Grund für diese Anforderung ist wiederum der LDO. Wenn wir die 5V<sub>t</sub>
+                    -Schiene extern versorgen, speist die Schutzdiode des LDO zurück zum LDO- Eingang, der gleichzeitig
+                    die V<sub>in</sub> -Schiene ist. Wenn der Strom zu hoch ist, wird die Diode und damit der LDO
+                    beschädigt. Um dies sicher zu bewerkstelligen, muss V<sub>in</sub> höher sein als die Spannung an
+                    der 5V<sub>t</sub>-Schiene.</div>
+            </div>
+
+            <h2><a id="anwendungsfall-1" href="#anwendungsfall-1" title="Permalink">#</a> Anwendungsfall 1: Standard
+                Motor Shield</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=412s" target="_blank" class="ts-link">(06:52)</a>
+                <div class="text">Diese Spannung wiederum sollte etwas höher sein als die ALO-Ausgangsspannung, sodass
+                    kein Strom durch den ALO fließt. Wenn dies der Fall ist, ist es sicher. Die Spannung am Eingang
+                    (Vin) beträgt maximal ca. 20 Volt, die Stromversorgung des Arduino erfolgt über die 5-V- Schiene.
+                    Dies sind die grundlegenden Optionen. Betrachten wir nun den ersten Anwendungsfall, um die
+                    Funktionsweise in einem kompletten Uino-DCCX- Stack zu verstehen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=436s" target="_blank" class="ts-link">(07:16)</a>
+                <div class="text">Der erste Anwendungsfall ist den meisten DCCX-Nutzern wahrscheinlich bekannt: Ein
+                    Standard-Motor-Shield wird auf einen Uino aufgesteckt. Dies ergibt eine einfache Zentrale mit zwei
+                    DCC-Ausgängen. Die Gleisspannung ist zwar nicht sehr hoch, aber ausreichend für zwei oder drei
+                    HO-Lokomotiven pro Kanal. Einer der Kanäle kann alternativ als Programmiergleis im Servicemodus
+                    verwendet werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=459s" target="_blank" class="ts-link">(07:39)</a>
+                <div class="text">Am einfachsten lässt sich der Stack mit Strom versorgen, indem man ein
+                    Gleichstromnetzteil an den DC-Eingang des Uino anschließt. Da dieser verpolungssicher ist, versorgt
+                    er gleichzeitig den Arduino und den Vin-Eingang (Vdv) sowie das Motor-Shield. Es gibt nur ein
+                    Problem: Die meisten Modellbahner bevorzugen wahrscheinlich eine Gleisspannung von 14 oder 16 Volt.
+                    Wie wir gesehen haben, ist das zu viel für den LDO.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=484s" target="_blank" class="ts-link">(08:04)</a>
+                <div class="text">Er überhitzt und kann möglicherweise rauchen. Die Standardlösung für dieses Problem
+                    ist: Verwenden Sie separate Netzteile für den Uino und das Motor-Shield-Board. Die Spannung für den
+                    Uino sollte 9 Volt nicht überschreiten, die Spannung für das Motor-Shield kann beliebig gewählt
+                    werden. Um dies zu realisieren, muss die V-In-Schiene unterbrochen werden, damit die beiden
+                    Spannungen getrennt bleiben.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=528s" target="_blank" class="ts-link">(08:48)</a>
+                <div class="text">Eine gängige Lösung ist, den VM-Pin des Motor-Shields einfach herauszubiegen oder ihn
+                    sogar abzuschneiden. Ich persönlich bevorzuge diese Lösung nicht, da sie eine dauerhafte und nicht
+                    unbedingt leicht rückgängig zu machende Modifikation des Shields darstellt. Eleganter ist es, die
+                    B-In-Leiterbahn auf dem Motor-Shield- Board an der dafür vorgesehenen Stelle zu durchtrennen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=554s" target="_blank" class="ts-link">(09:14)</a>
+                <div class="text">Auch dies ist eine dauerhafte Modifikation, lässt sich aber bei Bedarf mit einem
+                    Tropfen Lötzinn leicht rückgängig machen. Meine bevorzugte Methode ist, die Leiterbahn zu
+                    durchtrennen und eine Diode darüber zu löten. Diese lässt Spannung von der V-In-Schiene zum
+                    Motor-Shield fließen, jedoch nicht in die andere Richtung.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=577s" target="_blank" class="ts-link">(09:37)</a>
+                <div class="text">So kann ich ein einzelnes Netzteil am Hohlstecker des Uino verwenden, solange ich mit
+                    niedriger Spannung arbeiten kann, beispielsweise zum Testen. Benötige ich die volle Gleisspannung,
+                    kann ich jederzeit ein zweites Netzteil anschließen. Um es klarzustellen: All diese Lösungen sind
+                    nur Notlösungen und beheben nicht das Kernproblem, nämlich die beiden von uns verwendeten
+                    Komponenten.</div>
+            </div>
+
+            <h2><a id="anwendungsfall-2" href="#anwendungsfall-2" title="Permalink">#</a> Anwendungsfall 2: x88-74 Motor
+                Shield</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=602s" target="_blank" class="ts-link">(10:02)</a>
+                <div class="text">Außerdem erfordern sie den Aufwand, zwei separate Netzteile mit unterschiedlichen
+                    Spannungen zu verwenden, Modifikationen an Standardplatinen vorzunehmen und diverse Fehlerquellen zu
+                    schaffen. Es ist verständlich, dass Modellbahner ohne Elektronik- oder zumindest technischen
+                    Hintergrund zögern, diese Modifikationen durchzuführen. Was wir suchen, ist eine zuverlässige
+                    Plug-and- Play-Lösung, die mit nur einem einzigen Netzteil auskommt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=626s" target="_blank" class="ts-link">(10:26)</a>
+                <div class="text">Genau das verspricht das <span class="highlight">x88-74 Motor Shield</span>, neben
+                    einer höheren Gleisspannung. Tauschen wir also das Standard-Motor- Shield gegen das x88-74 aus und
+                    sehen wir uns an, wie sich die Stromverteilung verändert. Ein Schlüsselelement des x88-74 ist der
+                    integrierte <span class="highlight">DC/DC-Wandler</span>. Ein DC/DC-Wandler hat die gleiche Funktion
+                    wie ein LDO, nämlich die Spannung von einem höheren auf ein niedrigeres Niveau zu reduzieren.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=657s" target="_blank" class="ts-link">(10:57)</a>
+                <div class="text">Der Vorteil ist jedoch, dass er dies ohne große Wärmeentwicklung tut, sodass wir ein
+                    Gleichstromnetzteil verwenden können. Die gewünschte Gleisspannung wird an den Hohlstecker des X8874
+                    angelegt. Von dort durchläuft sie einen Verpolungsschutz (optional, kann bei Bedarf überbrückt
+                    werden). Anschließend gelangt sie zu den Brücken für das Gleissignal und zum DC/DC-Wandler, der die
+                    Spannung auf <span class="highlight">7,2 Volt</span> reduziert und an die VIN- Schiene weiterleitet.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=681s" target="_blank" class="ts-link">(11:21)</a>
+                <div class="text">VIN führt das Signal zum UINO-Board und dort zum LDO, der die Spannung weiter auf 5
+                    Volt reduziert und zurück an die 5V-Schiene leitet. Die 5V-Schiene führt zurück zum X8874,
+                    hauptsächlich für die 5V-Nutzer, wo sich die Logikgatter zur Steuerung des DCC-Signals befinden und
+                    es zu den H- Brücken führen. Die Kupferleiterbahn vom DC/DC- Wandler zur VIN-Schiene ist zum
+                    Durchtrennen vorbereitet.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=710s" target="_blank" class="ts-link">(11:50)</a>
+                <div class="text">In diesem Pfad befindet sich jedoch keine Diode. Sollte die VIN-Schiene aus
+                    irgendeinem Grund eine höhere Spannung als die Eingangsspannung des DC/DC-Wandlers aufweisen, könnte
+                    ein geringer Stromfluss in den DC/DC-Wandler erfolgen, der schädlich sein könnte. In der hier
+                    gezeigten Konfiguration ist dies jedoch ausgeschlossen. Wichtig ist, dass das Netzteil an das Motor-
+                    Shield und nicht an den Arduino angeschlossen wird.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=745s" target="_blank" class="ts-link">(12:25)</a>
+                <div class="text">Würde man die Gleisspannung stattdessen an den Arduino anschließen, entstünde eine
+                    hohe Spannung am LDO, die diesen durchbrennen und den DC/DC-Wandler des x88-74 beschädigen könnte.
+                    Um zu vermeiden, versehentlich ein Netzteil anzuschließen, empfiehlt es sich, den
+                    Arduino-Hohlstecker mit Klebeband abzukleben. Eine weitere Einschränkung ist die Begrenzung der
+                    5-V-Stromversorgung auf maximal 1 Ampere.</div>
+            </div>
+
+            <h2><a id="anwendungsfall-3" href="#anwendungsfall-3" title="Permalink">#</a> Anwendungsfall 3: DCC Ox
+                Shield</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=801s" target="_blank" class="ts-link">(13:21)</a>
+                <div class="text">In der hier gezeigten Konfiguration ist dies kein Problem, kann aber bei zusätzlichen
+                    5-V-verbrauchern wie LEDs oder Servomotoren zu einer Einschränkung werden. Die 1-A-Grenze wird
+                    schneller erreicht als erwartet und stellt einen Spitzenwert dar, nicht die dauerhaft verfügbare
+                    Spannung. Eine zweite Möglichkeit, nur ein einziges Netzteil für den gesamten Stack zu verwenden,
+                    ist die Nutzung eines <span class="highlight">DCC-Ox</span>.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=828s" target="_blank" class="ts-link">(13:48)</a>
+                <div class="text">Auf dem Standard-Motor- Shield (wie dem x88-74) befindet sich das DCC Ox Shield. Es
+                    verwendet einen DC/DC-Wandler, um Gleisspannungen von bis zu 18 Volt auf das für den Uino und andere
+                    5-V-Geräte geeignete 5-V-Niveau zu reduzieren. Bis zu drei Ampere Strom stehen auf der 5-V- Schiene
+                    zur Verfügung. Die Eingangsspannung wird entweder über den Hohlstecker mit Verpolungsschutz oder
+                    über die V-In-Schiene bezogen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=855s" target="_blank" class="ts-link">(14:15)</a>
+                <div class="text">Bei Stromversorgung über den Hohlstecker wird die Spannung auch an die V-In-Schiene
+                    angelegt, sodass sie für die anderen Shields im Stack auf der nächsttieferen Ebene verfügbar ist.
+                    Das Motor-Shield (siehe Grafik) versorgt die H-Brücken mit Gleisspannung, und 5 Volt werden für die
+                    Gatterlogik zur Steuerung des DCC-Ausgangs verwendet. Wie bereits erwähnt, wird Vin auf Uino-Ebene
+                    an den LDO angelegt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=885s" target="_blank" class="ts-link">(14:45)</a>
+                <div class="text">Vin schaltet außerdem die 5-V-Stromversorgung des USB-Anschlusses ab, sodass die
+                    5-V-Leitung des Computers von den über die 5-V-Schiene eingehenden Geräten getrennt wird. Der
+                    ALO-Ausgang ist entsprechend eingestellt. Die Spannung beträgt 5 Volt, aber da diese durch die vom
+                    DCC Ox Shield über die 5Vt-Schiene empfangenen 5,1 Volt berechnet werden, fließt kein Strom und der
+                    LDO bleibt kühl.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=916s" target="_blank" class="ts-link">(15:16)</a>
+                <div class="text">Solange der Eingang des LDO auf dem Niveau V<sub>in</sub> liegt, kann auch kein
+                    Rückstrom durch den LDO fließen. Anders ausgedrückt: Der Onboard-LDO des Uino wird vollständig
+                    überbrückt. Wie wir sehen, kann in dieser Konfiguration die Gleisspannung vom Netzteil an beliebiger
+                    Stelle angelegt werden. Wir können die Hohlstecker des Arduino oder des DCC Ox Shield verwenden.
+                </div>
+            </div>
+
+            <h2><a id="vergleich" href="#vergleich" title="Permalink">#</a> Vergleich & Komplexe Setups</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=962s" target="_blank" class="ts-link">(16:02)</a>
+                <div class="text">Der beste Anschluss für die Gleichstromversorgung ist das DCC Ox Shield, da es über
+                    einen Verpolungsschutz verfügt und den kürzesten Weg zum DC/ DC-Wandler bietet. Die Versorgung des
+                    Stacks über den Hohlstecker des Arduino führt zu einem geringen Spannungsabfall entlang der
+                    V<sub>in</sub>-Schiene und der Versorgung über den Klemmenanschluss des Motors. Das Shield umgeht
+                    den Verpolungsschutz.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=985s" target="_blank" class="ts-link">(16:25)</a>
+                <div class="text">Schließt man das Oszilloskop an die VIN- und 5V-Schienen an, erhält man folgendes
+                    Ergebnis beim Anschluss von Gleichstrom: Vin steigt an und die 5V-Schiene erreicht nach etwa 10
+                    Millisekunden 5 V vom Onboard-Alio. Anschließend wird der DC/DC-Wandler aktiviert, die Spannung der
+                    5V-Schiene steigt auf etwa 5,1 Volt und der Orino-LDO wird überbrückt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1027s" target="_blank"
+                    class="ts-link">(17:07)</a>
+                <div class="text">Die Tabelle zeigt die wichtigsten Unterschiede und deren Bewertung im Kontext des
+                    einfachen Anwendungsfalls mit nur einem Uino und einem Motor-Shield. Beide Lösungen beheben das
+                    grundlegende Problem der Überhitzung des Uino- Alio und ermöglichen gleichzeitig die Verwendung
+                    eines einzigen Netzteils für die Gleise und den Uino-Stack. Der Hauptunterschied besteht darin, dass
+                    der DCC-Oxy die Gleisspannung direkt an die VIN-Schiene des Stacks anlegt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1063s" target="_blank"
+                    class="ts-link">(17:43)</a>
+                <div class="text">Der x88-74 hingegen legt 7,2 Volt an die VIN- Schiene an, um den Orino-LDO zu
+                    versorgen. Diese Spannung hat praktisch keine andere Verwendung, was bedeutet, dass die VIN-Schiene
+                    nicht mehr für die Stromversorgung anderer Shields im Stack zur Verfügung steht. Dies ist meiner
+                    Meinung nach der größte Nachteil des Konzepts. Ein weiterer Unterschied ist die verfügbare
+                    5V-Spannung.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1091s" target="_blank"
+                    class="ts-link">(18:11)</a>
+                <div class="text">Der x88-74 nutzt weiterhin den Onboard- LDO des Uino mit einem Spitzenstrom von 1
+                    Ampere und einem realistischeren Dauerstrom von etwa 500 Milliampere. Das DCC Ox Shield stellt drei
+                    Ampere an der 5V-Schiene bereit, was vorteilhaft ist, wenn man zusätzliche Verbraucher wie eine
+                    LED-Kette mit etwa 50 Milliampere pro LED oder Servomotoren für Weichen anschließen möchte.</div>
+            </div>
+
+            <h2><a id="kombination" href="#kombination" title="Permalink">#</a> Kombination: x88-74 + DCC Ox + Red Head
+            </h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1150s" target="_blank"
+                    class="ts-link">(19:10)</a>
+                <div class="text">Ein Risiko ist höher, wenn die 5-V- Schiene getrennt wird. Der LDO ist dann der
+                    Gleisspannung ausgesetzt. Wird V<sub>in</sub> getrennt, erhält der ALO- Eingang eine umgekehrte
+                    Spannung von der 5-V- Schiene. Da es auf der Uino-Platine keine Verbraucher für V<sub>in</sub> gibt,
+                    sollte dies jedoch keinen Schaden verursachen. Dennoch sollte auf eine gute Verbindung zwischen den
+                    Shields geachtet werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1240s" target="_blank"
+                    class="ts-link">(20:40)</a>
+                <div class="text">Betrachten wir nun einen etwas komplexeren Anwendungsfall: die Kombination des
+                    X88-74-Motor-Shields mit dem DCC Oxboard. Warum sollte man das tun? Aufgrund der zusätzlichen
+                    Funktionalität des DCC Ox Shields, das über einen Anschluss für den <span
+                        class="highlight">IoT-Stick</span> und einen Ausgang für die <span
+                        class="highlight">Neopixel</span>-Lichtleiste verfügt. Das macht den DCC X Stack zu einer
+                    drahtlosen Lokomotivzentrale.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1314s" target="_blank"
+                    class="ts-link">(21:54)</a>
+                <div class="text">Die einfachste Methode ist, den x88-74 mit Stack-Power zu versorgen. Wie bereits
+                    erwähnt, liegen dadurch 7,2 Volt an der V-In-Schiene an. Das DCC Ox Shield empfängt die 7,2 Volt von
+                    V-In und aktiviert den DC/DC-Wandler, der 5,1 Volt an die 5-V-Schiene anlegt und den Onboard- LDO
+                    umgeht. Benötigen Sie mehr Leistung, können Sie einen zusätzlichen DC-Eingang an das DCC Ox Shield
+                    anschließen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1364s" target="_blank"
+                    class="ts-link">(22:44)</a>
+                <div class="text">In diesem Fall gibt das DCC Ox Shield die Spannung aus, die Sie an die V-In- Schiene
+                    des Stacks anlegen. Dies führt zu einem Konflikt mit dem 7,2-V-Ausgang des X8874 Shields und kann
+                    den DC/DC-Wandler beschädigen. Um den Konverter sicher zu betreiben, <span class="highlight">müssen
+                        Sie die V-Eingangsleitung auf der x88-74-Platine durchtrennen</span>.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1454s" target="_blank"
+                    class="ts-link">(24:14)</a>
+                <div class="text">Der letzte Anwendungsfall ist das Hinzufügen eines <span class="highlight">Red Head
+                        Shields</span>. Das Red Head Shield erweitert den DCC-X-Stack um LocoNet-Funktionalität. Diese
+                    Ausgänge benötigen eine Stromversorgung von 12 bis 16 Volt. Bei Verwendung des x88 74 tritt das
+                    Problem auf, dass der V-Eingang durch den 7,2-Volt-Ausgang blockiert ist, was für LocoNet nicht
+                    ausreicht.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1534s" target="_blank"
+                    class="ts-link">(25:34)</a>
+                <div class="text">Um die 12 bis 16 Volt an den Lokomotivanschlüssen zu erzeugen, muss die
+                    V-Eingangsschiene mit Strom versorgt werden. Das bedeutet, dass wir das DCC Ox Shield mit Strom
+                    versorgen und die V-Eingangsleiterbahn des X88-74 Shields durchtrennen müssen. Somit haben wir ein
+                    12- bis 16-Volt- Netzteil am DCC Ox Shield und ein Netzteil für die Gleisspannung am Motor Shield.
+                </div>
+            </div>
+
+            <h2><a id="abschluss" href="#abschluss" title="Permalink">#</a> Abschluss</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=YnCd9ipkF2M&t=1614s" target="_blank"
+                    class="ts-link">(26:54)</a>
+                <div class="text">Das war's mit den Anwendungsfällen. Ich hoffe, es war hilfreich und Sie haben nun ein
+                    besseres Verständnis der Stromversorgungsoptionen. Bei spezifischen Fragen nutzen Sie bitte den
+                    Kommentarbereich. Wenn euch dieses Video gefallen hat, klickt bitte unten auf den „Gefällt
+                    mir“-Button. Vielen Dank fürs Zuschauen und bis zum nächsten Video!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>LDO (Low Drop-Out Regulator)</dt>
+                    <dd>Der lineare Spannungsregler auf dem Arduino, der Überspannung in Wärme umwandelt. Er ist die
+                        Hauptschwachstelle bei hohen Eingangsspannungen.</dd>
+
+                    <dt>DC/DC-Wandler</dt>
+                    <dd>Ein effizienter Regler, der Spannungen ohne große Hitzeentwicklung reduziert (im x88-74 auf
+                        7,2V, im DCC Ox auf 5,1V).</dd>
+
+                    <dt>V<sub>in</sub> Schiene</dt>
+                    <dd>Die Versorgungsleitung im Arduino-Stack, die Shields untereinander verbindet. Spannungskonflikte
+                        hier können Hardware zerstören.</dd>
+
+                    <dt>x88-74 Motor Shield</dt>
+                    <dd>Ein spezielles Motor Shield für DCC-EX mit integriertem Wandler, das jedoch die
+                        V<sub>in</sub>-Schiene auf 7,2V festlegt.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

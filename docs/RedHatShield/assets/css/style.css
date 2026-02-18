@@ -1,0 +1,458 @@
+/* --- 1. Variablen & Grund-Setup --- */
+:root {
+    --header-height: 60px;
+    --sidebar-width: 300px;
+    --bg-header: #222;
+    --bg-sidebar: #f4f4f4;
+    --text-color: #333;
+    --accent-color: #007bff; /* Blau für aktive Links */
+	--accent-color-rgb: 0, 123, 255; /* Das gleiche Blau als RGB-Werte */
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+.last_change{
+    margin: 0px;
+    font-size: 0.7rem;
+    color: #53575c;
+}
+
+a, p, h2 { scroll-margin-top: calc(var(--header-height) + 20px); }
+
+.container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+h1 { color: #2c3e50; border-bottom: 1px solid #2c3e50; padding-bottom: 10px; }
+h1:has(+ p.last_change) {
+  margin-bottom: 0;
+}
+h2 { background: #2c3e50; color: white; padding: 10px 15px; margin-top: 35px; border-radius: 4px; font-size: 1.2rem; }
+
+.line { display: flex; margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #eee; transition: background 0.2s; }
+.line:hover { background: #fcfcfc; }
+
+.text { flex: 1;}
+.highlight { color: #d35400; font-weight: bold; }
+
+.glossary { margin-top: 50px; padding: 25px; background: #eef2f3; border-radius: 8px; border: 1px solid #ddd; }
+.glossary h3 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #007bff; display: inline-block; }
+.glossary dt { font-weight: bold; color: #007bff; margin-top: 15px; }
+.glossary dd { margin-left: 0; margin-bottom: 10px; font-size: 0.95rem; }
+
+.ts-link { 
+	min-width: 80px; 
+	font-family: monospace; 
+	text-decoration: none; 
+	padding: 5px 10px; 
+	border-radius: 4px; 
+	font-weight: bold;
+	text-align: center;
+	margin-right: 20px;
+	
+    /* VERTIKALE ZENTRIERUNG */
+    display: flex;          /* Macht den Link zur Flex-Box */
+    align-items: center;    /* Zentriert den Text vertikal */
+    justify-content: center;/* Zentriert den Text horizontal */
+    
+    /* Optional: Falls der Link immer die gleiche Höhe haben soll wie der Text daneben */
+    align-self: flex-start; 
+}
+		
+/* --- 2. Header --- */
+.main-header {
+    height: var(--header-height);
+    background: var(--bg-header);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1200; /* Ganz oben */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#menu-toggle {
+    background: #444;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-right: 20px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+#menu-toggle:hover {
+    background: #555;
+}
+
+.site-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+a[id],
+.site-title a {
+    color: inherit;        /* gleiche Farbe wie normaler Text */
+    text-decoration: none; /* kein Unterstrich */
+    cursor: default;       /* ganz normaler Maus-Pfeil */
+}
+
+a[id],
+.site-title a:hover {
+    color: inherit;        /* keine Farbänderung */
+    text-decoration: none; /* kein Unterstrich */
+    cursor: pointer;       /* HAND-CURSOR */
+}
+
+/* --- 3. Layout-Struktur --- */
+.wrapper {
+    display: flex;
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+	align-items: flex-start; /* Wichtig für Sticky-Elemente */
+}
+
+/* --- 4. Sidebar (Menü) --- */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-sidebar);
+    border-right: 1px solid #ddd;
+    transition: margin-left var(--transition-speed) ease, left var(--transition-speed) ease;
+    overflow-y: auto;
+    flex-shrink: 0; /* Verhindert, dass die Sidebar gequetscht wird */
+	
+    /* NEU: Fixierung auf Desktop */
+    position: sticky; 
+    top: var(--header-height); /* Bleibt unterhalb des Headers "kleben" */
+    height: calc(100vh - var(--header-height)); /* Volle Resthöhe des Bildschirms */
+    overflow-y: auto; /* Falls das Menü länger als der Bildschirm ist, ist es in sich scrollbar */
+}
+
+/* Desktop-Verstecken via Margin */
+.sidebar.hidden {
+    margin-left: calc(var(--sidebar-width) * -1);
+}
+
+/* Styling für die Links in der menu.html */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background 0.2s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #e9e9e9;
+}
+
+/* Aktiver Link */
+.sidebar ul li a.active-link {
+    background-color: var(--accent-color);
+	/* background: linear-gradient(90deg, rgba(var(--accent-color-rgb), 1.0) 0%, transparent 100%); */
+    color: white;
+    font-weight: bold;
+}
+
+/* Styling für den Header innerhalb der Sidebar */
+.sidebar-header {
+    padding: 20px 10px;        /* Abstand oben/unten und seitlich */
+    border-bottom: 1px solid #ddd; /* Optionale Trennlinie zum Menü */
+    text-align: center;        /* Zentriert den Text horizontal */
+}
+
+.sidebar-header h3 {
+    margin: 0;                 /* Entfernt Standard-Abstände des Browsers */
+    font-size: 1.2rem;         /* Größe nach Bedarf anpassen */
+    color: var(--text-color);  /* Nutzt deine definierte Variable */
+}
+
+/* --- 5. Inhaltsbereich --- */
+.content {
+    flex-grow: 1;
+	padding: 0 2rem 2rem 2rem;
+    /* max-width: 1200px; /* Optional: Begrenzt die Textbreite auf Desktop */
+}
+
+/* --- 6. Mobile Anpassungen (Overlay) --- */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    backdrop-filter: blur(2px); /* Optionaler moderner Blur-Effekt */
+}
+
+/* Styling für das Submenü */
+/* 1. Das Submenü-Container (die <ul>) */
+.submenu {
+    display: none;             /* Standardmäßig versteckt */
+    list-style: none;
+    padding: 0;                /* Reset */
+    margin: 0;
+    background: #f9f9f9;       /* Etwas hellerer Hintergrund als die Sidebar */
+    border-left: 3px solid var(--accent-color); /* Optionale Linie links zur Orientierung */
+}
+
+/* 2. Die Links im Submenü */
+.submenu li a {
+    padding-left: 40px !important; /* Deutliche Einrückung nach rechts */
+    font-size: 0.9rem;             /* Schrift etwas kleiner machen */
+    color: #666;                   /* Etwas hellere Farbe als das Hauptmenü */
+    border-bottom: none;           /* Keine Trennlinien zwischen Unterpunkten */
+}
+
+/* 3. Hover-Effekt für Unterpunkte */
+.submenu li a:hover {
+    background-color: #f0f0f0;
+    color: var(--accent-color);
+}
+
+/* 4. Wenn der Unterpunkt aktiv ist */
+.submenu li a.active-link {
+    background-color: transparent; /* Oder eine Farbe deiner Wahl */
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Wenn das Eltern-LI die Klasse 'open' hat, zeige das Submenü */
+.has-submenu.open .submenu {
+    display: block;
+}
+.submenu-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Den Span-Pfeil stylen */
+.submenu-toggle .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-left: 5px;
+}
+
+/* Pfeil drehen, wenn das Menü offen ist */
+.has-submenu.open > .submenu-toggle .arrow {
+    transform: rotate(180deg);
+}
+
+.submenu li a {
+    font-size: 0.9rem;        /* Unterpunkte etwas kleiner */
+    padding: 8px 20px;
+}
+
+/* Optional: Ein leichter innerer Schatten für Tiefe */
+.has-submenu.open > .submenu-toggle {
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Markierung für den Hauptpunkt, wenn ein Unterpunkt darin aktiv ist */
+/* (Egal ob das Submenü offen oder geschlossen ist) */
+.sidebar ul li a.active-transcript-link,
+.has-submenu:has(.active-link) > .submenu-toggle {
+    background-color: rgba(var(--accent-color-rgb), 0.1); /* Ganz zarte Farbe */
+    color: var(--accent-color); /* Schrift in Akzentfarbe */
+    font-weight: bold;
+    border-left: 4px solid var(--accent-color); /* Der farbige Balken links */
+}
+
+/* Gemeinsamer Stil für: 
+   1. Das Submenü ist gerade offen (.open)
+   2. Ein Unterpunkt darin ist aktiv (.child-active) 
+*/
+.has-submenu.open > .submenu-toggle,
+.has-submenu.child-active > .submenu-toggle {
+    /* background: linear-gradient(90deg, rgba(var(--accent-color-rgb), 0.1) 0%, transparent 100%); */
+	background-color: rgba(var(--accent-color-rgb), 0.1);
+    color: var(--accent-color);
+    border-left: 4px solid var(--accent-color); /* Der "dünne blaue" Akzent */
+    font-weight: normal; /* Nicht mehr fett, damit es dezent bleibt */
+}
+
+/* Optional: Den Hover-Effekt anpassen, damit er nicht beißt */
+.submenu-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: var(--header-height);
+        left: calc(var(--sidebar-width) * -1); /* Standardmäßig links aus dem Bild */
+        height: calc(100vh - var(--header-height));
+        z-index: 1100;
+        margin-left: 0 !important; /* Margin-Logik vom Desktop ignorieren */
+    }
+
+    .sidebar.active {
+        left: 0; /* Reinrutschen auf Mobile */
+    }
+
+    /* Overlay anzeigen, wenn Sidebar aktiv ist */
+    .sidebar.active + .sidebar-overlay {
+        display: block;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}
+
+a.icon:not([href*="://"]) {
+  padding-left: 20px;
+  background: url("../images/iott-logo.jpg") no-repeat left center;
+  background-size: 16px;
+}
+
+a[href*="youtube.com"],
+a[href*="youtu.be"] {
+  padding-left: 20px;
+  background: url("../images/yt-icon.png") no-repeat left center;
+  background-size: 16px;
+}
+
+a[href*="github.io"],
+a[href*="github.com"] {
+  padding-left: 20px;
+  background: url("../images/gh-icon.png") no-repeat left center;
+  background-size: 16px;
+}
+
+a[href*="aliexpress.com"] {
+  padding-left: 20px;
+  background: url("../images/aliexpress.ico") no-repeat left center;
+  background-size: 16px;
+}
+
+a[href*="reichelt.de"] {
+  padding-left: 20px;
+  background: url("../images/reichelt.ico") no-repeat left center;
+  background-size: 16px;
+}
+
+a[href*="berrybase.de"] {
+  padding-left: 20px;
+  background: url("../images/berrybase.webp") no-repeat left center;
+  background-size: 16px;
+}
+
+a[href*="m5stack.com"] {
+  padding-left: 20px;
+  background: url("../images/m5stack.ico") no-repeat left center;
+  background-size: 16px;
+}
+
+a[href*="1zu160.info"],
+a[href*="1zu160.com"],
+a[href*="1zu160.net"] {
+  padding-left: 20px;
+  background: url("../images/1zu160.ico") no-repeat left center;
+  background-size: 16px;
+}
+
+a[href$=".pdf"] {
+  padding-left: 20px;
+  background: url("../images/pdf-icon.png") no-repeat left center;
+  background-size: 16px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.gallery_big {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.thumb {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.thumb_big {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.thumb:hover, .thumb_big:hover {
+  transform: scale(1.03);
+}
+
+.ls_none {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ls_none_padding {
+  list-style: none;
+}
+
+.ls_margin_bottom li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.red { color: hsl(0, 100%, 41%); font-weight: bold; }
+
+/* Styling für Inline-Code (im Text) */
+code {
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  background-color: #f4f4f4; /* Hellgrauer Hintergrund */
+  color: #d63384;            /* Kontrastreiche Farbe für Code-Fragmente */
+  padding: 0.2rem 0.4rem;    /* Etwas Abstand zum Rand */
+  border-radius: 4px;        /* Abgerundete Ecken */
+  /* font-size: 90%;            /* Etwas kleiner als der Fließtext */
+}
+
+/* Styling für Code-Blöcke (innerhalb von <pre>) */
+pre code {
+  display: block;            /* Ganze Breite ausfüllen */
+  overflow-x: auto;          /* Scrollbar bei langem Code */
+  padding: 1rem;             /* Mehr Platz im Block */
+  background-color: #282c34; /* Dunkler "Atom" Style Hintergrund */
+  color: #abb2bf;            /* Hellgraue Schriftfarbe */
+  line-height: 1.5;          /* Bessere Lesbarkeit */
+  border: 1px solid #3e4451;
+}

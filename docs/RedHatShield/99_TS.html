@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - Now available: RedHat++ Shield (Video #99)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>Now available: RedHat++ Shield (Video#99) - 31.07.2022</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:11</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+            
+            <h2><a id="einfuehrung" href="#einfuehrung" title="Permalink">#</a> Einführung & Hardware-Überblick</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">Das <span class="highlight">Red Hat Plus Plus Shield</span> ist nun fertiggestellt und
+                    die begrenzte Anzahl an Ports ist im Tandy Store erhältlich. Zeit also für einen genaueren Blick auf
+                    die Platine, die Schaltpläne und die Installation. Willkommen auf dem <span
+                        class="highlight">IoT-Kanal</span>! Ich bin Hans Tanner. Falls Sie mit dem Red Hat Plus Plus
+                    Shield-Konzept noch nicht vertraut sind: Das Shield wird auf eine Arduino-basierte <span
+                        class="highlight">DCC Plus Plus X</span>-Zentrale aufgesetzt und verwandelt diese in eine lokale
+                    Netzwerkzentrale.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=39s" target="_blank" class="ts-link">(00:39)</a>
+                <div class="text">An diese können typische Low-Connected-Geräte wie Fahrregler oder Blockdetektormodule
+                    angeschlossen und mit JMRI oder anderer Steuerungssoftware integriert werden. Weitere Informationen
+                    zum Konzept und zur Entwicklung des finalisierten Port- und Software-Designs finden Sie in den
+                    Videos der Red Hat-Playlist auf diesem Kanal.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=62s" target="_blank" class="ts-link">(01:02)</a>
+                <div class="text">Nun zu den Hardware-Details: Die Oberseite der Platine wirkt recht leer mit nur
+                    wenigen Komponenten. Tatsächlich war es eines meiner Designziele, nur die Elemente auf der Oberseite
+                    zu platzieren, auf die der Benutzer Zugriff haben muss. Betrachten wir sie kurz: Die erste
+                    Komponente ist der DC-Stromanschluss.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=88s" target="_blank" class="ts-link">(01:28)</a>
+                <div class="text">Er kann zur Stromversorgung des gesamten Port-Stacks verwendet werden, insbesondere
+                    bei kleineren Anwendungen. Bei Zügen und einem Gesamtstrom von ca. 2 Ampere oder weniger sollte der
+                    Gleichstromblock an ein 12- bis 16-Volt-Netzteil angeschlossen werden. Er kann problemlos zum Ein-
+                    und Ausschalten der Zentrale verwendet werden. Nach dem Anschließen startet die Zentrale.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=111s" target="_blank" class="ts-link">(01:51)</a>
+                <div class="text">Nach dem Trennen vom Netz speichert sie alle Laufzeitdaten und schaltet sich nach 30
+                    Sekunden ab. Daneben befindet sich der <span class="highlight">LocoNet-B</span>-Anschluss, an den
+                    zusätzliche Booster angeschlossen werden können. Er verfügt über das übliche Verriegelungssignal,
+                    die Rail-Sync-Pins sind jedoch nur bei eingeschalteter Gleisspannung aktiv. Ohne Gleisspannung sind
+                    sie ausgeschaltet, und angeschlossene Poster verursachen einen Kurzschluss.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=140s" target="_blank" class="ts-link">(02:20)</a>
+                <div class="text">Eine blaue LED neben der Buchse zeigt den Status der Gleisspannung an.
+                    Selbstverständlich kann auch der Fahrregler an diese Steckdose angeschlossen werden. Beachten Sie
+                    jedoch, dass er sich bei Unterbrechung der Gleisspannung abschaltet. Soll der Fahrregler weiterhin
+                    funktionieren, muss eine Batterie angeschlossen werden.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=159s" target="_blank" class="ts-link">(02:39)</a>
+                <div class="text">Dies gilt nicht für die beiden anderen LocalNet-Steckdosen. Diese sind <span
+                        class="highlight">Loconet-T</span>-Steckdosen und liefern Gleichstrom für die Rennleitungen.
+                    Dieser Strom ist aktiv, solange die Abschirmung mit Strom versorgt wird. Sie können also die
+                    Gleisspannung abschalten, die angeschlossenen Fahrregler bleiben aber auch ohne Batterie aktiv.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=182s" target="_blank" class="ts-link">(03:02)</a>
+                <div class="text">Der Status der Stromversorgung wird durch die gelbe LED zwischen den beiden Buchsen
+                    angezeigt. Beachten Sie, dass es nach dem Anschließen des DC-Blocks eine Einschaltverzögerung von
+                    ca. 5 Sekunden gibt, bis das Fahrreglernetzwerk mit Strom versorgt wird. Der grüne Anschluss dient
+                    zum Anschluss an den DCC-Gleisausgang des <span class="highlight">Arduino Motor Shields</span>.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=205s" target="_blank" class="ts-link">(03:25)</a>
+                <div class="text">Stellen Sie sicher, dass Sie ihn an den Hauptgleisausgang und nicht an den
+                    Programmiergleisausgang anschließen. Wenn Sie ein Standard-Motor Shield verwenden, befindet sich der
+                    Gleisausgang auf derselben Seite des Gehäuses, sodass der Anschluss sehr einfach ist. Das DCC-Signal
+                    wird vom Redhead Plus Plus Shield benötigt, um die Rennleitungen des lokalen Netzes (P-Ausgang) zu
+                    versorgen und somit zusätzliche Booster anzusteuern.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=230s" target="_blank" class="ts-link">(03:50)</a>
+                <div class="text">Die große RGB-LED ist die erste LED der LED-Kette und kann mit dem dreiadrigen
+                    Anschlusskabel verbunden werden. Bedeutung und Farben dieser LED sind vollständig programmierbar. In
+                    der Standardeinstellung ist sie als Betriebs-LED konfiguriert. Rot bedeutet Gleisstromversorgung,
+                    Gelb bedeutet Gleisstromversorgung inaktiv und Grün bedeutet, dass das DCC-Gleis mit Strom versorgt
+                    wird.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=255s" target="_blank" class="ts-link">(04:15)</a>
+                <div class="text">Dies ist die Standardeinstellung. Sie können die LED jedoch auch so konfigurieren,
+                    dass sie eine Weichenstellung, den Gleisbelegungsstatus, das Signalbild und einige andere Dinge
+                    anzeigt. Die beiden Jumper direkt daneben... Es ermöglicht Ihnen die Auswahl der Ausgangspins für
+                    den DC Plus Plus Export.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=275s" target="_blank" class="ts-link">(04:35)</a>
+                <div class="text">Wenn Sie einen Arduino Uno als Kommandozentrale verwenden, platzieren Sie die Jumper
+                    wie abgebildet auf der rechten Seite. Die Kommunikation wird dann an die I/O-Pins 0 und 1 des
+                    Arduino-Boards geleitet. Wenn Sie stattdessen einen Arduino Maker verwenden, platzieren Sie die
+                    Jumper auf der linken Seite und stellen Sie eine Drahtverbindung von den beiden Lötpads zu den
+                    Sende- und Empfangspins Ihres Boards her.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=298s" target="_blank" class="ts-link">(04:58)</a>
+                <div class="text">Beachten Sie, dass die Kommunikationspins für 5-Volt-Pegel ausgelegt sind. Wenn Ihr
+                    Board mit 3,3-Volt-Logikpegeln arbeitet, können Sie das Redhead Plus Plus Shield anpassen, indem Sie
+                    einfach einen Jumper auf den mit 3 V3 gekennzeichneten Pins hinzufügen. Der verbleibende achtpolige
+                    Anschluss dient zum Anschluss des <span class="highlight">IoT-Sticks</span>, der als Gehirn
+                    fungiert.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=327s" target="_blank" class="ts-link">(05:27)</a>
+                <div class="text">Auf der Seite des <span class="highlight">Growth Ports</span> wird er über ein
+                    50-mm-Growth-Kabel mit dem Grove Outlet auf der Rückseite des Boards verbunden. Dies ist die lokale
+                    Netzwerkverbindung für den <span class="highlight">IoT-Stick</span>. Abschließend noch die
+                    Arduino-Pin-Header. Da ich noch überlege, ob ich sie verwenden soll oder nicht, biete ich die
+                    Platine vorerst in zwei Versionen an.</div>
+            </div>
+
+            <h2><a id="schaltplaene" href="#schaltplaene" title="Permalink">#</a> Schaltpläne & Technische Komponenten</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=356s" target="_blank" class="ts-link">(05:56)</a>
+                <div class="text">Persönlich bevorzuge ich die Standardstiftleisten, da die Platine dadurch
+                    übersichtlicher wirkt. Wer experimentieren möchte, kann beispielsweise einige der ungenutzten Pins
+                    verwenden, um Weichen oder Blockmelder anzuschließen, wie es mit der DC Plus X Software möglich ist.
+                    Die Verwendung von Buchsenstiftleisten bietet den Vorteil einfacher Verbindungen mit Jumperkabeln.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=381s" target="_blank" class="ts-link">(06:21)</a>
+                <div class="text">Welche Version bevorzugt ihr? Schreibt es mir in die Kommentare unter diesem Video.
+                    Drehen wir die Platine nun um und betrachten wir die verbauten Komponenten. Wir identifizieren sie
+                    im Schaltplan, der übrigens auf meiner GitHub-Seite zusammen mit allen weiteren Designinformationen
+                    veröffentlicht ist.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=404s" target="_blank" class="ts-link">(06:44)</a>
+                <div class="text">Als Erstes fällt die grüne Platine in der Mitte auf. Dies ist der <span
+                        class="highlight">DC/DC-Wandler</span>, der die 5-Volt-Spannung für den gesamten Arduino-Stack
+                    sowie eine LED-Kette mit 40 LEDs erzeugt. So sieht es im Schaltplan aus: Die Stromversorgung
+                    erfolgt. Der Eingang des DC-Blocks ist mit einem Verpolungsschutz versehen und wird dann an die
+                    Eingangslötpads des DC/DC-Wandlers angeschlossen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=440s" target="_blank" class="ts-link">(07:20)</a>
+                <div class="text">Am anderen Ende des Wandlers befindet sich der 5-Volt-Hauptbus, der die Onboard-Logik
+                    und den 5-Volt-Pin des Arduino versorgt. Der DC/DC-Wandler hat eine einstellbare Ausgangsspannung,
+                    die ich normalerweise auf etwa 5,1 Volt einstelle, also etwas höher als die vom Arduino erzeugten 5
+                    Volt. Dadurch wird der Audioausgang umgangen und somit vor Überhitzung geschützt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=470s" target="_blank" class="ts-link">(07:50)</a>
+                <div class="text">Es ist möglich, eine Eingangsspannung von bis zu etwa 16 Volt zu verwenden, mit der
+                    dann auch das Motor-Shield für Anwendungen mit geringem Stromverbrauch versorgt werden kann. Sie
+                    fragen sich vielleicht, warum ich eine Datenplatine verwende, anstatt alle Komponenten des
+                    DC/DC-Wandlers direkt auf die Hauptplatine zu löten.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=489s" target="_blank" class="ts-link">(08:09)</a>
+                <div class="text">Nun, ich habe tatsächlich ein Layout dafür, aber aufgrund des aktuellen Chipmangels
+                    scheint es unmöglich, den Wandlerchip zu einem vernünftigen Preis zu bekommen. Zuletzt lag das
+                    günstigste Angebot für den Chip selbst bei etwa zwei Dollar, die Tochterplatine hingegen kostet etwa
+                    50 Dollar. Beim Kauf von 100 oder mehr Stück kostet es nur wenige Cent pro Stück.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=510s" target="_blank" class="ts-link">(08:30)</a>
+                <div class="text">Daher ist dies momentan die günstigere Option. Langfristig werde ich es wahrscheinlich
+                    durch eine eigene Konstruktion ersetzen. Die nächste gut sichtbare Komponente auf der Platine ist
+                    der 15-Volt-LDO, der die Rennspannung an den lokalen Netzbuchsen regelt. So sieht es im Schaltplan
+                    aus: Wir empfangen die DCC-Signale vom Motor-Shield-Ausgang.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=543s" target="_blank" class="ts-link">(09:03)</a>
+                <div class="text">Diese Spannung hängt von der Gleichstromversorgungsspannung und der
+                    Versorgungsspannung des Motor-Shields ab, falls eine externe Stromquelle für das Motor-Shield
+                    verwendet wird. In jedem Fall ist VDC+ die höhere der beiden Eingangsspannungen. Sie wird dann durch
+                    den 15-Volt-LDO geleitet, der die Ansteuerspannung für Gashebel und Booster auf 15 Volt begrenzt.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=566s" target="_blank" class="ts-link">(09:26)</a>
+                <div class="text">Ist VDC+ niedriger, fließt sie ohne weitere Regelung durch. Die resultierende Spannung
+                    VDC-15 versorgt dann den Dreikanal-H-Brücken-Treiber, der die Signale an seinen Buchsen liefert. Der
+                    Grund für diese Komplexität ist, dass die H-Brücke die Strommessung und die Ansteuerung des lokalen
+                    Netzes ermöglicht. Im Problemfall wird dies mit dem integrierten Komparator realisiert.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=598s" target="_blank" class="ts-link">(09:58)</a>
+                <div class="text">Die DCC-Informationen werden aus dem eingehenden DCC-Signal entnommen, das mithilfe
+                    der Cena-Dioden auf maximal 5 Volt begrenzt ist und dann zur Ansteuerung der H-Brücken-Kanäle für
+                    den LocalNet-B-Anschluss verwendet wird. Der letzte wichtige Baustein der Platine ist die
+                    Loconet-Schnittstelle.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=622s" target="_blank" class="ts-link">(10:22)</a>
+                <div class="text">Sie verwendet die gleichen Komponenten wie das in Video Nr. 43 erklärte
+                    Loconet-Interface-Breakout-Board, also den typischen Operationsverstärker von Conkurrence und die
+                    üblichen Spannungsteiler für das LocalNet-Signal. Außerdem verfügt sie über eine 15-mA-Stromquelle
+                    zur Terminierung des Locks.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=644s" target="_blank" class="ts-link">(10:44)</a>
+                <div class="text">Das war's im Wesentlichen mit der Hardware. Ach ja, vielleicht noch ein kleines
+                    Detail: Die Stromversorgung der beiden Loconet-Outlet-LEDs erfolgt über 20-mA-Stromquellen, wodurch
+                    die Helligkeit der LEDs unabhängig von der Versorgungsspannung ist. Das ist etwas komplexer als ein
+                    fester Serienwiderstand, aber mir gefällt die Idee einer konstanten Helligkeit sehr gut.</div>
+            </div>
+
+            <h2><a id="montage" href="#montage" title="Permalink">#</a> Montage & Installation</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=674s" target="_blank" class="ts-link">(11:14)</a>
+                <div class="text">Okay, nach diesem kurzen Blick auf die Schaltkreise bauen wir eine lokale
+                    Netzwerk-Zentrale auf. Es ist eigentlich ganz einfach: Sie benötigen lediglich einen Arduino Uno,
+                    ein Motor-Shield und das Red Hat Plus+ Shield mit einem <span class="highlight">IoT-Stick</span>.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=696s" target="_blank" class="ts-link">(11:36)</a>
+                <div class="text">Platzieren Sie den Arduino unten und setzen Sie das Motor-Shield darauf. Folgen Sie
+                    den Anweisungen auf der Webseite von <span class="highlight">DCC Plus Plus X</span>. Dort finden Sie
+                    Informationen zu spezifischen Motor-Shields und Unterstützung beim Laden der Zentralen-Software auf
+                    das Arduino-Board. Das DCCX-Projekt betreibt außerdem einen Discord-Server.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=724s" target="_blank" class="ts-link">(12:04)</a>
+                <div class="text">Sollten Sie auf Probleme stoßen, empfehle ich Ihnen, die TCCX-Zentrale zum Laufen zu
+                    bringen und sicherzustellen, dass Sie Züge fahren und Decoder programmieren können, bevor Sie die
+                    LED-Funktion hinzufügen. Diese erleichtert die Fehlersuche im Problemfall. Sobald Ihre Zentrale
+                    läuft, setzen Sie das <span class="highlight">Red Hat Plus+ Shield</span> oben auf den Stapel.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=754s" target="_blank" class="ts-link">(12:34)</a>
+                <div class="text">Stellen Sie eine DCC-Verbindung vom Gleisausgang des Motor-Shields zum Red Hat
+                    Plus+Shield her. Stecken Sie den <span class="highlight">IoT-Stick</span> ein und verbinden Sie ihn
+                    kurz. Beim Anschließen des Motor-Shields gibt es in diesem Schritt eine Sache, auf die Sie besonders
+                    achten müssen: Stellen Sie sicher, dass kein Teil des Motor-Shields mit leitfähigen Teilen des Red
+                    Hat Plus Shields in Kontakt kommt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=777s" target="_blank" class="ts-link">(12:57)</a>
+                <div class="text">Überprüfen Sie insbesondere, ob die Stiftleisten an den verschiedenen Ports des
+                    Motor-Shields Komponenten des DC/DC-Wandlers berühren. Ich habe den DC/DC-Wandler so weit wie
+                    möglich entfernt, aber dann habe ich ein anderes Motor-Shield-Board gekauft. Die Position der
+                    Stiftleisten war anders, und einige kamen sehr nah an den DC/DC-Wandler heran.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=804s" target="_blank" class="ts-link">(13:24)</a>
+                <div class="text">Bei Kontakt könnte es zu einem Kurzschluss kommen, der irgendwo Rauch verursachen
+                    könnte. Ja, ich spreche aus Erfahrung. In meinem Fall ist der Onboard-LDO des Arduino dabei
+                    durchgebrannt. Das Board funktioniert zwar noch, also ist es nicht das Ende der Welt, aber sicher
+                    ist sicher. Um einen Kurzschluss auszuschließen, habe ich die Pins in der Nähe des DC/DC-Wandlers um
+                    etwa drei Millimeter gekürzt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=844s" target="_blank" class="ts-link">(14:04)</a>
+                <div class="text">Um den <span class="highlight">IoT-Stick</span> mit Strom zu versorgen und den
+                    Startvorgang zu beobachten, können Sie ihn nun mit Ihrem Smartphone per WLAN verbinden und die
+                    Hauptkonfigurationsseite laden, indem Sie die angezeigte IP-Adresse in einen Browser eingeben. Bei
+                    Fragen zu diesem Schritt sehen Sie sich bitte Video Nr. 42 an.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=869s" target="_blank" class="ts-link">(14:29)</a>
+                <div class="text">Wenn Sie einen älteren <span class="highlight">IoT-Stick</span> verwenden,
+                    aktualisieren Sie bitte die Stick-Software auf Version 1513 oder höher. Die neueste
+                    Installationsdatei finden Sie wie gewohnt auf der GitHub-Seite. Wählen Sie auf der
+                    Knotenkonfigurationsseite die <span class="highlight">Loconet-Schnittstelle</span> als Befehlsquelle
+                    und <span class="highlight">Red Hat Plus</span> als Head-Modul aus.</div>
+            </div>
+
+            <h2><a id="konfiguration" href="#konfiguration" title="Permalink">#</a> Konfiguration & Abschluss</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=901s" target="_blank" class="ts-link">(15:01)</a>
+                <div class="text">Im Bereich „Kommunikationsserver“ können Sie die gewünschten Server aktivieren. Sobald
+                    alles Ihren Wünschen entspricht, klicken Sie auf „Speichern und neu starten“, um die Einstellungen
+                    dauerhaft zu speichern. Der <span class="highlight">IoT-Stick</span> startet neu und Ihre Zentrale
+                    ist einsatzbereit. Sie können nun einen Fahrregler an einen lokalen HD-Anschluss anschließen und
+                    Lokomotiven auswählen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=929s" target="_blank" class="ts-link">(15:29)</a>
+                <div class="text">Über den Browser können Sie außerdem viele weitere Optionen für die Zentrale und die
+                    verfügbaren Server konfigurieren. Ich werde dies in einem der folgenden Videos ausführlich
+                    behandeln. Die nächsten Videos folgen, also bleibt dran! Abonniert den <span
+                        class="highlight">IoT-Kanal</span>, um auf dem Laufenden zu bleiben, sobald weitere
+                    Informationen verfügbar sind.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=950s" target="_blank" class="ts-link">(15:50)</a>
+                <div class="text">Nach dem Spielen mit den Zügen zieht ihr einfach den Stecker. Das <span
+                        class="highlight">Red Hat Plus+Shield</span> speichert dann alle Laufzeitinformationen wie
+                    Weichenstellungen, Lokomotivadressen usw. auf seinem internen Flash-Speicher und schaltet sich nach
+                    etwa 30 Sekunden sicher ab.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=972s" target="_blank" class="ts-link">(16:12)</a>
+                <div class="text">Beim Wiedereinschalten werden die Daten neu geladen, und ihr könnt die Session genau
+                    an der Stelle fortsetzen, an der ihr das Gerät abgezogen habt. Seit ein oder zwei Tagen biete ich
+                    eine kleine Anzahl von Red Hat Plus+ Shields im TV-Shop für Early Adopters an. Ich verkaufe sie
+                    momentan zum Selbstkostenpreis.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=1009s" target="_blank"
+                    class="ts-link">(16:49)</a>
+                <div class="text">Das war's für dieses Video. Ich hoffe, die Informationen waren nützlich oder zumindest
+                    interessant für euch und ihr habt jetzt eine bessere Vorstellung davon, wie das <span
+                        class="highlight">Red Hat Plus+Shield</span> funktioniert und wie es eure <span
+                        class="highlight">DCC Plus+X</span>-Steuerung ermöglicht.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=3kW_IT8mMVg&t=1029s" target="_blank"
+                    class="ts-link">(17:09)</a>
+                <div class="text">Wenn Ihre Station mit Ihrer lokalen Netzwerkausrüstung kompatibel ist, klicken Sie
+                    bitte unten auf den „Gefällt mir“-Button, um mir dies mitzuteilen. Es ist für Sie kostenlos, hilft
+                    mir aber sehr bei der Verbreitung dieses Videos und des <span class="highlight">IoT-Kanals</span>.
+                    Vielen Dank fürs Zuschauen und bis zum nächsten Video!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>LocoNet-B & LocoNet-T</dt>
+                    <dd>B-Anschluss für Booster (mit Rail-Sync); T-Anschluss für Throttles/Fahrregler (mit permanenter
+                        Stromversorgung).</dd>
+
+                    <dt>DC/DC-Wandler</dt>
+                    <dd>Modul auf dem Shield, das die Eingangsspannung effizient auf 5V für den Arduino und die
+                        Peripherie herunterregelt.</dd>
+
+                    <dt>15-Volt-LDO</dt>
+                    <dd>Spannungsregler, der die Signalspannung für das LocoNet-Netzwerk auf maximal 15V begrenzt.</dd>
+
+                    <dt>Rail-Sync</dt>
+                    <dd>Signale im LocoNet, die zur Synchronisation von Boostern mit dem Hauptgleissignal dienen.</dd>
+
+                    <dt>TCCX / DCC Plus Plus X</dt>
+                    <dd>Die Steuerungssoftware, die auf dem Arduino läuft und die DCC-Befehle generiert.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

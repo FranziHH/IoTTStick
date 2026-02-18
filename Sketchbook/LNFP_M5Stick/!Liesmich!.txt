@@ -1,0 +1,70 @@
+
+
+
+https://copilot.microsoft.com/chats/oMCXkUqHZnDsZq77VYPfL
+21.Januar
+
+#if defined ( NO_M5_STICK )
+  #define stickLED 8 //red LED on stick plus2
+  #define  LedON true
+
+  #if defined ( FLG_ESP32_DEV )
+    // I2C Pins (Standard ESP32)
+    #define hatSDA      21
+    #define hatSCL      22
+
+    // UART Pins
+    #define hatRxD      16
+    #define hatTxD      17
+    #define hatRxDAlt   4      // optionaler Input-Pin, frei wählbar
+
+    // General Input Pin
+    #define hatInputPin 4      // frei verfügbarer GPIO
+
+    // FastLED Data Pins
+    #define hatDataPin  26     // WS2812B LED-Daten (ESP32 WROOM unterstützt Pin 26 perfekt)
+    #define rhDataPin   27     // zweiter LED-Datenpin
+
+    // I2C Slave Adresse bleibt gleich
+    #define yellowWireAddr 0x18
+  #elif defined ( FLG_ESP32_C3 )
+    // I2C Pins (Standard für ESP32‑C3)
+    #define hatSDA      8
+    #define hatSCL      9
+
+    // UART Pins (UART1, frei nutzbar)
+    #define hatRxD      4
+    #define hatTxD      5
+    #define hatRxDAlt   3     // optionaler Input-Pin
+
+    // General Input Pin
+    #define hatInputPin 3     // frei verfügbarer GPIO
+
+    // FastLED Data Pins (C3-kompatibel!)
+    #define hatDataPin  2     // WS2812B LED-Daten
+    #define rhDataPin   10    // zweiter LED-Datenpin
+
+    // I2C Slave Adresse bleibt gleich
+    #define yellowWireAddr 0x18
+  #endif
+
+#else
+  #if defined StickPlus
+    #define stickLED 10 //red LED on stick / stick plus
+    #define LedON false
+  #endif
+  #if defined StickPlus2
+    #define stickLED 19 //red LED on stick plus2
+    #define  LedON true
+  #endif
+
+  #define hatSDA 26 //changes between input and output by I2C master
+  #define hatSCL 0 //pull SCL low while sending non I2C data over SDA
+  #define hatRxD 0
+  #define hatRxDAlt 36 //read only Input
+  #define hatTxD 26
+  #define hatInputPin 36 //25+ //36
+  #define hatDataPin 26 //26 used to send LED data from FastLED to BlueHat. First, set to output low, then call show
+  #define rhDataPin 0 //used to send LED data from FastLED to the RedHat. First, set to output low, then call show
+  #define yellowWireAddr 0x18 //I2C Address used on hats with I2C slave 328P
+#endif

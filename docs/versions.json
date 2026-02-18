@@ -1,0 +1,137 @@
+{
+  "plus": {
+    "full": [
+      {
+        "id": "V1.6.9/M5Update/LNFP_M5Stick_Full.bin",
+        "name": "v1.6.9",
+        "offset": "0x0"
+      },
+      {
+        "id": "V1.6.8/M5Update/LNFP_M5Stick_Full.bin",
+        "name": "v1.6.8",
+        "offset": "0x0"
+      },
+      {
+        "id": "V1.6.7/M5Update/LNFP_M5Stick_Full.bin",
+        "name": "v1.6.7",
+        "offset": "0x0"
+      },
+      {
+        "id": "V1.6.5/M5Update/LNFP_M5Stick_Full.bin",
+        "name": "v1.6.5",
+        "offset": "0x0"
+      },
+      {
+        "id": "V1.6.4/M5Update/LNFP_M5Stick_Full.bin",
+        "name": "v1.6.4",
+        "offset": "0x0"
+      },
+      {
+        "id": "V1.6.3/M5Update/LNFP_M5Stick_Full.bin",
+        "name": "v1.6.3",
+        "offset": "0x0"
+      },
+      {
+        "id": "V1.5.8/M5Update/LNFP_M5Stick_Full.bin",
+        "name": "v1.5.8",
+        "offset": "0x0"
+      }
+    ],
+    "update": [
+      {
+        "id": "V1.6.9new/M5Update/LNFP_M5Stick.spiffs.bin",
+        "name": "v1.6.9 New FileSystem - Backup Data!",
+        "offset": "0x210000"
+      },
+      {
+        "id": "V1.6.9/M5Update/LNFP_M5Stick.ino.bin",
+        "name": "v1.6.9",
+        "offset": "0x10000"
+      },
+      {
+        "id": "V1.6.8/M5Update/LNFP_M5Stick.ino.bin",
+        "name": "v1.6.8",
+        "offset": "0x10000"
+      },
+      {
+        "id": "V1.6.7/M5Update/LNFP_M5Stick.ino.bin",
+        "name": "v1.6.7",
+        "offset": "0x10000"
+      },
+      {
+        "id": "V1.6.5/M5Update/LNFP_M5Stick.ino.bin",
+        "name": "v1.6.5",
+        "offset": "0x10000"
+      },
+      {
+        "id": "V1.6.4/M5Update/LNFP_M5Stick.ino.bin",
+        "name": "v1.6.4",
+        "offset": "0x10000"
+      },
+      {
+        "id": "V1.6.3/M5Update/LNFP_M5Stick.ino.bin",
+        "name": "v1.6.3",
+        "offset": "0x10000"
+      },
+      {
+        "id": "V1.5.8/M5Update/LNFP_M5Stick.ino.bin",
+        "name": "v1.5.8",
+        "offset": "0x10000"
+      }
+    ],
+    "restore": [
+      {
+        "id": "restore/M5_Stick_Plus_original.bin",
+        "name": "Original Firmware",
+        "offset": "0x0"
+      }
+    ]
+  },
+  "plus2": {
+    "full": [
+      {
+        "id": "V1.6.9/M5UpdatePlus2/LNFP_M5Stick_Plus2_Full.bin",
+        "name": "v1.6.9",
+        "offset": "0x0"
+      },
+      {
+        "id": "V1.6.8/M5UpdatePlus2/LNFP_M5Stick_Plus2_Full.bin",
+        "name": "v1.6.8",
+        "offset": "0x0"
+      },
+      {
+        "id": "V1.6.7/M5UpdatePlus2/LNFP_M5Stick_Plus2_Full.bin",
+        "name": "v1.6.7",
+        "offset": "0x0"
+      }
+    ],
+    "update": [
+      {
+        "id": "V1.6.9new/M5UpdatePlus2/LNFP_M5Stick.spiffs.bin",
+        "name": "v1.6.9 New FileSystem - Backup Data!",
+        "offset": "0x670000"
+      },
+      {
+        "id": "V1.6.9/M5UpdatePlus2/LNFP_M5Stick.ino.bin",
+        "name": "v1.6.9",
+        "offset": "0x10000"
+      },
+      {
+        "id": "V1.6.8/M5UpdatePlus2/LNFP_M5Stick.ino.bin",
+        "name": "v1.6.8",
+        "offset": "0x10000"
+      },
+      {
+        "id": "V1.6.7/M5UpdatePlus2/LNFP_M5Stick.ino.bin",
+        "name": "v1.6.7",
+        "offset": "0x10000"
+      }
+    ],
+    "restore": [
+      {
+        "id": "restore/M5_Stick_Plus2_original.bin",
+        "name": "Original Firmware"
+      }
+    ]
+  }
+}

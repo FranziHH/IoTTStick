@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - IoTT Architectural Overview (Part 1) - Video #111</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>IoTT Architectural Overview (Part 1) (Video#111) - 22.01.2023</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+
+            <h2><a id="einleitung" href="#einleitung" title="Permalink">#</a> Einleitung & Fortschritte</h2>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=0" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">Vor Jahren fragte mich ein Zuschauer, ob ich ein Übersichtsvideo zu allen HATs und
+                    Schnittstellen der IoT-Gerätefamilie erstellen könnte. Ich versprach, dies nach Fertigstellung des
+                    Red Hat Shield zu tun. Nun ist es soweit, und es ist an der Zeit für einen umfassenden Überblick
+                    über die Möglichkeiten all dieser IoT-Geräte.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=35" target="_blank" class="ts-link">(00:35)</a>
+                <div class="text">Willkommen auf dem IoT-Kanal! Ich bin Hans Tanner. Herzlich willkommen an alle neuen
+                    Abonnenten und willkommen zurück an alle anderen. Schön, dass ihr da seid! Mein letztes
+                    Übersichtsvideo, Nummer 59, erschien vor etwa zwei Jahren und trug den Titel „Verwendung des IoT
+                    Sticks mit Ihrem Kommandozentralensystem“.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=59" target="_blank" class="ts-link">(00:59)</a>
+                <div class="text">Dieser Titel verdeutlicht bereits den Kern der Fortschritte der letzten zwei Jahre.
+                    Mit der Integration von <span class="highlight">Red Hat und DCCX</span> hat sich der <span
+                        class="highlight">IoT Stick</span> zu einer kostengünstigen Kommandozentrale entwickelt, die
+                    viele nützliche Funktionen bietet, wie z. B. die Loconet-WLAN- Integration für Smartphones und
+                    Tablets sowie eine Reichweite von bis zu 2 x 5 m.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=85" target="_blank" class="ts-link">(01:25)</a>
+                <div class="text">Das ist mehr als bei den meisten gängigen Systemen auf dem Markt. Es gibt also viel zu
+                    besprechen! Um es übersichtlicher zu gestalten, teile ich den Inhalt in zwei Videos auf. Im ersten
+                    Video gebe ich einen kurzen Überblick über Zweck und Hauptmerkmale der einzelnen Geräte des
+                    IoT-Systems. Im zweiten Video betrachte ich die technischen Kommunikationskonzepte genauer, die für
+                    die Zusammenarbeit all dieser Geräte verwendet werden.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=117" target="_blank" class="ts-link">(01:57)</a>
+                <div class="text">Zuerst aus technischer Sicht, also mit den verschiedenen Protokollen und ihren Vor-
+                    und Nachteilen, und dann aus logischer Sicht, also warum und wie die Daten zur Steuerung der Anlage
+                    genutzt werden. Natürlich gebe ich auch einen kurzen Überblick über aktuelle und zukünftige
+                    Entwicklungen, da noch nicht alle Funktionen implementiert sind.</div>
+            </div>
+
+            <h2><a id="hardware" href="#hardware" title="Permalink">#</a> Die Hardware-Produktfamilie</h2>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=145" target="_blank" class="ts-link">(02:25)</a>
+                <div class="text">Was vor etwa fünf Jahren mit einer einfachen Loconet-Schnittstelle und einem MQTT-
+                    Gateway begann, hat sich zu einer Produktfamilie mit vier Gerätetypen entwickelt: <span
+                        class="highlight">Schnittstellenports</span>, dem <span
+                        class="highlight">IoT-Stick-Mikrocontroller</span>, verschiedenen <span
+                        class="highlight">Funktionsköpfen</span> und zusätzlichen <span
+                        class="highlight">Support-Ports</span>. Schnittstellenports dienen der Verbindung zur Anlage.
+                </div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=173" target="_blank" class="ts-link">(02:53)</a>
+                <div class="text">Es gibt zwei verschiedene Typen: <span class="highlight">DCC und LocalNet</span>. Der
+                    DCC-Schnittstellenport ist mit den Gleisen verbunden und wandelt das DCC-Gleissignal in einen für
+                    den Mikrocontroller geeigneten Spannungspegel um. Optokoppler verhindern, dass hohe DCC-Spannungen
+                    oder abweichende Massepotentiale den angeschlossenen Mikrocontroller beschädigen.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=200" target="_blank" class="ts-link">(03:20)</a>
+                <div class="text">Die Ausgangsseite verfügt über einen Anschluss, über den die Schnittstelle mit dem
+                    IoT-Netzwerk oder einem anderen Mikrocontroller, beispielsweise einem Arduino, verbunden werden
+                    kann, um die DCC-Signale zu empfangen. Üblicherweise wird die Schnittstelle mit dem IoT-Stick
+                    verbunden, wo die DCC-Befehle dekodiert und angezeigt werden, um zu sehen, welche Befehle über die
+                    Gleise gesendet werden.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=224" target="_blank" class="ts-link">(03:44)</a>
+                <div class="text">Alternativ können sie verwendet werden, um Ausgabefunktionen eines Funktionskopfes
+                    anzusteuern, beispielsweise die LEDs eines blauen Lokomotivkopfes. Die LocalNet-Schnittstelle
+                    funktioniert analog, nur dass sie nicht mit den Gleisen, sondern mit einem lokalen Netzwerk
+                    verbunden ist. Auch hier wird die Ausgangsseite mit dem IoT-Stick oder einem anderen Mikrocontroller
+                    verbunden, der die LocalNet-Nachrichten dekodiert und anzeigen oder Eingabe- und Ausgabefunktionen
+                    eines Funktionskopfes, wie beispielsweise des Servodecoders des grünen Lokomotivkopfes, steuern
+                    kann.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=256" target="_blank" class="ts-link">(04:16)</a>
+                <div class="text">Da Loconet bidirektionale Kommunikation ermöglicht, kann die LocalNet- Schnittstelle
+                    LocalNet-Nachrichten nicht nur lesen, sondern auch schreiben und somit einen bidirektionalen
+                    Informationsaustausch mit dem Netzwerk realisieren. Beide Schnittstellen können mit dem IoT-Stick
+                    verbunden oder anderweitig verwendet werden.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=279" target="_blank" class="ts-link">(04:39)</a>
+                <div class="text">Mit anderen Mikrocontrollern sind sie recht kompatibel. Es gibt einige Anwender, die
+                    sie verwenden. Diese kleinen Kabel mit Jumper-Pins an einem Ende ermöglichen Verbindungen,
+                    beispielsweise zu einem Arduino- Controller über ein Steckbrett. So können sie eigene Experimente
+                    mit DCC- oder LCN-Nachrichten durchführen.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=299" target="_blank" class="ts-link">(04:59)</a>
+                <div class="text">Beide Schnittstellen funktionieren mit Mikrocontrollern, die mit 5 oder 3,3 Volt
+                    Versorgungsspannung arbeiten. Das nächste Gerät ist der <span class="highlight">IoT-Stick</span>. Er
+                    besteht im Wesentlichen aus einem <span class="highlight">ESP32-Mikrocontroller</span> mit Bluetooth
+                    und WLAN, einem kleinen OLED-Display, einigen Tasten und einem Akku mit Batteriemanagementsystem.
+                </div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=322" target="_blank" class="ts-link">(05:22)</a>
+                <div class="text">Jede Seite verfügt über I/O-Pins, um den Stick mit anderen Geräten zu verbinden.
+                    Wichtig ist, die beiden Seiten des IoT-Sticks zu verstehen. Auf der linken Seite befindet sich der
+                    IoT-Port, ein vierpoliger Anschluss mit 5 Volt, Masse und zwei GPIO-Leitungen. Diese Seite wird
+                    immer für die Verbindung mit einer Datenquelle verwendet, also entweder einer LCN-Schnittstelle,
+                    einer DCC-Schnittstelle oder zukünftig möglicherweise einer LCN- Schnittstelle.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=356" target="_blank" class="ts-link">(05:56)</a>
+                <div class="text">Im IoT-District-Setup-Bildschirm wird dies mit dem Befehl „Source setting“
+                    konfiguriert. Dort sehen Sie die Optionen. Für die DCC- und Loconet-Schnittstelle stehen weitere
+                    Befehlsquellenoptionen zur Verfügung. Diese werden jedoch alle für die verschiedenen Arten von
+                    WLAN-Verbindungen verwendet, die ich im nächsten Video erläutern werde.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=377" target="_blank" class="ts-link">(06:17)</a>
+                <div class="text">Die rechte Seite, die Funktionskopfseite, verfügt über einen 8-poligen Anschluss.
+                    Dieser Anschluss besitzt drei GPIO-Pins und fünf Pins für Stromversorgung und Akku. Diese Seite ist
+                    immer mit dem Anschluss des Funktionskopfes verbunden und dient zur Steuerung der angeschlossenen
+                    Hardware. Die IoT-Stick-Software wird basierend auf der ausgewählten Befehlsquelle, dem ausgewählten
+                    Funktionskopf, den aktivierten Kommunikationsservern und den integrierten Funktionsmodulen
+                    konfiguriert.</div>
+            </div>
+
+            <h2><a id="konfiguration" href="#konfiguration" title="Permalink">#</a> Konfiguration & Köpfe</h2>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=410" target="_blank" class="ts-link">(06:50)</a>
+                <div class="text">Die Konfiguration erfolgt vollständig auf der Konfigurationsseite. Sie müssen keine
+                    unterschiedlichen Programme laden, je nachdem, welchen Funktionskopf Sie verwenden. Wählen Sie
+                    einfach den gewünschten Kopftyp aus der Liste im Konfigurationsbildschirm aus, und der IoT-Stick
+                    weiß bereits, wie er damit umgeht. Dasselbe gilt für den Kommunikationsdienst und die integrierten
+                    Funktionsmodule des IoT-Sticks, die durch einfaches Aktivieren des Kontrollkästchens aktiviert
+                    werden können.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=439" target="_blank" class="ts-link">(07:19)</a>
+                <div class="text">Derzeit ist nur ein Funktionsmodul verfügbar: der Ereignishandler. Dieser kann
+                    beispielsweise zur Implementierung von ABS- oder APB-Signalisierung verwendet werden, wie ich in den
+                    Videos 70, 71 und 72 demonstriert habe. Das erste Gerät in der Kategorie der Funktionsköpfe ist der
+                    <span class="highlight">braune Kopf</span>.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=462" target="_blank" class="ts-link">(07:42)</a>
+                <div class="text">Er dient als USB-Schnittstelle zum Anschluss eines IoT-Sticks an einen Computer mit
+                    Software wie JMRI Digipad oder ähnlichem. Aus Sicht des Computers verhält er sich wie ein lokaler
+                    USB-Puffer. Daher kann jedes Programm, das über einen lokalen Puffer oder USB verbunden werden kann,
+                    mit dem braunen Kopf verwendet werden.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=484" target="_blank" class="ts-link">(08:04)</a>
+                <div class="text">Wie in Video Nr. 106 gezeigt, kann man einen IoT-Stick mit einer
+                    Low-Connect-Schnittstelle auf der linken Seite und dem braunen Kopf auf der rechten Seite verbinden.
+                    Dadurch erhält man eine Low-Connect- zu-USB-Schnittstelle und gleichzeitig über Throttle Server
+                    einen Loconet-over-TCP- Server sowie AlloConnect zu MQTT-Gateway- Funktionen.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=508" target="_blank" class="ts-link">(08:28)</a>
+                <div class="text">Auf diese Funktionen gehe ich im nächsten Video genauer ein. Es gibt drei weitere
+                    I/O-Funktionsköpfe: den blauen, gelben und grünen Kopf. Sie bieten verschiedene Ein- und
+                    Ausgabefunktionen. Der <span class="highlight">blaue Kopf</span> steuert eine Kette von <span
+                        class="highlight">WS2812-LEDs (Neopixel)</span>. Die Kette kann mehrere hundert LEDs lang sein,
+                    und jede LED kann einzeln programmiert werden, um den Status von Weichen, Blockdetektoren,
+                    Signalaspekten, Analogwerten und mehr anzuzeigen.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=547" target="_blank" class="ts-link">(09:07)</a>
+                <div class="text">Die ursprüngliche Idee für den blauen Steuerkopf war die Ansteuerung von
+                    Mehrphasensignalen. Nachdem der blaue Steuerkopf verfügbar war, setzten wir ihn jedoch für diverse
+                    Beleuchtungsanwendungen ein. Ich nutze ihn zur Ansteuerung der zehn Suchscheinwerfersignale in einem
+                    Dreiphasen-ABS-System, bei dem die Suchscheinwerfer rot, grün und gelb blinken.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=579" target="_blank" class="ts-link">(09:39)</a>
+                <div class="text">Der <span class="highlight">gelbe Steuerkopf</span> war ursprünglich für den Bau von
+                    CTC- Schalttafeln gedacht. Er verfügt daher über eine LED-Kette ähnlich der des blauen Steuerkopfes,
+                    aber zusätzlich über 32 Eingangsleitungen zum Anschluss von Tastern oder Potentiometern für analoge
+                    Werte, beispielsweise zur Steuerung der Signalhelligkeit für Tag- und Nachtbetrieb.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=602" target="_blank" class="ts-link">(10:02)</a>
+                <div class="text">Darüber hinaus eignet er sich auch hervorragend zum Anschluss von Blockdetektoren,
+                    beispielsweise dem MGP-Sensor mit acht Dioden. Der <span class="highlight">grüne Steuerkopf</span>
+                    ist ein 16-Kanal- Servodecoder zur Ansteuerung von Servos für Weichen und Formsignale. Er kann 16
+                    Servos ansteuern und verfügt über zwei Eingangsleitungen pro Kanal für lokale Taster.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=626" target="_blank" class="ts-link">(10:26)</a>
+                <div class="text">Blockdetektoren und zwei LEDs pro Kanal ermöglichen die individuelle Programmierung
+                    von Drehwinkel und Geschwindigkeit jedes Servos. Die Bewegungscharakteristika umfassen Überschwingen
+                    und Zurückprallen, was die Simulation von Semaphorsignalen ideal macht, bei denen der Signalzeiger
+                    oszillierende Effekte beim Erreichen der Position aufweist.</div>
+            </div>
+
+            <h2><a id="zusatzkomponenten" href="#zusatzkomponenten" title="Permalink">#</a> Zusatzkomponenten &
+                Abschluss</h2>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=653" target="_blank" class="ts-link">(10:53)</a>
+                <div class="text">Alle drei Geräte verwenden einen IoT- Stick als Steuereinheit. Werden
+                    Eingabefunktionen wie Tasten verwendet und Statusinformationen an ein anderes Gerät gesendet, ist
+                    die LocoNet- Kommunikation aufgrund ihrer bidirektionalen Natur die beste Wahl.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=680" target="_blank" class="ts-link">(11:20)</a>
+                <div class="text">Als Nächstes folgt der <span class="highlight">Black Hat</span>, der einen physischen
+                    Drehknopf mit einem Smartphone kombiniert. Ich habe dies in Video Nr. 51 demonstriert. Sie können
+                    alle Designinformationen herunterladen und Ihr eigenes Gerät bauen. Der <span
+                        class="highlight">Purple Hat</span> ist mein erster Zugsensor, der am Zug mitfährt und
+                    Geschwindigkeit, Steigung und zurückgelegte Strecke misst.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=729" target="_blank" class="ts-link">(12:09)</a>
+                <div class="text">Er dient zur automatischen Kalibrierung von Lokomotiven. Die neueste Funktionseinheit
+                    ist das <span class="highlight">Red Hat Shield</span>. Es ist als Arduino-Shield erhältlich und kann
+                    auf einen DCCX-Arduino-Stack aufgesetzt werden, um diesen in eine LocalNet-Zentrale zu verwandeln.
+                </div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=752" target="_blank" class="ts-link">(12:32)</a>
+                <div class="text">Das Red Hat kombiniert eine Loconet-Schnittstelle und die serielle
+                    Kommunikationsschnittstelle auf derselben Platine. Neben der Kommunikation mit dem DCC- Export
+                    bietet es drei Low-Anschlüsse: zwei für LocalNet-T4-Fahrregler und einen für Lock-B-Anschlüsse zum
+                    Anschluss zusätzlicher Booster.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=790" target="_blank" class="ts-link">(13:10)</a>
+                <div class="text">Oben befindet sich die gleiche LED- Unterstützung wie beim Blue Hat. Das <span
+                        class="highlight">Powershield-Board</span> ist ein weiteres Arduino-Shield, das die Gleisanlage
+                    mit 5 Ampere Gleisstrom versorgt. Es kann eigenständig oder in Kombination mit dem
+                    Arduino-Motor-Shield verwendet werden (siehe Video 107).</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=823" target="_blank" class="ts-link">(13:43)</a>
+                <div class="text">Das Powershield ist in zwei Versionen erhältlich: eine mit integriertem H-Brückenmodul
+                    und die andere für ein externes IPT2H-Brückenmodul. Das zweite Support-Board ist ein
+                    3-Kanal-Pegel-zu-Impuls-Treiber für Stromimpulse mit einstellbarer Dauer. Es enthält außerdem zwei
+                    bipolare Schaltertreiber für Schnappschalter oder Tortoise-Weichen.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=855" target="_blank" class="ts-link">(14:15)</a>
+                <div class="text">Ursprünglich für den Green Head entwickelt, kann der Level-2-Passport verwendet
+                    werden, um den Serverausgang eines Kanals umzuwandeln. Ein zusätzlicher Weichendecoder mit TCCX kann
+                    nun auch verwendet werden, um einen Arduino-Pin-Ausgang in einen Weichenimpuls umzuwandeln.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=895" target="_blank" class="ts-link">(14:55)</a>
+                <div class="text">Das war der Hardware-Überblick. Damit es funktioniert, müssen alle Geräte miteinander
+                    kommunizieren. Die grundlegende Verbindung haben wir bereits kennengelernt: Jeder IoT-Stick kann mit
+                    einer Loconet-Schnittstelle ausgestattet werden.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=921" target="_blank" class="ts-link">(15:21)</a>
+                <div class="text">Aber es gibt noch mehr: Anstatt eines Low-Connect-Kabels kann die gesamte
+                    Kommunikation über WLAN und sogar über das Internet erfolgen. Genau das zeige ich im nächsten Video.
+                    Ich hoffe, diese Informationen waren nützlich. Wenn ja, klicken Sie bitte auf „Gefällt mir“.</div>
+            </div>
+            <div class="line">
+                <a href="https://youtu.be/AjNLgxDHExc?t=983" target="_blank" class="ts-link">(16:23)</a>
+                <div class="text">Danke fürs Zuschauen und bis zum nächsten Video!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>DCC (Digital Command Control)</dt>
+                    <dd>Standard-Protokoll zur Steuerung von Digitalzügen über das Gleissignal.</dd>
+
+                    <dt>LocoNet</dt>
+                    <dd>Ein bidirektionales Bussystem für die Kommunikation zwischen Zentralen, Handreglern und
+                        Rückmeldern.</dd>
+
+                    <dt>ESP32</dt>
+                    <dd>Ein leistungsstarker Mikrocontroller mit integriertem Wi-Fi und Dual-Mode Bluetooth, ideal für
+                        IoT-Anwendungen.</dd>
+
+                    <dt>WS2812 / Neopixel</dt>
+                    <dd>Digital adressierbare RGB-LEDs, die über eine einzige Datenleitung in Reihe gesteuert werden.
+                    </dd>
+
+                    <dt>DCCX / DCC-EX</dt>
+                    <dd>Ein Open-Source-Projekt für eine kostengünstige Modellbahnzentrale basierend auf Arduino.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

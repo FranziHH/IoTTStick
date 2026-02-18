@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RedHat++ Shield - IoTT-Stick</title>
+  <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+  <header class="main-header">
+    <button id="menu-toggle">☰</button>
+    <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+  </header>
+
+  <div class="wrapper">
+    <nav id="sidebar" class="sidebar"></nav>
+
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <main class="content">
+      <h1>IoTT-Stick</h1>
+      <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:13</span></p>
+      <h2><a id="hardware" href="#hardware" title="Permalink">#</a> Hardware</h2>
+      <p>
+        Als Hardware kommen die Sticks von <a href="https://m5stack.com/" target="_blank">m5stack</a> zum Einsatz<br>
+        Die älteren Sticks werden nicht mehr hergestellt und sind nicht mehr Erhältlich.
+      <ul class="ls_none_padding ls_margin_bottom">
+        <li><a href="https://docs.m5stack.com/en/core/m5stickc_plus" target="_blank">StickC-Plus</a></li>
+        <li><a href="https://docs.m5stack.com/en/core/M5StickC%20PLUS2" target="_blank">StickC-Plus2</a></li>
+      </ul>
+      </p>
+      <p>
+        In Deutschland sind die m5Sticks z.B. Hier erhältlich:
+      <ul class="ls_none_padding ls_margin_bottom">
+        <li><a href="https://www.berrybase.de/dev.-boards/m5stack/m5stick/" target="_blank">BerryBase</a></li>
+        <li><a href="https://www.reichelt.de/de/de/shop/produkt/m5stickc_plus2_esp32_mini_iot_entwicklungskit-406496"
+            target="_blank">Reichelt</a></li>
+      </ul>
+      </p>
+      <h2><a id="vorstellung" href="#vorstellung" title="Permalink">#</a> Vorstellung des IoTT Stick Plus2</h2>
+      <p>
+        <a href="https://www.youtube.com/watch?v=LARrlCthN18" target="_blank">IoTT Stick Plus2 (Video#139) -
+          14.04.2024</a><br>
+        Vorstellung des neuen M5StickC PLUS2 und Vergleich mit den älteren Sticks<br>
+        <a href="139_TS.html" class="icon">Transkript</a>
+      </p>
+      <h2><a id="firmware" href="#firmware" title="Permalink">#</a> Firmware aufspielen</h2>
+      <p>
+        <a href="https://www.youtube.com/watch?v=00uinHvzn08" target="_blank">The IoTT Stick (Video#41) -
+          26.04.2020</a><br>
+        Vorstellung des IoTTStick<br>
+        <a href="41_TS.html" class="icon">Transkript</a>
+      </p>
+      <p>
+        <a href="https://www.youtube.com/watch?v=7Hw1_ge3zLs" target="_blank">IoTT Stick Initial Setup (Video#42) -
+          10.05.2020</a><br>
+        Erstes Setup des IoTTStick<br>
+        <a href="42_TS.html" class="icon">Transkript</a>
+      </p>
+      <p>
+        Um das Flashen zu vereinfachen, habe ich das <b><a href="https://franzihh.github.io/IoTTStick/"
+            target="_blank">IoTT Flash Tool</a></b> zur Verfügung gestellt.<br>
+        Dies dient als Alternative zum mitgelieferten Update Script.<br>
+        Das Flash Tool funktioniert in allen Chrome-Basierten Browsern.
+      </p>
+      <p>
+        Die herkömmliche Methode:<br>
+        Die gewünschte <b><a href="https://github.com/tanner87661/IoTTStick/tree/master/IoTTStickM5%20Install%20Files"
+            target="_blank">Firmware herunterladen</a></b> und<br>
+        nach Anleitung aufspielen.
+      </p>
+      <h2><a id="probleme" href="#probleme" title="Permalink">#</a> Probleme mit dem IoTT Flash Tool unter Linux</h2>
+      <ul>
+        <li>
+          <p><b>Benutzerrechte für die Hardware vergeben</b></p>
+          <p>Dein Benutzer braucht Zugriff auf die Gruppe dialout. Ersetze $USER durch deinen Benutzernamen (oder lass
+            es so, Linux setzt deinen Namen automatisch ein):</p>
+          <p><code>sudo usermod -a -G dialout $USER</code></p>
+          <p>Hinweis: Danach einmal aus- und wieder einloggen, damit die Änderung greift!</p>
+        </li>
+        <li>
+          <p><b>Den "Blockierer" BRLTTY entfernen</b></p>
+          <p>Viele Linux-Systeme (Debian/Ubuntu) installieren den Dienst brltty. Dieser erkennt USB-Serial-Adapter
+            fälschlicherweise als Braille-Display und blockiert sie sofort. Deinstalliere ihn mit:</p>
+          <p><code>sudo apt remove brltty</code></p>
+        </li>
+        <li>
+          <p><b>Chromium-Sandbox öffnen (nur für Snap-Nutzer)</b></p>
+          <p>Falls du Chromium als Snap installiert hast (Standard unter Ubuntu), musst du den Zugriff auf USB-Geräte
+            explizit erlauben:</p>
+          <p><code>snap connect chromium:raw-usb</code></p>
+        </li>
+      </ul>
+      <h2><a id="ntp" href="#ntp" title="Permalink">#</a> NTP - Network Time Setup</h2>
+      <p>
+        Die Voreinstellungen sind für die USA eingetragen.<br>
+        Die Einstellungen für Deutschland mit automatischer Umstellung Normal/Sommerzeit:
+      <ul class="ls_none_padding ls_margin_bottom">
+        <li>NTP Server: <code>de.pool.ntp.org</code></li>
+        <li>Timezone: <code>CET-1CEST,M3.5.0,M10.5.0/3</code></li>
+      </ul>
+      </p>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

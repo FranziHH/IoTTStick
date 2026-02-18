@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - IoTT Stick Plus2 (Video #139)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>IoTT Stick Plus2 (Video#139) - 14.04.2024</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+
+            <h2><a id="einleitung" href="#einleitung" title="Permalink">#</a> Einleitung & Problematik</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=2s" target="_blank" class="ts-link">(00:02)</a>
+                <div class="text">[Musik] Vor ein paar Wochen habe ich die IoT-Stick- Software auf den neuen M5 Stick C+
+                    2 geladen, und leider stürzte sie ständig ab. Was war da los? In diesem Video erkläre ich die
+                    Unterschiede zwischen der alten und der neuen Version der IoT-Stick-Hardware und wie diese in der
+                    neuen IoT-Stick- Software Version 166, die ich gerade veröffentlicht habe, unterstützt wird.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=36s" target="_blank" class="ts-link">(00:36)</a>
+                <div class="text">Hallo zusammen und herzlich willkommen auf dem IoT-Kanal! Ich bin Hans Tenner. Ein
+                    besonderes Willkommen an alle neuen Abonnenten und ein herzliches Willkommen an alle, die schon
+                    einmal hier waren. Ich freue mich, dass ihr wieder da seid, und danke euch für eure Unterstützung
+                    meines Kanals. Falls ihr diese Art von Inhalten interessant und hilfreich findet, abonniert doch
+                    bitte den Kanal. Klickt einfach auf den Abonnieren- Button und das Glockensymbol unten, und ihr
+                    verpasst kein neues Video mehr.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=61s" target="_blank" class="ts-link">(01:01)</a>
+                <div class="text">Der M5 Stick C, die Hardware des IoT-Sticks, ist ein Mikrocontroller- Paket, das sich
+                    ideal für die Steuerung von Modelleisenbahnen eignet. Die Elektronikkomponenten sind klein, verfügen
+                    über einen leistungsstarken Mikrocontroller, integriertes WLAN und Bluetooth, ein Display, einen
+                    Akku, einen USB-C-Anschluss sowie einige IOP-Pins und weitere Komponenten.</div>
+            </div>
+
+            <h2><a id="hardwarevergleich" href="#hardwarevergleich" title="Permalink">#</a> Hardwarevergleich: Stick
+                Plus vs. Stick Plus 2</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=95s" target="_blank" class="ts-link">(01:35)</a>
+                <div class="text">Die schlechte Nachricht ist jedoch, dass sowohl der M56 C als auch der M56 C Plus vom
+                    Hersteller eingestellt und durch den neuen <span class="highlight">M5 STI C+ 2</span> ersetzt
+                    wurden. Leider sind die Unterschiede größer als man denkt – so groß, dass die aktuelle Software
+                    abstürzt. Der Grund dafür ist, dass bei den beiden älteren Versionen des M5 Sticks eine der
+                    verwendeten Komponenten nicht mehr verfügbar war, weshalb eine Neuentwicklung nötig war. Die
+                    veraltete Komponente war das <span class="highlight">Energiemanagementsystem</span>. Leider wurde es
+                    nicht ersetzt, was die IoT-S- Software beeinträchtigt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=131s" target="_blank" class="ts-link">(02:11)</a>
+                <div class="text">Hier ist ein Hardwarevergleich von Stick Plus und Stick Plus 2: Der erste Unterschied
+                    ist der Prozessor. Der Stick Plus 2 verwendet die neuere <span class="highlight">Version V3 des
+                        ESP32-Prozessors</span>. Im Grunde ist es dasselbe Gerät, ein Dual-Core-Controller. Der
+                    Unterschied liegt in der Größe des RAM und des Flash-Speichers. Das macht einen Unterschied, da mehr
+                    Platz für zusätzliche Funktionen der IoT-S- Software vorhanden ist. Um Ihnen eine Vorstellung zu
+                    geben: Die aktuelle Version 166 der Software, die ich gerade veröffentlicht habe, belegt gefühlt 64
+                    % der verfügbaren Speicherkapazität eines Sticks.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=185s" target="_blank" class="ts-link">(03:05)</a>
+                <div class="text">Der Stick C+ bietet zwar mehr Leistung, aber nur 41 % der Leistung des Stick C+ 2. Ein
+                    weiterer Fortschritt ist der erhöhte <span class="highlight">Arbeitsspeicher (RAM) von nun 2
+                        Megabyte</span> und der doppelt so große Flash-Speicher für Daten wie Webseiten und
+                    Konfigurationsdateien. Eine weitere massive Verbesserung ist die um <span class="highlight">65 %
+                        höhere Akkukapazität</span> der meisten IoT-Hats. Dies hat keine Auswirkungen, da ohnehin ein
+                    externes Netzteil angeschlossen wird. Der entscheidende Unterschied zeigt sich jedoch beim
+                    Fourspeed-Profiling mit dem <span class="highlight">Purple Hat</span>. In meinen Tests konnte ich
+                    das Purple Hat über eine Stunde lang betreiben, was eine deutliche Verbesserung gegenüber den etwa
+                    25 Minuten Laufzeit des Stick Plus darstellt.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=234s" target="_blank" class="ts-link">(03:54)</a>
+                <div class="text">Der Stick Plus 2 verwendet außerdem einen anderen U-Chip, was einen anderen Treiber
+                    auf dem PC zum Senden und Empfangen von Daten erfordert. Normalerweise wird der richtige Treiber
+                    jedoch automatisch installiert, sodass dies kein großes Problem darstellt. Ein Nachteil ist das
+                    fehlende Energiemanagementsystem.</div>
+            </div>
+
+            <h2><a id="technische-details" href="#technische-details" title="Permalink">#</a> Technische Details:
+                Schaltpläne & Power Management</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=255s" target="_blank" class="ts-link">(04:15)</a>
+                <div class="text">Vergleichen wir die Unterschiede anhand der Schaltpläne. Hier ist der Schaltplan des
+                    M5 Stick C+. Der große Chip ist die Energiemanagementeinheit. Ohne auf Details einzugehen, können
+                    wir sehen, dass so gut wie alles daran angeschlossen ist: Stromeingänge über USB und externe
+                    Stromversorgung. Der Kopfanschluss, die Batterie, die 3,3- Volt- und 5-Volt-Stromschienen für alle
+                    anderen Komponenten und der Aufwärtswandler, der die Batteriespannung in die externe
+                    5-Volt-Versorgung am Kopfanschluss umwandelt. Der Power-Management-Chip selbst ist ziemlich
+                    leistungsstark; er kann die Batterie mit bis zu 1,4 Ampere laden, und die internen Abwärtswandler
+                    sind alle für etwa 1 Ampere ausgelegt. Aus diesem Grund kann der IoT-Stick ein gelbes oder blaues
+                    HAT mit mehreren angeschlossenen LEDs zumindest für kurze Zeit ohne externe Stromversorgung
+                    betreiben.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=316s" target="_blank" class="ts-link">(05:16)</a>
+                <div class="text">Darüber hinaus liefert die Schnittstelle der Power-Management-Einheit Daten über
+                    Spannungen, Ströme und Temperatur, die die Grundlage für die Anzeige der technischen Daten auf dem
+                    IoT-Stick bilden. Ein Vergleich mit dem neuen M5 SCK C+2 zeigt einige deutliche Unterschiede. Hier
+                    haben wir einen einfachen Batterieladechip mit einem maximalen Strom von 500 Milliampere. Der
+                    Batterieausgang ist mit einem Abwärtswandler für die 3,3-Volt-Versorgung und dem Aufwärtswandler für
+                    die 5-Volt-Versorgung der Kopfanschlüsse verbunden. Die maximalen Ströme betragen 3 Ampere für den
+                    Abwärtswandler und 2 Ampere für den Aufwärtswandler. Der Boost-Wandler an sich ist in Ordnung, aber
+                    wie versorgt man ihn mit Strom, wenn Akku und Ladegerät nur 500 Milliampere liefern können? Das
+                    funktioniert nicht, ohne den Akku zu entladen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=368s" target="_blank" class="ts-link">(06:08)</a>
+                <div class="text">Um externe Geräte wie LEDs zu betreiben, benötigt man daher eine <span
+                        class="highlight">externe 5-V-Stromversorgung</span>. Diese kann entweder über den USB-Anschluss
+                    oder den 5-V- Kontakt am Kopfhöreranschluss erfolgen. In der Praxis läuft es so: Betreibt man einen
+                    gelben oder blauen Kopfhörer mit dem an den USB-Anschluss des Computers angeschlossenen Stick,
+                    funktioniert er. Sobald man das USB-Kabel trennt, wird der Strom für einige Sekunden vom Akku
+                    geliefert, und dann schaltet sich der Stick aufgrund des Stromausfalls ab. Betreibt man hingegen
+                    einen violetten Kopfhörer, der nur wenige Milliampere zieht, reicht die Leistung des Sticks aus, um
+                    die angeschlossene Hardware zu versorgen. Wie bereits erwähnt, kann er aufgrund des größeren Akkus
+                    deutlich länger laufen.</div>
+            </div>
+
+            <h2><a id="bedienung" href="#bedienung" title="Permalink">#</a> Bedienung: Ein- und Ausschaltverhalten</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=418s" target="_blank" class="ts-link">(06:58)</a>
+                <div class="text">Insgesamt ist der fehlende Power- Management-Chip ein Schritt in die falsche Richtung,
+                    aber kein K.O.-Kriterium. Er hat jedoch Auswirkungen auf das Ein- und Ausschaltverhalten, wie auf
+                    der M-Stack-Webseite für den Stick C und den Stick C+ beschrieben. Dieser Prozess war recht einfach.
+                    Klicken Sie auf den Ein-/ Ausschalter, um das Gerät einzuschalten. Halten Sie ihn 6 Sekunden lang
+                    gedrückt, um es auszuschalten. Beim Stick C+2 verhält es sich anders und hängt davon ab, ob eine
+                    externe Stromversorgung angeschlossen ist oder nicht. Zum Einschalten muss eine Stromversorgung
+                    angeschlossen sein oder der Ein-/Ausschalter mindestens 2 Sekunden lang gedrückt gehalten werden.
+                </div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=467s" target="_blank" class="ts-link">(07:47)</a>
+                <div class="text">Zum Ausschalten halten Sie den Ein-/Ausschalter etwa 6 Sekunden lang gedrückt. Was
+                    dann passiert, hängt davon ab, ob eine Stromversorgung angeschlossen ist oder nicht. Bei
+                    angeschlossener Stromversorgung schaltet sich das Gerät nicht vollständig aus, sondern wechselt in
+                    den <span class="highlight">Ruhezustand (Sleep)</span>. Zum Aufwecken halten Sie den Ein-/
+                    Ausschalter erneut 2 Sekunden lang gedrückt. Ohne angeschlossene Stromversorgung schaltet es sich
+                    vollständig aus. Mir ist aufgefallen, dass es manchmal Schwierigkeiten beim Aufwachen aus dem
+                    Ruhezustand gibt und verschiedene Lösungsansätze erfordert. Vielleicht kann ich das in der Software
+                    verbessern. Wir werden sehen. Im Moment scheint die zuverlässigste Methode zum Einschalten das
+                    Anschließen an die Stromversorgung zu sein, und zum Ausschalten trennen Sie einfach die
+                    Stromversorgung. Es schaltet sich innerhalb weniger Sekunden aus, wenn der Stick Strom verbraucht
+                    oder die Batteriespannung auf etwa 3,5 Volt gesunken ist.</div>
+            </div>
+
+            <h2><a id="io-pins" href="#io-pins" title="Permalink">#</a> I/O-Pins & Programmierunterschiede</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=516s" target="_blank" class="ts-link">(08:36)</a>
+                <div class="text">Es gibt einige kleinere Unterschiede, die für Sie interessant sein könnten, wenn Sie
+                    selbst programmieren möchten. Dies ist eine Tabelle zur Verwendung der I/O-Pins. Besonders auffällig
+                    ist, dass sich die <span class="highlight">Pin-Nummern für die LED</span> geändert haben. Diese LED
+                    zeigte die Standortaktivität des Sticks und Stick Plus an. Beim Stick Plus 2 war sie an I/O-9
+                    angeschlossen, beim Stick Plus 2 an Pin 19. Die Infrarot-LED, die zuvor einen separaten I/O-Pin
+                    hatte, ist nun ebenfalls an Pin 19 angeschlossen. Daher können die LEDs nicht mehr einzeln
+                    angesteuert werden. Kurioserweise hat sich auch die Logik der LED geändert: Beim alten Stick
+                    leuchtete die LED, wenn der I/O-Pin auf Low-Pegel war. Beim Stick Plus 2 muss der Pin auf High-Pegel
+                    gesetzt werden, um die LED einzuschalten. Es gibt auch einige I/O-Änderungen für das Display, die
+                    jedoch normalerweise von der Display-Bibliothek verwaltet werden. Als Programmierer müssen Sie sich
+                    darüber keine Gedanken machen.</div>
+            </div>
+
+            <h2><a id="software-updates" href="#software-updates" title="Permalink">#</a> Software-Updates (V1.6.6) &
+                Installation</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=586s" target="_blank" class="ts-link">(09:46)</a>
+                <div class="text">Aufgrund all dieser Hardware-Änderungen kann der IoT Stick Plus 2 nicht mehr dieselbe
+                    Software wie die anderen beiden Versionen ausführen. Daher muss ich zum ersten Mal
+                    hardwarespezifische Updates veröffentlichen. Der Grund dafür ist weniger das fehlende
+                    Energiemanagementsystem, das über eine Konfigurationsoption gelöst werden könnte. Das größere
+                    Problem ist die Speicherkonfiguration mit der größeren Flash-Speichergröße und den damit verbundenen
+                    anderen Installationsparametern. So funktioniert es: Wenn Sie auf die GitHub-Seite gehen und die
+                    Option für die Installationsdatei 1.6.6 auswählen, sehen Sie vier aufgelistete ZIP-Dateien: M5
+                    update.zip und M5 update Mac . zip (für den IoT Stick und IoT Stick Plus, also die ältere
+                    Hardwareversion) sowie die anderen Dateien <span class="highlight">M5 update plus 2.zip</span> und
+                    M5 update plus 2 Mac OS. Für den neuen IoT Stick Plus 2 klicken Sie wie zuvor auf die gewünschte
+                    Datei und anschließend auf der nächsten Seite auf den Download-Pfeil oben rechts. Laden Sie die
+                    Datei herunter und speichern Sie sie auf Ihrer Festplatte.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=666s" target="_blank" class="ts-link">(11:06)</a>
+                <div class="text">Extrahieren Sie dann den Inhalt, verbinden Sie den IoT Stick mit einem USB-Anschluss
+                    Ihres Computers und führen Sie die Batch-Datei aus. Das Installationsprogramm sollte den Stick
+                    automatisch erkennen und die Software installieren. Falls nicht, folgen Sie den Anweisungen in der
+                    Readme-Datei, um die Installation über den USB-Anschluss zu erzwingen, an dem der Stick
+                    angeschlossen ist. Die neue Version 166 unterstützt den IoT Stick Plus 2.</div>
+            </div>
+
+            <h2><a id="fehlerbehebungen" href="#fehlerbehebungen" title="Permalink">#</a> Fehlerbehebungen &
+                Nutzer-Beiträge</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=689s" target="_blank" class="ts-link">(11:29)</a>
+                <div class="text">Welche weiteren Verbesserungen enthält die neue Version? Hier ist eine Liste der
+                    Fehlerbehebungen in Version 166. Vielen Dank an alle Benutzer, die Fehler gemeldet und sich die Zeit
+                    genommen haben, die Fehlerbehebungen zu testen und zu verifizieren. Ich schätze jedes Feedback, das
+                    zur Verbesserung der IoT-Software beiträgt. Hier ist die Liste der Verbesserungen: Das Speichern der
+                    Konfigurationsdatei von der Seite ohne Einrichtung funktioniert wieder. Version 65 hatte ein Problem
+                    beim Speichern der Knotenkonfiguration in einer Datei, sodass es nicht möglich war, die
+                    Konfiguration zu speichern und auf einem anderen Stick wiederherzustellen. <span
+                        class="highlight">Benutzer Greg</span> hat mich darauf hingewiesen. Er sprach das Problem an und
+                    wies mich sogar auf eine fehlende Zeile im Code hin – eine einfache Lösung. Danke, Greg!</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=739s" target="_blank" class="ts-link">(12:19)</a>
+                <div class="text">Die Funktionen für <span class="highlight">F14 bis F28 für Red Hat</span> sind nun
+                    implementiert. Red Hat unterstützte bisher die lokalen Funktionen F14 und höher nicht korrekt;
+                    tatsächlich stürzte das system ab, sobald man versuchte, eine der Funktionen über den Engine-Treiber
+                    zu aktivieren. <span class="highlight">Benutzer RC Flyer 10</span> meldete das Problem und
+                    implementierte es sogar in der Software. Ich musste es lediglich in die Codebasis integrieren, und
+                    jetzt funktioniert es. Hervorragende Arbeit, RC Flyer 10, vielen Dank!</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=779s" target="_blank" class="ts-link">(12:59)</a>
+                <div class="text">Ich habe außerdem eine Option für eine größere Anzeige der Geschwindigkeitsmessung mit
+                    dem Purple Head hinzugefügt. <span class="highlight">Benutzer Louis</span> bat um eine größere
+                    Schriftart auf der Anzeigeseite des Purple Head. Er verwendet den Purple Head als Echtzeit-
+                    Geschwindigkeitsmesser auf einer Clubanlage und wollte eine größere Anzeige, damit die
+                    Geschwindigkeit auch aus der Ferne gut lesbar ist. Ich habe eine neue Option im oberen
+                    Bildschirmbereich des Purple Headsets erstellt, um die Anzeige zu vergrößern. Danke, Louis, für den
+                    Vorschlag.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=806s" target="_blank" class="ts-link">(13:26)</a>
+                <div class="text">Ich werde nun die ersten Tests durchführen. Die Testkriterien für das
+                    Geschwindigkeitsprofiling wurden verfeinert. <span class="highlight">Die Benutzer John und
+                        Aaron</span> meldeten einige Probleme mit dem Purple Head beim Geschwindigkeitsprofiling. In
+                    einem Fall wurden die Meldungen vom Stick auf dem Weg zur Profilseite gekürzt. Im anderen Fall lief
+                    der Geschwindigkeitsprofiltest endlos. Es stellte sich heraus, dass die beiden Probleme irgendwie
+                    zusammenhingen. Daher habe ich ein zusätzliches Kriterium hinzugefügt, um den
+                    Geschwindigkeitsprofiltest zu stoppen, falls etwas schiefgeht. Danke an John und Aaron fürs Finden
+                    der Probleme und Testen der Fehlerbehebungen. Und ja, John, ich muss das von dir vorgeschlagene
+                    Benachrichtigungsfenster noch implementieren, aber das kommt mit der nächsten Version.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=854s" target="_blank" class="ts-link">(14:14)</a>
+                <div class="text">Außerdem wurde eine lästige MQTT-Nachrichtenduplizierung behoben. <span
+                        class="highlight">Benutzer Chel</span> meldete eine doppelte Anzeige von MQTT- Nachrichten im
+                    Loconet Viewer bei Verwendung des MQTT-Gateways. Außerdem gab es Probleme mit der Initialisierung
+                    der Servopositionen beim Start des Green Hat. Danke an <span class="highlight">Joel</span> für den
+                    Hinweis; die Duplizierung ist in der aktuellen Version behoben. Die Servopositionierung steht
+                    weiterhin auf meiner To-do-Liste und wird in der nächsten Version behoben. Es gibt noch ein paar
+                    weitere, aber eher technische und von außen weniger sichtbare Probleme. Und natürlich: Wenn Sie bei
+                    der Verwendung des IoT-Sticks auf ein Problem stoßen, melden Sie es bitte, damit es in einer
+                    zukünftigen Softwareversion behoben werden kann.</div>
+            </div>
+
+            <h2><a id="lagerbestand" href="#lagerbestand" title="Permalink">#</a> Lagerbestand & Empfehlungen</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=899s" target="_blank" class="ts-link">(14:59)</a>
+                <div class="text">Der IoT-Stick Plus ist jetzt im T Store erhältlich. Er ersetzt den älteren IoT-Stick
+                    Plus. Ich habe auch noch einige Standard-Sticks auf Lager. Da mein Lagerbestand begrenzt ist, können
+                    Sie beim Kauf eines Sticks zwischen dem neuen IoT Stick Plus 2 und dem günstigeren
+                    Original-IoT-Stick wählen. Wenn Sie einen Purple Head verwenden möchten, ist der IoT Stick Plus 2
+                    aufgrund des größeren Displays und des leistungsstärkeren Akkus dringend zu empfehlen. Für alle
+                    anderen Head- Produkte ist der Standard-IoT-Stick völlig ausreichend. Sobald mein Lagerbestand
+                    aufgebraucht ist, wird der Stick Plus 2 die einzige Hardware-Option bleiben. Selbstverständlich
+                    werde ich aber auch weiterhin Software-Updates für die alte Hardware bereitstellen.</div>
+            </div>
+
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=LARrlCthN18&t=949s" target="_blank" class="ts-link">(15:49)</a>
+                <div class="text">Das war's für dieses Video. Ich hoffe, diese Informationen waren hilfreich oder
+                    zumindest interessant für Sie und Sie haben nun ein gutes Verständnis für die Unterschiede zwischen
+                    dem alten IoT Stick und dem neuen IoT Stick Plus 2. Wenn ja, klicken Sie bitte unten auf den
+                    „Gefällt mir“-Button, um mich darüber zu informieren. Teilen Sie mir gerne Ihre Meinung im
+                    Kommentarbereich dieses Videos mit. Ich freue mich immer über Feedback von meinen Zuschauern. Vielen
+                    Dank fürs Zuschauen und bis zum nächsten Video!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>M5Stick C+ 2</dt>
+                    <dd>Die aktuelle Hardware-Revision von M5Stack. Sie verfügt über einen ESP32 V3, 2 MB PSRAM und 8 MB
+                        Flash, besitzt aber keinen dedizierten Power-Management-Chip (AXP192) mehr.</dd>
+
+                    <dt>Energiemanagementsystem (AXP192)</dt>
+                    <dd>Ein spezialisierter Chip in den Vorgängermodellen, der Ladevorgänge, Spannungsregelung und Daten
+                        (Strom/Temperatur) verwaltete.</dd>
+
+                    <dt>Purple Hat</dt>
+                    <dd>Ein Hardware-Aufsatz für den IoTT-Stick zur Geschwindigkeitsmessung von Lokomotiven.</dd>
+
+                    <dt>Red Hat</dt>
+                    <dd>Ein Kommunikations-Shield für den IoTT-Stick, das unter anderem Loconet-Schnittstellen
+                        bereitstellt.</dd>
+
+                    <dt>MQTT-Gateway</dt>
+                    <dd>Eine Schnittstelle zur Übertragung von Modellbahnbefehlen über das MQTT-Netzwerkprotokoll.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

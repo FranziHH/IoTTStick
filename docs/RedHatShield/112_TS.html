@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedHat++ Shield - IoTT Stick Communication - Architectural Overview (Part 2) (Video#112)</title>
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+    <header class="main-header">
+        <button id="menu-toggle">☰</button>
+        <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+    </header>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar"></nav>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="content">
+            <h1>IoTT Stick Communication - Architectural Overview (Part 2) (Video#112) - 05.02.2023</h1>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+            <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
+
+            <h2><a id="einleitung" href="#einleitung" title="Permalink">#</a> Einleitung & Grundfunktionen</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=0s" target="_blank" class="ts-link">(00:00)</a>
+                <div class="text">Der erste Teil der Architekturübersicht drehte sich um die Hardware und die
+                    Funktionalität des IoT-Sticks und seiner verschiedenen Funktionsköpfe. In diesem Video erkläre ich
+                    die im <span class="highlight">IoT-Stick</span> integrierten Kommunikationskonzepte, und das ist
+                    wirklich der spannende Teil! Willkommen auf dem IoT-Kanal! Ich bin Hans Tanner.</div>
+            </div>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=33s" target="_blank" class="ts-link">(00:33)</a>
+                <div class="text">Der IoT-Stick verfügt über drei Gruppen von Kommunikationsfunktionen: Erstens fungiert
+                    er als <span class="highlight">Webserver</span> für die Konfiguration. Zweitens kann er <span
+                        class="highlight">DCC-Gleisinformationen</span> empfangen und verarbeiten. Drittens fungiert er
+                    als Knoten in einem <span class="highlight">LocoNet-Layout-Steuerungsnetzwerk</span>.</div>
+            </div>
+
+            <h2><a id="webserver" href="#webserver" title="Permalink">#</a> Webserver & Echtzeitdaten</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=86s" target="_blank" class="ts-link">(01:26)</a>
+                <div class="text">Nach der Ersteinrichtung kann er entweder als Knoten im verfügbaren WLAN-Netzwerk oder
+                    als <span class="highlight">Access Point</span> fungieren. Über die IP-Adresse des Sticks wird die
+                    Hauptkonfigurationsseite im Browser geladen.</div>
+            </div>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=139s" target="_blank" class="ts-link">(02:19)</a>
+                <div class="text">Einige Seiten bieten dynamische Laufzeitdaten. Ein Beispiel ist die
+                    Tastenkonfiguration des gelben Steuerkopfs, die den Eingangsstatus in Echtzeit anzeigt. Ein weiteres
+                    ist die Einstellung der Servowinkel des grünen Steuerkopfs per Schieberegler oder die
+                    Amperemeteranzeige des roten Steuerkopfs.</div>
+            </div>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=184s" target="_blank" class="ts-link">(03:04)</a>
+                <div class="text">Technologisch gesehen sind die Seiten in HTML, CSS und JavaScript geschrieben, während
+                    Laufzeitdaten über <span class="highlight">AJAX-Aufrufe</span> und <span
+                        class="highlight">WebSocket-Kommunikation</span> übertragen werden.</div>
+            </div>
+
+            <h2><a id="funktionalitaet" href="#funktionalitaet" title="Permalink">#</a> DCC-Funktionalität & Verteilung
+            </h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=225s" target="_blank" class="ts-link">(03:45)</a>
+                <div class="text">Der Stick implementiert zwei DCC-Methoden: Die erste verbindet den Stick über eine
+                    DCC-Schnittstelle mit dem Gleis und dekodiert Befehle in Echtzeit. Diese werden im integrierten
+                    <span class="highlight">DCC-Viewer</span> angezeigt, unterteilt in Lok-Befehle (links) und
+                    Einmal-Befehle wie Weichen (rechts).</div>
+            </div>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=326s" target="_blank" class="ts-link">(05:26)</a>
+                <div class="text">Um dekodierte Befehle an andere Knoten zu senden, wird das <span
+                        class="highlight">MQTT-Broker-Gateway</span> aktiviert. Alle eingehenden DCC-Befehle werden
+                    automatisch hochgeladen und können von einer unbegrenzten Anzahl anderer Knoten weltweit empfangen
+                    werden.</div>
+            </div>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=383s" target="_blank" class="ts-link">(06:23)</a>
+                <div class="text">Um Befehle zu empfangen, wird die Quelle auf "DCC von MQTT" gestellt. Man legt den
+                    Broker und das <span class="highlight">Broadcast-Thema</span> fest. So lassen sich Weichenstellungen
+                    oder Relais global über das Internet steuern.</div>
+            </div>
+
+            <h2><a id="loconet" href="#loconet" title="Permalink">#</a> LocoNet & Bidirektionale Steuerung</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=479s" target="_blank" class="ts-link">(07:59)</a>
+                <div class="text">Der Hauptunterschied zu DCC ist, dass <span class="highlight">LocoNet</span>
+                    bidirektional ist. Es ist ein ereignisbasiertes <span
+                        class="highlight">Peer-to-Peer-Netzwerk</span>, das zuverlässig ist und geringen
+                    Verwaltungsaufwand hat. Details zum Vergleich mit anderen Bussen finden sich in Video Nr. 59.</div>
+            </div>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=560s" target="_blank" class="ts-link">(09:20)</a>
+                <div class="text">Mit der LocoNet-Schnittstelle als Quelle bietet der Stick einen Viewer, der den
+                    Nachrichtenfluss in verständliches Englisch übersetzt. Er kann Nachrichten verarbeiten, um LEDs oder
+                    Servos zu steuern, aber auch Meldungen (Tasten, Blockmelder, Analogwerte) zurück ins Netz senden.
+                </div>
+            </div>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=643s" target="_blank" class="ts-link">(10:43)</a>
+                <div class="text">Unterstützt wird auch <span class="highlight">LocoNet over TCP</span>. Der Stick kann
+                    als Client oder Server fungieren. Ein großer Vorteil gegenüber JMRI: Bei einem Serverausfall
+                    verbinden sich die IoT-Stick-Clients automatisch wieder, sobald der Server verfügbar ist.</div>
+            </div>
+
+            <h2><a id="mqtt-struktur" href="#mqtt-struktur" title="Permalink">#</a> MQTT-Struktur & WiThrottle</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=915s" target="_blank" class="ts-link">(15:15)</a>
+                <div class="text">Warum nutzt der Stick nur ein Broadcast-Thema für MQTT? Ich habe eine <span
+                        class="highlight">LocoNet-over-MQTT</span> Struktur implementiert, die vollständige
+                    LocoNet-Nachrichten sendet. Es macht keinen Sinn, Themen künstlich in Weichen oder Melder
+                    aufzuteilen, wenn die Info bereits in der Nachricht steckt.</div>
+            </div>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=1005s" target="_blank"
+                    class="ts-link">(16:45)</a>
+                <div class="text">Der integrierte <span class="highlight">WiThrottle-Server</span> erlaubt die Steuerung
+                    per Smartphone (Apps wie "WiThrottle" für iOS oder "Engine Driver" für Android). Der Stick kann
+                    gleichzeitig als LocoNet-over-TCP-Server, MQTT-Gateway und Throttle-Server arbeiten.</div>
+            </div>
+
+            <h2><a id="netzwerk" href="#netzwerk" title="Permalink">#</a> Netzwerk-Empfehlungen</h2>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=1155s" target="_blank"
+                    class="ts-link">(19:15)</a>
+                <div class="text">Generell empfehle ich die Verbindung mit einem <span
+                        class="highlight">WLAN-Router</span> anstatt den Stick als Access Point zu nutzen. Ein Router
+                    hat mehr Rechenleistung für die Verwaltung vieler Knoten. Wer kein Internet an der Anlage will,
+                    nutzt einfach einen Router ohne Modem als lokales WLAN.</div>
+            </div>
+            <div class="line">
+                <a href="https://www.youtube.com/watch?v=Q5FSyPnSg7s&t=1269s" target="_blank"
+                    class="ts-link">(21:09)</a>
+                <div class="text">Vielen Dank fürs Zuschauen und bis zum nächsten Video!</div>
+            </div>
+
+            <div class="glossary">
+                <h3>Technisches Glossar</h3>
+                <dl>
+                    <dt>WebSocket</dt>
+                    <dd>Ein Protokoll, das eine dauerhafte bidirektionale Verbindung zwischen Browser und Server
+                        ermöglicht – wichtig für Echtzeit-Anzeigen.</dd>
+
+                    <dt>AJAX</dt>
+                    <dd>Eine Technik, um Daten im Hintergrund zu laden, ohne die gesamte Webseite neu laden zu müssen.
+                    </dd>
+
+                    <dt>Peer-to-Peer</dt>
+                    <dd>Ein Netzwerkmodell, bei dem alle Teilnehmer gleichberechtigt sind und direkt miteinander
+                        kommunizieren können.</dd>
+
+                    <dt>MQTT Broadcast-Thema</dt>
+                    <dd>Ein "Kanal" oder Betreff, unter dem Nachrichten veröffentlicht werden, damit andere Geräte sie
+                        abonnieren können.</dd>
+
+                    <dt>WiThrottle / Engine Driver</dt>
+                    <dd>Standardisierte Apps zur Steuerung von Modellbahnen über WLAN-basierte Serverprotokolle.</dd>
+
+                    <dt>Latenz</dt>
+                    <dd>Die Verzögerungszeit bei der Datenübertragung, besonders relevant bei Verbindungen über das
+                        Internet.</dd>
+                </dl>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>

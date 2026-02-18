@@ -1,3 +1,15 @@
+# IoTTStick Flash Tool
+
+NEU: Das FlashTool kann den IoTTStick komplett neu flashen, updaten oder die Original Firmware wieder herstellen.
+Das gesamte Tool kann in den GitHub Pages installiert werden.
+Der Verweis ist aktuell in diesem Branch auf docs
+
+### <a href="https://franzihh.github.io/IoTTStick" target="_blank">IoTTStick Flash Tool</a>
+
+# RedHat++ Shield - Dokumentation (deutsch)
+
+### <a href="https://franzihh.github.io/IoTTStick/RedHatShield/" target="_blank">RedHat++ Shield</a>
+
 # IoTTStick
 This is the code repository for the IoTT Stick, port modules and hat devices with the source code for the latest release. 
 2025/03/29 1.6.9

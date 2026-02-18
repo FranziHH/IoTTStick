@@ -1,5 +1,5 @@
 //#define  StickPlus  //Always Use No OTA 2MB/2MB memory model
-#define  StickPlus2 //Use 8MB default memory model
+//#define  StickPlus2 //Use 8MB default memory model
 
 #if defined ( StickPlus )
   #define PowerSys M5.Power.Axp192
@@ -57,7 +57,7 @@
   #include <IoTT_VoiceControl.h>
 #endif
 
-String BBVersion = "1.6.7";
+String BBVersion = "1.6.9";
 
 
 //library object pointers. Libraries will be dynamically initialized as needed during the setup() function
@@ -167,8 +167,8 @@ uint8_t analogPins[] = {hatInputPin, 2}; //analog pin used for button reading, n
 
 //global variables for the NTP module
 int ntpTimeout = 5000; //ms timeout for NTP update request
-char ntpServer[50] = "us.pool.ntp.org"; //default server for US. Change this to the best time server for your region, or set in node.cfg
-char ntpTimeZone[100] = "EST5EDT";  // default for Eastern Time Zone. Enter your time zone from here: (https://remotemonitoringsystems.ca/time-zone-abbreviations.php) into node.cfg
+char ntpServer[50] = "de.pool.ntp.org"; //default server for US. Change this to the best time server for your region, or set in node.cfg
+char ntpTimeZone[100] = "CET-1CEST,M3.5.0,M10.5.0/3";  // default for Eastern Time Zone. Enter your time zone from here: (https://remotemonitoringsystems.ca/time-zone-abbreviations.php) into node.cfg
 bool ntpOK = false;
 bool useNTP = false;
 bool hatVerified = false;
