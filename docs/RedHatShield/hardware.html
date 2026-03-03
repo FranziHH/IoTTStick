@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RedHat++ Shield - IoTT Hardware</title>
+  <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
+</head>
+
+<body>
+
+  <header class="main-header">
+    <button id="menu-toggle">☰</button>
+    <div class="site-title"><a href=".">RedHat++ Shield</a></div>
+  </header>
+
+  <div class="wrapper">
+    <nav id="sidebar" class="sidebar"></nav>
+
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <main class="content">
+      <h1>IoTT Hardware</h1>
+      <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">3. März 2026, 17:34:04</span></p>
+      <h2><a id="uebersicht" href="#uebersicht" title="Permalink">#</a> IoTT Hardware Übersicht</h2>
+      <div class="gallery_big">
+        <a href="images/2026-03-03_16-27-30_1.png" data-lightbox="galerie">
+          <img src="images/2026-03-03_16-27-30_1.png" class="thumb_big">
+        </a></img>
+      </div>
+      <p id="video-111">
+        <a href="https://www.youtube.com/watch?v=AjNLgxDHExc" target="_blank">IoTT Architectural Overview (Part
+          1) (Video#111) - 22.01.2023</a><br>
+        Übersicht über die IoTT Architektur<br>
+        <a href="111_TS.html" class="icon">Transkript</a>
+      </p>
+
+      <h2><a id="brown_hat" href="#brown_hat" title="Permalink">#</a> BrownHat</h2>
+      <div class="line">
+        <a href="https://youtu.be/AjNLgxDHExc?t=462" target="_blank" class="ts-link">(07:42)</a>
+        <div class="text">Dient als USB-Schnittstelle zum Anschluss eines IoT-Sticks an einen Computer mit Software
+          wie JMRI Digipad oder ähnlichem. Aus Sicht des Computers verhält er sich wie ein lokaler USB-Puffer. Daher
+          kann jedes Programm, das über einen lokalen Puffer oder USB verbunden werden kann, mit dem braunen Kopf
+          verwendet werden.
+          Wie in Video Nr. 106 gezeigt, kann man einen IoT-Stick mit einer Low-Connect-Schnittstelle auf der linken
+          Seite und dem braunen Kopf auf der rechten Seite verbinden. Dadurch erhält man eine Low-Connect-
+          zu-USB-Schnittstelle und gleichzeitig über Throttle Server einen Loconet-over-TCP- Server sowie AlloConnect zu
+          MQTT-Gateway- Funktionen.<br>
+        </div>
+      </div>
+
+      <h2><a id="blue_hat" href="#blue_hat" title="Permalink">#</a> BlueHat</h2>
+      <div class="line">
+        <a href="https://youtu.be/AjNLgxDHExc?t=520" target="_blank" class="ts-link">(08:40)</a>
+        <div class="text">Der BlueHat steuert eine Kette von WS2812-LEDs (Neopixel). Die Kette kann mehrere hundert LEDs
+          lang sein, und jede LED kann einzeln programmiert werden, um den Status von Weichen, Blockdetektoren,
+          Signalaspekten, Analogwerten und mehr anzuzeigen. Die ursprüngliche Idee für den blauen Steuerkopf war die
+          Ansteuerung von Mehrphasensignalen. Nachdem der blaue Steuerkopf verfügbar war, setzten wir ihn jedoch für
+          diverse Beleuchtungsanwendungen ein. Ich nutze ihn zur Ansteuerung der zehn Suchscheinwerfersignale in einem
+          Dreiphasen-ABS-System, bei dem die Suchscheinwerfer rot, grün und gelb blinken.</div>
+      </div>
+
+      <h2><a id="yellow_hat" href="#yellow_hat" title="Permalink">#</a> YellowHat</h2>
+      <div class="line">
+        <a href="https://youtu.be/AjNLgxDHExc?t=579" target="_blank" class="ts-link">(09:39)</a>
+        <div class="text">Der YellowHat war ursprünglich für den Bau von
+          CTC- Schalttafeln gedacht. Er verfügt daher über eine LED-Kette ähnlich der des blauen Steuerkopfes,
+          aber zusätzlich über 32 Eingangsleitungen zum Anschluss von Tastern oder Potentiometern für analoge
+          Werte, beispielsweise zur Steuerung der Signalhelligkeit für Tag- und Nachtbetrieb. Darüber hinaus eignet er
+          sich auch hervorragend zum Anschluss von Blockdetektoren,
+          beispielsweise dem MGP-Sensor mit acht Dioden.</div>
+      </div>
+
+      <h2><a id="green_hat" href="#green_hat" title="Permalink">#</a> GreenHat</h2>
+      <div class="line">
+        <a href="https://youtu.be/AjNLgxDHExc?t=612" target="_blank" class="ts-link">(10:12)</a>
+        <div class="text">Der GreenHat
+          ist ein 16-Kanal- Servodecoder zur Ansteuerung von Servos für Weichen und Formsignale. Er kann 16
+          Servos ansteuern und verfügt über zwei Eingangsleitungen pro Kanal für lokale Taster.
+          Blockdetektoren und zwei LEDs pro Kanal ermöglichen die individuelle Programmierung
+          von Drehwinkel und Geschwindigkeit jedes Servos. Die Bewegungscharakteristika umfassen Überschwingen
+          und Zurückprallen, was die Simulation von Semaphorsignalen ideal macht, bei denen der Signalzeiger
+          oszillierende Effekte beim Erreichen der Position aufweist.</div>
+      </div>
+
+      <h2><a id="black_hat" href="#black_hat" title="Permalink">#</a> BlackHat</h2>
+      <div class="line">
+        <a href="https://youtu.be/AjNLgxDHExc?t=680" target="_blank" class="ts-link">(11:20)</a>
+        <div class="text">Als Nächstes folgt der BlackHat, der einen physischen
+          Drehknopf mit einem Smartphone kombiniert. Ich habe dies in Video Nr. 51 demonstriert. Sie können
+          alle Designinformationen herunterladen und Ihr eigenes Gerät bauen.</div>
+      </div>
+
+      <h2><a id="purple_hat" href="#purple_hat" title="Permalink">#</a> PurpleHat</h2>
+      <div class="line">
+        <a href="https://youtu.be/AjNLgxDHExc?t=716" target="_blank" class="ts-link">(11:56)</a>
+        <div class="text">Der PurpleHat ist mein erster Zugsensor, der am Zug mitfährt und
+          Geschwindigkeit, Steigung und zurückgelegte Strecke misst. Es dient zur automatischen Kalibrierung von
+          Lokomotiven.</div>
+      </div>
+
+      <h2><a id="red_hat_pp" href="#red_hat_pp" title="Permalink">#</a> RedHat++</h2>
+      <div class="line">
+        <a href="https://youtu.be/AjNLgxDHExc?t=746" target="_blank" class="ts-link">(12:26)</a>
+        <div class="text">Die neueste Funktionseinheit
+          ist das RedHat Shield. Es ist als Arduino-Shield erhältlich und kann
+          auf einen DCCX-Arduino-Stack aufgesetzt werden, um diesen in eine LocalNet-Zentrale zu verwandeln.
+          Das Red Hat kombiniert eine Loconet-Schnittstelle und die serielle
+          Kommunikationsschnittstelle auf derselben Platine. Neben der Kommunikation mit dem DCC- Export
+          bietet es drei Low-Anschlüsse: zwei für LocalNet-T4-Fahrregler und einen für Lock-B-Anschlüsse zum
+          Anschluss zusätzlicher Booster. Oben befindet sich die gleiche LED- Unterstützung wie beim Blue Hat.</div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/lightbox/js/lightbox.js"></script>
+</body>
+
+</html>
