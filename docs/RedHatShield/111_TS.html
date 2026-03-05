@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RedHat++ Shield - IoTT Architectural Overview (Part 1) - Video #111</title>
+    <!--
     <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
 </head>
 
@@ -24,7 +28,7 @@
 
         <main class="content">
             <h1>IoTT Architectural Overview (Part 1) (Video#111) - 22.01.2023</h1>
-            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+            <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">5. März 2026, 10:28:32</span></p>
             <p><em>Klicke auf einen Zeitstempel, um das Video an dieser Stelle zu öffnen.</em></p>
 
             <h2><a id="einleitung" href="#einleitung" title="Permalink">#</a> Einleitung & Fortschritte</h2>
@@ -311,8 +315,13 @@
     </div>
 
     <script src="assets/js/main.js"></script>
-    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
-    <script src="assets/lightbox/js/lightbox.js"></script>
+    <script type="text/javascript">
+        const lightbox = GLightbox({
+            selector: '[data-lightbox]',
+            touchNavigation: true,
+            loop: true
+        });
+    </script>
 </body>
 
 </html>

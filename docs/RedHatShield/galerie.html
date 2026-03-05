@@ -5,8 +5,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>RedHat++ Shield - Galerie</title>
-	<link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+    <!--
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 	<link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
 </head>
 
@@ -24,47 +28,78 @@
 
 		<main class="content">
 			<h1>Galerie</h1>
-			<p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">4. März 2026, 16:43:38</span></p>
+			<p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">5. März 2026, 11:00:18</span></p>
 			<h2><a id="bilder" href="#bilder" title="Permalink">#</a> Bilder des RedHat++ Shields</h2>
 			<div class="gallery">
-				<a href="images/IMG_20260209_094210.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260209_094210.jpg" class="thumb">
-				</a>
 
-				<a href="images/IMG_20260209_094310.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260209_094310.jpg" class="thumb">
-				</a>
+				<div class="gallery-item">
+					<a href="images/IMG_20260209_094210.jpg" data-lightbox="galerie" data-title="gelieferte Platine">
+						<img src="images/IMG_20260209_094210.jpg" class="thumb">
+					</a>
+					<div class="thumb-overlay-text">gelieferte Platine</div>
+				</div>
 
-				<a href="images/IMG_20260209_094331.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260209_094331.jpg" class="thumb">
-				</a>
-
-				<a href="images/IMG_20260209_094347.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260209_094347.jpg" class="thumb">
-				</a>
-
-				<a href="images/IMG_20260210_124647.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260210_124647.jpg" class="thumb">
-				</a>
-
-				<a href="images/IMG_20260210_124705.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260210_124705.jpg" class="thumb">
-				</a>
-
-				<a href="images/IMG_20260304_121205.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260304_121205.jpg" class="thumb">
-				</a>
+				<div class="gallery-item">
+					<a href="images/IMG_20260209_094310.jpg" data-lightbox="galerie" data-title="bestückte Platine">
+						<img src="images/IMG_20260209_094310.jpg" class="thumb">
+					</a>
+					<div class="thumb-overlay-text">bestückte Platine</div>
+				</div>
 				
-				<a href="images/IMG_20260304_121227.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260304_121227.jpg" class="thumb">
-				</a>
+				<div class="gallery-item">
+					<a href="images/IMG_20260209_094331.jpg" data-lightbox="galerie" data-title="bestückte Platine - Top">
+						<img src="images/IMG_20260209_094331.jpg" class="thumb">
+					</a>
+					<div class="thumb-overlay-text">bestückte Platine - Top</div>
+				</div>
+
+				<div class="gallery-item">
+					<a href="images/IMG_20260209_094347.jpg" data-lightbox="galerie" data-title="bestückte Platine - Bottom">
+						<img src="images/IMG_20260209_094347.jpg" class="thumb">
+					</a>
+					<div class="thumb-overlay-text">bestückte Platine - Bottom</div>
+				</div>
+
+				<div class="gallery-item">
+					<a href="images/IMG_20260210_124647.jpg" data-lightbox="galerie" data-title="verbaut auf einem Arduino-Mega">
+						<img src="images/IMG_20260210_124647.jpg" class="thumb">
+					</a>
+					<div class="thumb-overlay-text">verbaut auf einem Arduino-Mega</div>
+				</div>
+
+				<div class="gallery-item">
+					<a href="images/IMG_20260210_124705.jpg" data-lightbox="galerie" data-title="verbaut auf einem Arduino-Mega">
+						<img src="images/IMG_20260210_124705.jpg" class="thumb">
+					</a>
+					<div class="thumb-overlay-text">verbaut auf einem Arduino-Mega</div>
+				</div>
+
+				<div class="gallery-item">
+					<a href="images/IMG_20260304_121205.jpg" data-lightbox="galerie" data-title="Neu: bestückte Platine - Top">
+						<img src="images/IMG_20260304_121205.jpg" class="thumb">
+					</a>
+					<div class="thumb-overlay-text">Neu: bestückte Platine - Top</div>
+				</div>
+
+				<div class="gallery-item">
+					<a href="images/IMG_20260304_121227.jpg" data-lightbox="galerie" data-title="Neu: bestückte Platine - Bottom">
+						<img src="images/IMG_20260304_121227.jpg" class="thumb">
+					</a>
+					<div class="thumb-overlay-text">Neu: bestückte Platine - Bottom</div>
+				</div>
+
 			</div>
 		</main>
 	</div>
 
-	<script src="assets/js/main.js"></script>
-	<script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
-	<script src="assets/lightbox/js/lightbox.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script type="text/javascript">
+        const lightbox = GLightbox({
+            selector: '[data-lightbox]',
+            touchNavigation: true,
+            loop: true
+        });
+    </script>
 </body>
 
 </html>

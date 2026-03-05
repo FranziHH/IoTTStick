@@ -5,8 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RedHat++ Shield - JLCPCB</title>
+  <!--
   <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.min.css" />
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
 </head>
 
@@ -24,7 +28,7 @@
 
     <main class="content">
       <h1>JLCPCB</h1>
-      <p class="last_change">Zuletzt aktualisiert: <span id="last-updated">4. März 2026, 16:43:24</span></p>
+      <p class="last_change">Zuletzt aktualisiert: <span id="last-updated">5. März 2026, 10:52:31</span></p>
       <h2><a id="bestellen" href="#bestellen" title="Permalink">#</a> Bestellen</h2>
       <p>
         <a href="https://github.com/tanner87661/IoTTStick/tree/master/Hat%20Devices/RedHat%2B%2B%20Shield"
@@ -70,27 +74,38 @@
         Ich kann keine Garantie dafür übernehmen, dass es auch in Zukunft so funktioniert!<br>
         Bitte immer vorher selber recherchieren, ob sich etwas verändert hat!
       </p>
-      <h2><a id="pcb" href="#pcb" title="Permalink">#</a> Gelieferte Platine</h2>
-      <div class="gallery_big">
-        <a href="images/IMG_20260209_094210.jpg" data-lightbox="galerie">
-          <img src="images/IMG_20260209_094210.jpg" class="thumb_big">
-        </a></img>
-      </div>
-      <h2><a id="pcb_ready" href="#pcb_ready" title="Permalink">#</a> Fertig bestückte Platine</h2>
-			<div class="gallery">
-				<a href="images/IMG_20260304_121205.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260304_121205.jpg" class="thumb">
-				</a>
-				<a href="images/IMG_20260304_121227.jpg" data-lightbox="galerie">
-					<img src="images/IMG_20260304_121227.jpg" class="thumb">
-				</a>
+      <h2><a id="pcb" href="#pcb" title="Permalink">#</a> Platine</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <a href="images/IMG_20260209_094210.jpg" data-lightbox="galerie" data-title="gelieferte Platine">
+            <img src="images/IMG_20260209_094210.jpg" class="thumb">
+          </a>
+          <div class="thumb-overlay-text">gelieferte Platine</div>
+        </div>
+        <div class="gallery-item">
+          <a href="images/IMG_20260304_121205.jpg" data-lightbox="galerie" data-title="bestückte Platine - Top">
+            <img src="images/IMG_20260304_121205.jpg" class="thumb">
+          </a>
+          <div class="thumb-overlay-text">bestückte Platine - Top</div>
+        </div>
+        <div class="gallery-item">
+          <a href="images/IMG_20260304_121227.jpg" data-lightbox="galerie" data-title="bestückte Platine - Bottom">
+            <img src="images/IMG_20260304_121227.jpg" class="thumb">
+          </a>
+          <div class="thumb-overlay-text">bestückte Platine - Bottom</div>
+        </div>
       </div>
     </main>
   </div>
 
   <script src="assets/js/main.js"></script>
-  <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
-  <script src="assets/lightbox/js/lightbox.js"></script>
+  <script type="text/javascript">
+    const lightbox = GLightbox({
+      selector: '[data-lightbox]',
+      touchNavigation: true,
+      loop: true
+    });
+  </script>
 </body>
 
 </html>

@@ -406,18 +406,55 @@ a[href$=".pdf"] {
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  display: block; 
 }
 
 .thumb_big {
+  width: 100%;
   height: 400px;
   object-fit: cover;
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  display: block; 
 }
 
 .thumb:hover, .thumb_big:hover {
   transform: scale(1.03);
+}
+
+.gallery-item {
+    position: relative; /* Wichtig für die Positionierung des Textes */
+    display: inline-block;
+}
+
+.thumb-overlay-text {
+    position: absolute;
+    bottom: 0;          /* Ganz unten im Bild */
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5); /* Halbtransparenter schwarzer Balken */
+    color: white;
+    padding: 8px;
+    font-size: 14px;
+    text-align: center;
+    
+    /* DAS HIER IST DER ENTSCHEIDENDE TEIL: */
+    pointer-events: none; /* Der Text ignoriert Klicks, die Lightbox öffnet sich trotzdem */
+}
+
+/* Den Text in der großen Ansicht exakt wie im Thumbnail stylen */
+.gslide-title {
+    color: #ffffff !important;         /* Reinweiß */
+    text-shadow: none !important;      /* Entfernt alle Standard-Schatten */
+    font-weight: normal !important;    /* Entfernt Fettdruck, falls nicht gewünscht */
+    opacity: 1 !important;             /* Volle Deckkraft des Textes */
+}
+
+/* Den Balken dahinter anpassen, damit er nicht dunkler wird */
+.gslide-description {
+    background: rgba(102, 100, 98, 0.5) !important; /* Exakt derselbe Wert wie beim Thumbnail */ 
+    text-align: center;
 }
 
 .ls_none {

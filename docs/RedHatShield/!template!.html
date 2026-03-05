@@ -5,8 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RedHat++ Shield - Template</title>
-  <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+  <!--
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.min.css" />
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
 </head>
 
@@ -24,7 +28,7 @@
 
     <main class="content">
       <h1>Template</h1>
-      <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">18.2.2026, 10:28:12</span></p>
+      <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">5. März 2026, 10:24:47</span></p>
       <p>
         <b>
           Hier landet der eigene Content
@@ -35,8 +39,17 @@
   </div>
 
   <script src="assets/js/main.js"></script>
-  <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
-  <script src="assets/lightbox/js/lightbox.js"></script>
+  <!--
+    <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/lightbox/js/lightbox.js"></script>
+    -->
+  <script type="text/javascript">
+    const lightbox = GLightbox({
+      selector: '[data-lightbox]', // Nutzt deine vorhandenen Attribute
+      touchNavigation: true,        // Wischen aktivieren
+      loop: true                    // Am Ende wieder von vorne anfangen
+    });
+  </script>
 </body>
 
 </html>

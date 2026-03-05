@@ -5,8 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RedHat++ Shield - Übersicht</title>
-  <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+  <!--
+    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
+    -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.min.css" />
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <link rel="icon" href="assets/images/iott-logo.jpg" type="image/x-icon" />
 </head>
 
@@ -24,7 +28,7 @@
 
     <main class="content">
       <h1>Übersicht</h1>
-      <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">3. März 2026, 10:31:00</span></p>
+      <p class="last_change">Zuletzt aktualisiert am: <span id="last-updated">5. März 2026, 10:38:43</span></p>
       <h2><a id="news" href="#news" title="Permalink">#</a> News</h2>
       <ul class="ls_none_padding ls_margin_bottom">
         <li>
@@ -43,9 +47,12 @@
           Tanner)</a>
       </p>
       <div class="gallery_big">
-        <a href="images/IMG_20260210_124705.jpg" data-lightbox="galerie">
-          <img src="images/IMG_20260210_124705.jpg" class="thumb_big">
-        </a></img>
+        <div class="gallery-item">
+          <a href="images/IMG_20260210_124705.jpg" data-lightbox="galerie" data-title="verbaut auf einem Arduino-Mega">
+            <img src="images/IMG_20260210_124705.jpg" class="thumb_big">
+          </a>
+          <div class="thumb-overlay-text">verbaut auf einem Arduino-Mega</div>
+        </div>
       </div>
       <p>Inzwischen gibt es die <a
           href="https://github.com/tanner87661/IoTTStick/tree/master/Hat%20Devices/RedHat%2B%2B%20Shield"
@@ -80,8 +87,13 @@
   </div>
 
   <script src="assets/js/main.js"></script>
-  <script src="assets/lightbox/js/jquery-3.7.1.min.js"></script>
-  <script src="assets/lightbox/js/lightbox.js"></script>
+  <script type="text/javascript">
+    const lightbox = GLightbox({
+      selector: '[data-lightbox]',
+      touchNavigation: true,
+      loop: true
+    });
+  </script>
 </body>
 
 </html>
