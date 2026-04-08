@@ -86,3 +86,4 @@ def bin_gzip(source, target):
             shutil.copyfileobj(fp, f)
 
 env.AddPostAction("$BUILD_DIR/${PROGNAME}.bin", bin_rename_copy)
+env.AlwaysBuild("$BUILD_DIR/${PROGNAME}.bin")

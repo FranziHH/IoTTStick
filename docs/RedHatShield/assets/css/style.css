@@ -30,7 +30,7 @@ body {
 
 a, p, h2 { scroll-margin-top: calc(var(--header-height) + 20px); }
 
-.container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+/* .container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); } */
 h1 { color: #2c3e50; border-bottom: 1px solid #2c3e50; padding-bottom: 10px; }
 h1:has(+ p.last_change) {
   margin-bottom: 0;
@@ -192,9 +192,17 @@ a[id],
 
 /* --- 5. Inhaltsbereich --- */
 .content {
+    width: 100%;
     flex-grow: 1;
 	padding: 0 2rem 2rem 2rem;
     /* max-width: 1200px; /* Optional: Begrenzt die Textbreite auf Desktop */
+    overflow-y: auto;
+    max-height: calc(100vh - var(--header-height));
+}
+
+.container {
+    /* max-width: 1000px; */
+    margin: 0 auto;
 }
 
 /* --- 6. Mobile Anpassungen (Overlay) --- */
